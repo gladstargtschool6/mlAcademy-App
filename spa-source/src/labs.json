@@ -1,0 +1,36 @@
+{
+    "content": {
+        "Error": [
+            "Error",
+            "#Error"
+        ],
+        "lab1": {
+            "ex1": [
+                "## 1.One\n\nHere is the tutorial:",
+                "# Enter something useful under here"
+            ],
+            "ex2": [
+                "## 1.Two\n\nHere is the tutorial:",
+                "x = 2"
+            ],
+            "ex3": [
+                "## 1.Three\n\nHere is the tutorial:",
+                "# Yeet"
+            ]
+        },
+        "lab2": {
+            "ex1": [
+                "## 2.One\n\nHere is the tutorial:",
+                "# Enter something useful under here"
+            ],
+            "ex2": [
+                "## 2.Two\n\nHere is the tutorial:",
+                "x = 2"
+            ],
+            "ex3": [
+                "## 2.Three\n\nHere is the tutorial:",
+                "# Yeet"
+            ]
+        }
+    }
+}
