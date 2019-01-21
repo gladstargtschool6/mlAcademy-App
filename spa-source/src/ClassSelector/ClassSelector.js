@@ -1,36 +1,18 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 
 import CodeEditor from "../CodeEditor/CodeEditor";
-
-import { content } from "../labs.json";
-import { MatchingBraceOutdent } from "brace/mode/java";
-
-function ClassSelector({ match }) {
-  return (
-    <div>
-      <h2>Select a Lab</h2>
-      <ul>
-        <li>
-          <Link to={`${match.url}/1`}>Lab 1 - Hello World</Link>
-        </li>
-        <li>
-          <Link to={`${match.url}/2`}>Lab 2 - Hello World</Link>
-        </li>
-        <li>
+//import { MatchingBraceOutdent } from "brace/mode/java";
+/*<li>
           <Link to={`${match.url}/3`}>Lab 3 - Hello World</Link>
-        </li>
-      </ul>
-
-      <Route path={`${match.path}/:labID`} exact component={Editor} />
-      <Route
-        exact
-        path={match.path}
-        render={() => <h3>Please select a topic.</h3>}
-      />
-    </div>
-  );
-}
+        </li>*/
+const ClassSelector = ({ match }) => (
+  <div>
+    <Link to={`${match.url}/1`}>Lab 1 - Hello World</Link>
+    <Route path="/learn/editor/:labID" component={Editor} />
+    <Route exact path="learn/editor" render={() => <h3>Error</h3>} />
+  </div>
+);
 
 function Editor({ match }) {
   var ex = "1";
@@ -38,12 +20,14 @@ function Editor({ match }) {
   if (match.params.labID < 1)
     return (
       <div>
+        asdfji
         <CodeEditor id={0} />
       </div>
     );
   else {
     return (
       <div>
+        asfojwoi
         <CodeEditor id={match.params.labID} />
       </div>
     );
