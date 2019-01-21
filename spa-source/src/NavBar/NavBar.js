@@ -13,7 +13,7 @@ function NavBar(props) {
     };
 
     return (
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
             <Link to="/" class="navbar-brand"><img src={logo} alt="logo" height="24px" /></Link>
             <div class="navbar-collapse collapse" id="navbarColor01">
                 <ul class="navbar-nav mr-auto">
