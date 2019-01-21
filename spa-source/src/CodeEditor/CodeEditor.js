@@ -8,8 +8,27 @@ import "brace/mode/python";
 import "brace/theme/monokai";
 import "brace/theme/textmate";
 import "brace/mode/java";
-
+import axios from "axios";
 class CodeEditor extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      content: " ",
+      code: " "
+    };
+  }
+
+  componentDidMount() {
+    console.log(this.props.id);
+    const ip = `http://127.0.0.1:8000/api/`;
+    axios.get(ip + this.props.id + `/`).then(res => {
+      const content = unescape(res.data.content);
+      const code = res.data.name;
+      this.setState({ code });
+      this.setState({ content });
+    });
+  }
+
   render() {
     const style = {
       fontSize: "14px !important",
@@ -21,7 +40,7 @@ class CodeEditor extends Component {
         <Row>
           <Col xs={6} md={6}>
             <article
-              dangerouslySetInnerHTML={{ __html: marked(this.props.markdown) }}
+              dangerouslySetInnerHTML={{ __html: marked(this.state.content) }}
             />
           </Col>
           <Col xs={6} md={6}>
@@ -36,7 +55,7 @@ class CodeEditor extends Component {
               showPrintMargin={true}
               showGutter={true}
               highlightActiveLine={true}
-              value={this.props.code}
+              value={this.state.code}
               setOptions={{
                 enableBasicAutocompletion: false,
                 enableLiveAutocompletion: false,

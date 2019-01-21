@@ -35,7 +35,7 @@ class App extends Component {
         </nav>
 
         <Route exact path="/" exact component={Home} />
-        <Route path="/editor" component={Editor} />
+        <Route exact path="/editor" component={ClassSelector} />
 
         {Editor}
       </div>
