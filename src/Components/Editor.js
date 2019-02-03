@@ -3,6 +3,7 @@ import AceEditor from "react-ace";
 import "brace/theme/textmate";
 import "brace/mode/python";
 import axios from "axios";
+import { Config } from "../Config";
 import * as Icons from "grommet-icons";
 import { Box, Button, Heading, Text } from "grommet";
 
@@ -14,14 +15,13 @@ class Editor extends React.Component {
       snippet: "",
       result: ""
     };
-    this.apiUrl = "http://52.151.66.189/api/";
     this.onChange = this.onChange.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.snippet !== prevState.snippet) {
       axios
-        .get(this.apiUrl + "test/", {
+        .get(Config.apiUrl + "test/", {
           params: { model_input: this.state.snippet }
         })
         .then(res => {

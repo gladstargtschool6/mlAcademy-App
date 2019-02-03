@@ -1,9 +1,9 @@
 import React from "react";
-import LabView from "./LabView/LabView";
-import { Box, Button, Heading, Grommet, ResponsiveContext } from "grommet";
+import LabView from "./LabView";
+import { Box, Button, Grommet, ResponsiveContext } from "grommet";
 import Header from "./Header";
-import logo_text_white from "./logo_text_white.svg";
-import { Link, Route, withRouter } from "react-router-dom";
+import logo_text_white from "./img/logo_text_white.svg";
+import { Route, withRouter } from "react-router-dom";
 
 const theme1 = {
   global: {
@@ -60,7 +60,14 @@ class App extends React.Component {
           {size => (
             <div>
               <Header>
-                <img src={logo_text_white} alt="Logo" height="40pt" />
+                <img
+                  src={logo_text_white}
+                  alt="Logo"
+                  height="40pt"
+                  onClick={() => {
+                    this.goTo("/");
+                  }}
+                />
                 <Box direction="row" gap="small">
                   <Button
                     color="accent-4"

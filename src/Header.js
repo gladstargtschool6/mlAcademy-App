@@ -1,7 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Box, Button } from "grommet";
-import * as Icons from "grommet-icons";
+import { Box } from "grommet";
 
 const Header = props => (
   <Box
