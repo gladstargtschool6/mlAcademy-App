@@ -1,24 +1,14 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import * as serviceWorker from "./serviceWorker";
-import LabView from "./LabView";
-import { FormClose, Notification } from "grommet-icons";
-import {
-  Box,
-  Button,
-  Collapsible,
-  Heading,
-  Grommet,
-  Layer,
-  ResponsiveContext
-} from "grommet";
-import * as Themes from "grommet/themes";
+import LabView from "./LabView/LabView";
+import { Box, Heading, Grommet, ResponsiveContext } from "grommet";
+import Header from "./Header";
 
-const theme = {
+const theme1 = {
   global: {
     colors: {
-      brand: "#228BE6",
-      bg: "#03DAC6"
+      brand: "#7D4CDB",
+      "accent-1": "#6FFFB0",
+      "accent-3": "#90fcf9"
     },
     font: {
       family: "Roboto",
@@ -28,44 +18,53 @@ const theme = {
   }
 };
 
-const AppBar = props => (
-  <Box
-    tag="header"
-    direction="row"
-    align="center"
-    justify="between"
-    background="accent-4"
-    pad={{ left: "medium", right: "small", vertical: "small" }}
-    elevation="medium"
-    style={{ zIndex: "1" }}
-    {...props}
-  />
-);
+const theme2 = {
+  global: {
+    colors: {
+      brand: "#000000",
+      "accent-1": "#6FFFB0",
+      "accent-3": "#90fcf9"
+    },
+    font: {
+      family: "Roboto",
+      size: "14px",
+      height: "20px"
+    }
+  }
+};
 
 class App extends React.Component {
-  state = {
-    showSidebar: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      theme: theme1
+    }
+  }
+
+  changeTheme() {
+    var newTheme = this.state.theme === theme1 ? theme2 : theme1;
+    this.setState({theme: newTheme});
+  }
+
   render() {
-    const { showSidebar } = this.state;
     return (
-      <Grommet theme={Themes.grommet} full>
+      <Grommet theme={this.state.theme} full>
         <ResponsiveContext.Consumer>
           {size => (
             <div>
-              <AppBar>
+              <Header>
                 <Heading level="3" margin="none">
                   mlAcademy
                 </Heading>
-              </AppBar>
+              </Header>
               <Box
+                height="100%"
+                background="bg"
                 elevation="none"
                 fill="vertical"
                 margin="small"
-                background="bg"
               >
-                {/* CODE EDITOR */}
-                <LabView />
+                <LabView classID={8} />
               </Box>
             </div>
           )}

@@ -1,23 +1,16 @@
 import React from "react";
 import axios from "axios";
-import { Box, Button, Grid, Heading, Markdown, Text } from "grommet";
-import AceEditor from "react-ace";
-import ShowContent from "./ShowContent";
-import "brace/theme/textmate";
+import { Box, Button, Heading, Markdown } from "grommet";
 import Editor from "./Editor";
-import { isNullOrUndefined } from "util";
-import marked from "marked";
-import loading from "./loading.svg";
-import { timeout } from "q";
+import loading from "../loading.svg";
+import * as Icons from "grommet-icons";
 
 class LabView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoading: false,
-      num: 8,
-      snippet: "",
-      returnValue: "",
+      num: this.props.classID,
       content: "",
       name: "",
       defaultCode: ""
@@ -57,20 +50,6 @@ class LabView extends React.Component {
         });
       });
     }
-    if (this.state.snippet !== prevState.snippet) {
-      console.log("Computing " + this.state.snippet);
-      axios
-        .get(this.apiUrl + "test/", {
-          params: { model_input: this.state.snippet }
-        })
-        .then(res => {
-          this.setState({ returnValue: res.data.complex_result });
-        });
-    }
-  }
-
-  computeOutput(snippet) {
-    this.setState({ snippet: snippet });
   }
 
   handlePrev() {
@@ -88,35 +67,54 @@ class LabView extends React.Component {
       <div>
         {!this.state.isLoading ? (
           <div>
-            <Heading>{this.state.name}</Heading>
-            <br />
-            <Markdown>{this.state.content}</Markdown>
+            <Box
+              height="83vh"
+              direction="row"
+              border={{
+                color: "accent-3",
+                size: "large"
+              }}
+              pad="medium"
+            >
+              <Box pad="small" basis="2/4" overflow="auto">
+                <Heading>{this.state.name}</Heading>
+                <Markdown>{this.state.content}</Markdown>
+              </Box>
 
-            <Editor
-              defaultCode={this.state.defaultCode}
-              computeOutput={this.computeOutput.bind(this)}
-            />
-            {this.state.returnValue !== "" ? (
-              <div>
-                <h2>Result:</h2>
-                <br />
-                {this.state.returnValue}
-              </div>
-            ) : (
-              <div />
-            )}
-            <br />
+              <Box pad="small" basis="2/4">
+                <Editor defaultCode={this.state.defaultCode} />
+              </Box>
+            </Box>
+
             <Box
               tag="footer"
+              border={{
+                side: "bottom",
+                color: "accent-3",
+                size: "large"
+              }}
               direction="row"
+              height="60px"
               justify="end"
-              pad="medium"
+              pad="xsmall"
               gap="small"
               flex={false}
-              background="brand"
+              background="accent-3"
             >
-              <Button label="Back" onClick={this.handlePrev.bind(this)} />
-              <Button label="Next" onClick={this.handleNext.bind(this)} />
+              <Button
+                icon={<Icons.FormPrevious />}
+                label="Back"
+                onClick={this.handlePrev.bind(this)}
+                primary
+              />
+              <Button
+                label="Next"
+                icon={<Icons.FormNext />}
+                margin={{right:"10px"}}
+                onClick={this.handleNext.bind(this)}
+                primary
+                reverse
+              />
             </Box>
           </div>
         ) : (
