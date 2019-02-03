@@ -66,64 +66,73 @@ class LabView extends React.Component {
     return (
       <div>
         {!this.state.isLoading ? (
-          <div>
-            <Box
-              height="83vh"
-              direction="row"
-              border={{
-                color: "accent-3",
-                size: "large"
-              }}
-              pad="medium"
-            >
-              <Box pad="small" basis="2/4" overflow="auto">
-                <Heading>{this.state.name}</Heading>
-                <Markdown>{this.state.content}</Markdown>
-              </Box>
-
-              <Box pad="small" basis="2/4">
-                <Editor defaultCode={this.state.defaultCode} />
-              </Box>
+          <Box
+            height="83vh"
+            direction="row"
+            border={{
+              color: "accent-3",
+              size: "large"
+            }}
+            pad="medium"
+          >
+            <Box pad="small" basis="2/4" overflow="auto" elevation="xsmall">
+              <Heading>{this.state.name}</Heading>
+              <Markdown>{this.state.content}</Markdown>
             </Box>
 
-            <Box
-              tag="footer"
-              border={{
-                side: "bottom",
-                color: "accent-3",
-                size: "large"
-              }}
-              direction="row"
-              height="60px"
-              justify="end"
-              pad="xsmall"
-              gap="small"
-              flex={false}
-              background="accent-3"
-            >
-              <Button
-                icon={<Icons.FormPrevious />}
-                label="Back"
-                onClick={this.handlePrev.bind(this)}
-                primary
-              />
-              <Button
-                label="Next"
-                icon={<Icons.FormNext />}
-                margin={{right:"10px"}}
-                onClick={this.handleNext.bind(this)}
-                primary
-                reverse
-              />
+            <Box pad="small" basis="2/4">
+              <Editor defaultCode={this.state.defaultCode} />
             </Box>
-          </div>
+          </Box>
         ) : (
-          <img
-            src={loading}
-            alt="..."
-            style={{ position: "absolute", top: "30vh", left: "50vw" }}
-          />
+          <Box
+            height="83vh"
+            direction="row"
+            border={{
+              color: "accent-3",
+              size: "large"
+            }}
+            pad="medium"
+          >
+            <img
+              src={loading}
+              alt="..."
+              style={{ position: "absolute", top: "30%", left: "48%" }}
+            />
+          </Box>
         )}
+
+        <Box
+          tag="footer"
+          border={{
+            side: "bottom",
+            color: "accent-3",
+            size: "large"
+          }}
+          direction="row"
+          elevation="large"
+          height="60px"
+          justify="end"
+          pad="xsmall"
+          gap="small"
+          flex={false}
+          background="accent-3"
+        >
+          <Button
+            icon={<Icons.FormPrevious />}
+            label="Back"
+            onClick={this.handlePrev.bind(this)}
+            primary
+          />
+          <Button
+            label="Next"
+            icon={<Icons.FormNext />}
+            margin={{ right: "10px" }}
+            onClick={this.handleNext.bind(this)}
+            primary
+            reverse
+          />
+        </Box>
       </div>
     );
   }

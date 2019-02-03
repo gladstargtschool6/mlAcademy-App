@@ -2,13 +2,14 @@ import React from "react";
 import LabView from "./LabView/LabView";
 import { Box, Heading, Grommet, ResponsiveContext } from "grommet";
 import Header from "./Header";
+import logo_text_white from "./logo_text_white.svg";
 
 const theme1 = {
   global: {
     colors: {
       brand: "#7D4CDB",
       "accent-1": "#6FFFB0",
-      "accent-3": "#90fcf9"
+      "accent-3": "#81FCED"
     },
     font: {
       family: "Roboto",
@@ -23,7 +24,7 @@ const theme2 = {
     colors: {
       brand: "#000000",
       "accent-1": "#6FFFB0",
-      "accent-3": "#90fcf9"
+      "accent-3": "#81FCED"
     },
     font: {
       family: "Roboto",
@@ -38,12 +39,12 @@ class App extends React.Component {
     super(props);
     this.state = {
       theme: theme1
-    }
+    };
   }
 
   changeTheme() {
     var newTheme = this.state.theme === theme1 ? theme2 : theme1;
-    this.setState({theme: newTheme});
+    this.setState({ theme: newTheme });
   }
 
   render() {
@@ -53,9 +54,7 @@ class App extends React.Component {
           {size => (
             <div>
               <Header>
-                <Heading level="3" margin="none">
-                  mlAcademy
-                </Heading>
+                <img src={logo_text_white} alt="Logo" height="40pt" />
               </Header>
               <Box
                 height="100%"

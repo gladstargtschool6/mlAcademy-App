@@ -87,7 +87,7 @@ class Editor extends React.Component {
       </Box>
     ) : (
       <Box column gap="small" height="80vh">
-        <Box height="100%">
+        <Box height="100%" elevation="xsmall">
           <AceEditor
             style={style}
             mode="python"
