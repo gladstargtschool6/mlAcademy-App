@@ -1,8 +1,9 @@
 import React from "react";
 import LabView from "./LabView/LabView";
-import { Box, Heading, Grommet, ResponsiveContext } from "grommet";
+import { Box, Button, Heading, Grommet, ResponsiveContext } from "grommet";
 import Header from "./Header";
 import logo_text_white from "./logo_text_white.svg";
+import { Link, Route, withRouter } from "react-router-dom";
 
 const theme1 = {
   global: {
@@ -38,6 +39,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isAuthenticated: false,
       theme: theme1
     };
   }
@@ -47,6 +49,10 @@ class App extends React.Component {
     this.setState({ theme: newTheme });
   }
 
+  goTo = route => {
+    this.props.history.push(route);
+  };
+
   render() {
     return (
       <Grommet theme={this.state.theme} full>
@@ -55,16 +61,39 @@ class App extends React.Component {
             <div>
               <Header>
                 <img src={logo_text_white} alt="Logo" height="40pt" />
+                <Box direction="row" gap="small">
+                  <Button
+                    color="accent-4"
+                    label="Home"
+                    onClick={() => {
+                      this.goTo("/");
+                    }}
+                    primary
+                  />
+                  <Button
+                    color="accent-4"
+                    label="Labs"
+                    onClick={() => {
+                      this.goTo("/labs");
+                    }}
+                    primary
+                  />
+                  {this.state.isAuthenticated ? (
+                    <div />
+                  ) : (
+                    <Button
+                      color="accent-4"
+                      label="Login"
+                      onClick={() => {
+                        this.goTo("/login");
+                      }}
+                    />
+                  )}
+                </Box>
               </Header>
-              <Box
-                height="100%"
-                background="bg"
-                elevation="none"
-                fill="vertical"
-                margin="small"
-              >
-                <LabView classID={8} />
-              </Box>
+              <Route exact path="/" component={Home} />
+              <Route path="/labs" component={Labs} />
+              <Route path="/login" component={Login} />
             </div>
           )}
         </ResponsiveContext.Consumer>
@@ -73,4 +102,23 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const Home = () => (
+  <Box height="100%" background="accent-1">
+    <img src={logo_text_white} alt="LOgo" />
+  </Box>
+);
+
+const Labs = () => (
+  <Box
+    height="100%"
+    background="bg"
+    elevation="none"
+    fill="vertical"
+    margin="small"
+  >
+    <LabView classID={8} />
+  </Box>
+);
+const Login = () => <div />;
+
+export default withRouter(App);
