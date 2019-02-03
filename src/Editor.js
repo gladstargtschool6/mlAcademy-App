@@ -2,15 +2,26 @@ import React from "react";
 import PropTypes from "prop-types";
 import AceEditor from "react-ace";
 import "brace/theme/textmate";
-import { Button } from "grommet";
+import "brace/mode/python";
+import { Box, Button } from "grommet";
 
 class Editor extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      value: this.props.defaultCode
+    };
+    this.onChange = this.onChange.bind(this);
   }
   static propTypes = {
     computeOutput: PropTypes.func.isRequired
   };
+
+  onChange(newValue) {
+    this.setState({
+      value: newValue
+    });
+  }
 
   render() {
     let input;
@@ -18,18 +29,10 @@ class Editor extends React.Component {
       fontSize: "14px !important",
       border: "1px solid lightgray",
       width: "100%",
-      height: "100%"
+      height: "90vh"
     };
-
-    const { computeOutput } = this.props.computeOutput;
     return (
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          computeOutput(input.value);
-          input.value = "";
-        }}
-      >
+      <Box pad="small" gap="small">
         <AceEditor
           style={style}
           mode="python"
@@ -41,7 +44,7 @@ class Editor extends React.Component {
           showPrintMargin={true}
           showGutter={true}
           highlightActiveLine={true}
-          value={this.props.default}
+          value={this.state.value}
           setOptions={{
             enableBasicAutocompletion: false,
             enableLiveAutocompletion: false,
@@ -50,15 +53,13 @@ class Editor extends React.Component {
             tabSize: 2
           }}
         />
-        <input
-          className="form-control col-md-12"
-          ref={node => {
-            input = node;
+        <Button
+          label="Submit"
+          onClick={e => {
+            this.props.computeOutput(this.state.value);
           }}
         />
-        <br />
-        <Button label="Submit" />
-      </form>
+      </Box>
     );
   }
 }
