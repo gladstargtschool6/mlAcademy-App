@@ -4,36 +4,7 @@ import { Box, Button, Grommet, ResponsiveContext } from "grommet";
 import Header from "./Header";
 import logo_text_white from "./img/logo_text_white.svg";
 import { Route, withRouter } from "react-router-dom";
-
-const theme1 = {
-  global: {
-    colors: {
-      brand: "#7D4CDB",
-      "accent-1": "#6FFFB0",
-      "accent-3": "#81FCED"
-    },
-    font: {
-      family: "Roboto",
-      size: "14px",
-      height: "20px"
-    }
-  }
-};
-
-const theme2 = {
-  global: {
-    colors: {
-      brand: "#000000",
-      "accent-1": "#6FFFB0",
-      "accent-3": "#81FCED"
-    },
-    font: {
-      family: "Roboto",
-      size: "14px",
-      height: "20px"
-    }
-  }
-};
+import { theme1, theme2 } from "./Config";
 
 class App extends React.Component {
   constructor(props) {
