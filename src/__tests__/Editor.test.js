@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Editor from '../LabView/Editor';
+import Editor from '../Components/Editor';
 import renderer from "react-test-renderer";
 
 describe("Editor Component Test", () => {
