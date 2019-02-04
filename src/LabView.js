@@ -1,9 +1,10 @@
 import React from "react";
 import axios from "axios";
 import { Box, Button, Heading, Markdown } from "grommet";
-import Editor from "./Editor";
-import loading from "../loading.svg";
+import Editor from "./Components/Editor";
+import loading from "./img/loading.svg";
 import * as Icons from "grommet-icons";
+import { Config } from "./Config";
 
 class LabView extends React.Component {
   constructor(props) {
@@ -15,7 +16,6 @@ class LabView extends React.Component {
       name: "",
       defaultCode: ""
     };
-    this.apiUrl = "http://52.151.66.189/api/";
   }
 
   sleep(time) {
@@ -24,7 +24,7 @@ class LabView extends React.Component {
 
   componentDidMount() {
     this.setState({ isLoading: true });
-    axios.get(this.apiUrl + this.state.num).then(res => {
+    axios.get(Config.apiUrl + this.state.num).then(res => {
       this.sleep(100).then(() => {
         this.setState({
           content: res.data.content,
@@ -39,7 +39,7 @@ class LabView extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     if (this.state.num !== prevState.num) {
       this.setState({ isLoading: true });
-      axios.get(this.apiUrl + this.state.num).then(res => {
+      axios.get(Config.apiUrl + this.state.num).then(res => {
         this.sleep(300).then(() => {
           this.setState({
             content: res.data.content,
