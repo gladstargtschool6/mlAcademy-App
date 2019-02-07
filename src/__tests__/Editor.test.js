@@ -1,16 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Editor from '../Components/Editor';
+import Editor from '../Lab/Editor';
 import renderer from "react-test-renderer";
 
 describe("Editor Component Test", () => {
   it("Editor renders without crashing", () => {
     const div = document.createElement('div');
-    ReactDOM.render(<Editor />, div);
+    ReactDOM.render(<Editor/>, div);
   });
-
+  
   it("Editor renders correctly according to first snapshot", () => {
-    const tree = renderer.create(<Editor />).toJSON();
+    const tree = renderer.create(<Editor/>).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

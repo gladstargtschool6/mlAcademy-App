@@ -3,43 +3,47 @@ import AceEditor from "react-ace";
 import "brace/theme/textmate";
 import "brace/mode/python";
 import axios from "axios";
-import { Config } from "../Config";
+import {Config} from "../Config";
 import * as Icons from "grommet-icons";
-import { Box, Button, Heading, Text } from "grommet";
+import {Box, Button, Heading, Text} from "grommet";
 
 class Editor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: this.props.defaultCode,
+      value: this.props.code,
       snippet: "",
       result: ""
     };
     this.onChange = this.onChange.bind(this);
   }
-
+  
+  componentDidMount() {
+    this.setState({value: this.props.code});
+  }
+  
   componentDidUpdate(prevProps, prevState) {
     if (this.state.snippet !== prevState.snippet) {
       axios
         .get(Config.apiUrl + "test/", {
-          params: { model_input: this.state.snippet }
+          params: {model_input: this.state.snippet}
         })
         .then(res => {
-          this.setState({ result: res.data.complex_result });
+          this.setState({result: res.data.complex_result});
         });
     }
   }
-
+  
   computeOutput(snippet) {
-    this.setState({ snippet: snippet });
+    this.setState({snippet: snippet});
   }
-
+  
   onChange(newValue) {
     this.setState({
       value: newValue
     });
   }
-
+  
   render() {
     const style = {
       fontSize: "14px !important",
@@ -75,7 +79,7 @@ class Editor extends React.Component {
           <Button
             color="accent-1"
             primary
-            icon={<Icons.Edit />}
+            icon={<Icons.Edit/>}
             label="Submit"
             onClick={e => {
               this.computeOutput(this.state.value);
@@ -113,7 +117,7 @@ class Editor extends React.Component {
           <Button
             color="accent-1"
             primary
-            icon={<Icons.Edit />}
+            icon={<Icons.Edit/>}
             label="Submit"
             onClick={e => {
               this.computeOutput(this.state.value);
@@ -124,4 +128,5 @@ class Editor extends React.Component {
     );
   }
 }
+
 export default Editor;

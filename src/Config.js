@@ -10,7 +10,7 @@ export const theme1 = {
       "accent-3": "#81FCED"
     },
     font: {
-      family: "Roboto",
+      family: "Cirque",
       size: "14px",
       height: "20px"
     }
