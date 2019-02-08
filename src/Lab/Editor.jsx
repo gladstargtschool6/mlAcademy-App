@@ -1,57 +1,68 @@
-import React from "react";
-import AceEditor from "react-ace";
-import "brace/theme/textmate";
-import "brace/mode/python";
-import axios from "axios";
-import {Config} from "../Config";
-import * as Icons from "grommet-icons";
-import {Box, Button, Heading, Text} from "grommet";
+import React from 'react';
+import AceEditor from 'react-ace';
+import 'brace/theme/textmate';
+import 'brace/mode/python';
+import axios from 'axios';
+import * as Icons from 'grommet-icons';
+import { Box, Button, Heading, Text } from 'grommet';
+import PropTypes from 'prop-types';
+import { Config } from '../Config';
+
+const propTypes = {
+  codeSnippet: PropTypes.string.isRequired,
+  changeCode: PropTypes.func.isRequired
+};
+
+const defaultProps = {};
 
 class Editor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: this.props.code,
-      snippet: "",
-      result: ""
+      codeSnippet: props.codeSnippet,
+      result: ''
     };
-    this.onChange = this.onChange.bind(this);
+    this.onChangeCode = this.onChangeCode.bind(this);
   }
-  
-  componentDidMount() {
-    this.setState({value: this.props.code});
-  }
-  
+
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.snippet !== prevState.snippet) {
+    if (this.state.codeSnippet !== prevState.codeSnippet) {
       axios
-        .get(Config.apiUrl + "test/", {
-          params: {model_input: this.state.snippet}
+        .get(`${Config.apiUrl}test/`, {
+          params: { model_input: this.state.codeSnippet }
         })
         .then(res => {
-          this.setState({result: res.data.complex_result});
+          this.setState({ result: res.data.complex_result });
         });
     }
   }
-  
+
   computeOutput(snippet) {
-    this.setState({snippet: snippet});
+    //this.setState({ codeSnippet: snippet });
+    axios
+      .get(`${Config.apiUrl}test/`, {
+        params: { model_input: this.state.codeSnippet }
+      })
+      .then(res => {
+        this.setState({ result: res.data.complex_result });
+      });
   }
-  
-  onChange(newValue) {
+
+  onChangeCode(newValue) {
     this.setState({
-      value: newValue
+      codeSnippet: newValue
     });
+    this.props.changeCode(this.state.codeSnippet);
   }
-  
+
   render() {
     const style = {
-      fontSize: "14px !important",
-      border: "1px solid lightgray",
-      width: "100%",
-      height: "100%"
+      fontSize: '14px !important',
+      border: '1px solid lightgray',
+      width: '100%',
+      height: '100%'
     };
-    return this.state.result !== "" ? (
+    return this.state.result !== '' ? (
       <Box column gap="small" height="80vh">
         <Box height="70%">
           <AceEditor
@@ -60,12 +71,12 @@ class Editor extends React.Component {
             theme="textmate"
             name="blah2"
             onLoad={this.onLoad}
-            onChange={this.onChange}
+            onChange={this.onChangeCode}
             fontSize={14}
             showPrintMargin={true}
             showGutter={true}
             highlightActiveLine={true}
-            value={this.state.value}
+            value={this.props.codeSnippet}
             setOptions={{
               enableBasicAutocompletion: false,
               enableLiveAutocompletion: false,
@@ -79,10 +90,10 @@ class Editor extends React.Component {
           <Button
             color="accent-1"
             primary
-            icon={<Icons.Edit/>}
+            icon={<Icons.Edit />}
             label="Submit"
             onClick={e => {
-              this.computeOutput(this.state.value);
+              this.computeOutput(this.state.codeSnippet);
             }}
           />
           <Heading level={3}>Output:</Heading>
@@ -98,12 +109,12 @@ class Editor extends React.Component {
             theme="textmate"
             name="blah2"
             onLoad={this.onLoad}
-            onChange={this.onChange}
+            onChange={this.onChangeCode}
             fontSize={14}
             showPrintMargin={true}
             showGutter={true}
             highlightActiveLine={true}
-            value={this.state.value}
+            value={this.state.codeSnippet}
             setOptions={{
               enableBasicAutocompletion: false,
               enableLiveAutocompletion: false,
@@ -117,10 +128,10 @@ class Editor extends React.Component {
           <Button
             color="accent-1"
             primary
-            icon={<Icons.Edit/>}
+            icon={<Icons.Edit />}
             label="Submit"
             onClick={e => {
-              this.computeOutput(this.state.value);
+              this.computeOutput(this.state.codeSnippet);
             }}
           />
         </Box>
@@ -128,5 +139,8 @@ class Editor extends React.Component {
     );
   }
 }
+
+Editor.propTypes = propTypes;
+Editor.defaultProps = defaultProps;
 
 export default Editor;

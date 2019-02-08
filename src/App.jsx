@@ -1,14 +1,16 @@
-import React from "react";
-import {Box, Button, Grommet, Heading, Markdown, ResponsiveContext} from "grommet";
-import Header from "./Header";
-import logo_text_white from "./img/logo_text_white.svg";
-import LabWrapper from './Lab/LabWrapper';
-import {Route, withRouter} from "react-router-dom";
-import {Config, theme1, theme2} from "./Config";
-import * as Icons from "grommet-icons";
+import React from 'react';
+import { Box, Button, Grommet, Heading, Markdown, ResponsiveContext } from 'grommet';
+import { Route, withRouter } from 'react-router-dom';
+import axios from 'axios';
 
-import loading from "./img/loading.svg";
-import axios from "axios";
+import Header from './Header';
+import logoTextWhite from './img/logo_text_white.svg';
+import Home from './Home';
+import Lab from './Lab';
+import { Config, theme1, theme2 } from './Config';
+import * as Icons from 'grommet-icons';
+
+import loading from './img/loading.svg';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,10 +21,10 @@ class App extends React.Component {
       theme: theme1,
       topicID: 0,
       lessonID: 0,
-      classes: [],
+      classes: []
     };
   }
-  
+
   /*
   componentDidMount() {
     this.setState({isLoading: true});
@@ -37,27 +39,27 @@ class App extends React.Component {
         });
       });
     });
-  }*/
-  
+  } */
+
   changeTheme() {
     var newTheme = this.state.theme === theme1 ? theme2 : theme1;
-    this.setState({theme: newTheme});
+    this.setState({ theme: newTheme });
   }
-  
-  goTo = route => {
+
+  goTo(route) {
     this.props.history.push(route);
-  };
-  
+  }
+
   handlePrev() {
     var newNum = this.state.lessonID - 1;
-    this.setState({lessonID: newNum});
+    this.setState({ lessonID: newNum });
   }
-  
+
   handleNext() {
     var newNum = this.state.lessonID + 1;
-    this.setState({lessonID: newNum});
+    this.setState({ lessonID: newNum });
   }
-  
+
   render() {
     return (
       <Grommet theme={this.state.theme} full>
@@ -66,11 +68,11 @@ class App extends React.Component {
             <div>
               <Header>
                 <img
-                  src={logo_text_white}
+                  src={logoTextWhite}
                   alt="Logo"
                   height="40pt"
                   onClick={() => {
-                    this.goTo("/");
+                    this.goTo('/');
                   }}
                 />
                 <Box direction="row" gap="small">
@@ -78,7 +80,7 @@ class App extends React.Component {
                     color="accent-4"
                     label="Home"
                     onClick={() => {
-                      this.goTo("/");
+                      this.goTo('/');
                     }}
                     primary
                   />
@@ -86,7 +88,7 @@ class App extends React.Component {
                     color="accent-4"
                     label="Labs"
                     onClick={() => {
-                      this.goTo("/labs");
+                      this.goTo('/labs');
                     }}
                     primary
                   />
@@ -95,47 +97,34 @@ class App extends React.Component {
                       color="accent-4"
                       label="Login"
                       onClick={() => {
-                        this.goTo("/login");
+                        this.goTo('/login');
                       }}
                     />
                   )}
                 </Box>
               </Header>
-              
-              {size === "large" || size === "medium" ? (
+
+              {size === 'large' || size === 'medium' ? (
                 <div>
-                  <Route exact path="/" component={Home}/>
-                  <Route path="/labs" render={() => (
-                    <LabWrapper topicID={8}/>
-                  )}/>
-                  <Route path="/login" component={Login}/>
+                  <Route exact path="/" component={Home} />
+                  <Route path="/labs" render={() => <Lab topicID={8} />} />
+                  <Route path="/login" component={Login} />
                 </div>
               ) : (
-                <Small/>
+                <Small />
               )}
             </div>
           )}
         </ResponsiveContext.Consumer>
       </Grommet>
-    
     );
   }
 }
 
-const Nav = (state) => (
-  <div></div>
-)
+const Nav = state => <div />;
 
+const Small = () => <div>Small</div>;
 
-const Small = () => (
-  <div>Small</div>
-)
-const Home = () => (
-  <Box height="100%" background="accent-1">
-    <img src={logo_text_white} alt="LOgo"/>
-  </Box>
-);
-
-const Login = () => <div/>;
+const Login = () => <div />;
 
 export default withRouter(App);
