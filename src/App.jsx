@@ -1,16 +1,13 @@
 import React from 'react';
-import { Box, Button, Grommet, Heading, Markdown, ResponsiveContext } from 'grommet';
+import { Box, Button, Grommet, ResponsiveContext } from 'grommet';
 import { Route, withRouter } from 'react-router-dom';
 import axios from 'axios';
 
-import Header from './Header';
+import Header from './Components/Header';
 import logoTextWhite from './img/logo_text_white.svg';
 import Home from './Home';
 import Lab from './Lab';
 import { Config, theme1, theme2 } from './Config';
-import * as Icons from 'grommet-icons';
-
-import loading from './img/loading.svg';
 
 class App extends React.Component {
   constructor(props) {
@@ -65,7 +62,7 @@ class App extends React.Component {
       <Grommet theme={this.state.theme} full>
         <ResponsiveContext.Consumer>
           {size => (
-            <div>
+            <>
               <Header>
                 <img
                   src={logoTextWhite}
@@ -105,15 +102,15 @@ class App extends React.Component {
               </Header>
 
               {size === 'large' || size === 'medium' ? (
-                <div>
+                <>
                   <Route exact path="/" component={Home} />
                   <Route path="/labs" render={() => <Lab topicID={8} />} />
                   <Route path="/login" component={Login} />
-                </div>
+                </>
               ) : (
                 <Small />
               )}
-            </div>
+            </>
           )}
         </ResponsiveContext.Consumer>
       </Grommet>
@@ -121,9 +118,7 @@ class App extends React.Component {
   }
 }
 
-const Nav = state => <div />;
-
-const Small = () => <div>Small</div>;
+const Small = () => <Home />;
 
 const Login = () => <div />;
 

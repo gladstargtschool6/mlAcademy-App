@@ -25,34 +25,21 @@ class Editor extends React.Component {
     this.onChangeCode = this.onChangeCode.bind(this);
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.codeSnippet !== prevState.codeSnippet) {
-      axios
-        .get(`${Config.apiUrl}test/`, {
-          params: { model_input: this.state.codeSnippet }
-        })
-        .then(res => {
-          this.setState({ result: res.data.complex_result });
-        });
-    }
-  }
-
-  computeOutput(snippet) {
-    //this.setState({ codeSnippet: snippet });
-    axios
-      .get(`${Config.apiUrl}test/`, {
-        params: { model_input: this.state.codeSnippet }
-      })
-      .then(res => {
-        this.setState({ result: res.data.complex_result });
-      });
-  }
-
   onChangeCode(newValue) {
     this.setState({
       codeSnippet: newValue
     });
     this.props.changeCode(this.state.codeSnippet);
+  }
+
+  computeOutput(snippet) {
+    axios
+      .get(`${Config.apiUrl}test/`, {
+        params: { model_input: snippet }
+      })
+      .then(res => {
+        this.setState({ result: res.data.complex_result });
+      });
   }
 
   render() {
@@ -62,6 +49,9 @@ class Editor extends React.Component {
       width: '100%',
       height: '100%'
     };
+
+    const { codeSnippet, result } = this.state;
+
     return this.state.result !== '' ? (
       <Box column gap="small" height="80vh">
         <Box height="70%">
@@ -76,7 +66,7 @@ class Editor extends React.Component {
             showPrintMargin={true}
             showGutter={true}
             highlightActiveLine={true}
-            value={this.props.codeSnippet}
+            value={codeSnippet}
             setOptions={{
               enableBasicAutocompletion: false,
               enableLiveAutocompletion: false,
@@ -93,11 +83,11 @@ class Editor extends React.Component {
             icon={<Icons.Edit />}
             label="Submit"
             onClick={e => {
-              this.computeOutput(this.state.codeSnippet);
+              this.computeOutput(codeSnippet);
             }}
           />
           <Heading level={3}>Output:</Heading>
-          <Text>{this.state.result}</Text>
+          <Text>{result}</Text>
         </Box>
       </Box>
     ) : (
@@ -114,7 +104,7 @@ class Editor extends React.Component {
             showPrintMargin={true}
             showGutter={true}
             highlightActiveLine={true}
-            value={this.state.codeSnippet}
+            value={codeSnippet}
             setOptions={{
               enableBasicAutocompletion: false,
               enableLiveAutocompletion: false,
@@ -131,7 +121,7 @@ class Editor extends React.Component {
             icon={<Icons.Edit />}
             label="Submit"
             onClick={e => {
-              this.computeOutput(this.state.codeSnippet);
+              this.computeOutput(codeSnippet);
             }}
           />
         </Box>
