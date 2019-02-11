@@ -1,12 +1,12 @@
 import React from 'react';
-import { Box, Heading } from 'grommet/es6';
+import { Box, Heading } from 'grommet';
 import logo from '../img/logo_text_white.svg';
 
 function Home() {
   return (
     <Box
       style={{ 'background-image': 'linear-gradient(#7D4CDB, #613bac, #7D4CDB)' }}
-      height="97%"
+      height="100%"
       justify="center"
       align="center"
     >

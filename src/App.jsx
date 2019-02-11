@@ -3,7 +3,7 @@ import { Box, Button, Grommet, ResponsiveContext } from 'grommet';
 import { Route, withRouter } from 'react-router-dom';
 import axios from 'axios';
 
-import Header from './Components/Header';
+import Header from './components/Header';
 import logoTextWhite from './img/logo_text_white.svg';
 import Home from './Home';
 import Lab from './Lab';
@@ -18,29 +18,27 @@ class App extends React.Component {
       theme: theme1,
       topicID: 0,
       lessonID: 0,
-      classes: []
+      classes: [],
+      height: 0
     };
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
-  /*
   componentDidMount() {
-    this.setState({isLoading: true});
-    this.goTo(`/labs/${this.props.topicID}/${this.state.lessonID}`);
-    axios.get(Config.apiUrl + this.state.lessonID).then(res => {
-      this.sleep(100).then(() => {
-        this.setState({
-          content: res.data.content,
-          name: res.data.name,
-          defaultCode: res.data.code,
-          isLoading: false
-        });
-      });
-    });
-  } */
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState({ height: window.innerHeight });
+  }
 
   changeTheme() {
-    var newTheme = this.state.theme === theme1 ? theme2 : theme1;
-    this.setState({ theme: newTheme });
+    this.setState(prevState => ({ theme: prevState.theme === theme1 ? theme2 : theme1 }));
   }
 
   goTo(route) {
@@ -48,71 +46,59 @@ class App extends React.Component {
   }
 
   handlePrev() {
-    var newNum = this.state.lessonID - 1;
-    this.setState({ lessonID: newNum });
+    this.setState(prevState => ({ lessonID: prevState.lessonID - 1 }));
   }
 
   handleNext() {
-    var newNum = this.state.lessonID + 1;
-    this.setState({ lessonID: newNum });
+    this.setState(prevState => ({ lessonID: prevState.lessonID + 1 }));
   }
 
   render() {
+    const { height } = this.state;
     return (
       <Grommet theme={this.state.theme} full>
-        <ResponsiveContext.Consumer>
-          {size => (
-            <>
-              <Header>
-                <img
-                  src={logoTextWhite}
-                  alt="Logo"
-                  height="40pt"
-                  onClick={() => {
-                    this.goTo('/');
-                  }}
-                />
-                <Box direction="row" gap="small">
-                  <Button
-                    color="accent-4"
-                    label="Home"
-                    onClick={() => {
-                      this.goTo('/');
-                    }}
-                    primary
-                  />
-                  <Button
-                    color="accent-4"
-                    label="Labs"
-                    onClick={() => {
-                      this.goTo('/labs');
-                    }}
-                    primary
-                  />
-                  {!this.state.isAuthenticated && (
-                    <Button
-                      color="accent-4"
-                      label="Login"
-                      onClick={() => {
-                        this.goTo('/login');
-                      }}
-                    />
-                  )}
-                </Box>
-              </Header>
-
-              {size === 'large' || size === 'medium' ? (
-                <>
-                  <Route exact path="/" component={Home} />
-                  <Route path="/labs" render={() => <Lab topicID={8} />} />
-                  <Route path="/login" component={Login} />
-                </>
-              ) : (
-                <Small />
-              )}
-            </>
-          )}
-        </ResponsiveContext.Consumer>
+        <Header>
+          <img
+            src={logoTextWhite}
+            alt="Logo"
+            height="40pt"
+            onClick={() => {
+              this.goTo('/');
+            }}
+          />
+          <Box direction="row" gap="small">
+            <Button
+              color="accent-4"
+              label="Home"
+              onClick={() => {
+                this.goTo('/');
+              }}
+              primary
+            />
+            <Button
+              color="accent-4"
+              label="Labs"
+              onClick={() => {
+                this.goTo('/labs');
+              }}
+              primary
+            />
+            {!this.state.isAuthenticated && (
+              <Button
+                color="accent-4"
+                label="Login"
+                onClick={() => {
+                  this.goTo('/login');
+                }}
+              />
+            )}
+          </Box>
+        </Header>
+        <div style={{ height: `${height - 60}px` }}>
+          <Route exact path="/" component={Home} />
+          <Route path="/labs" render={() => <Lab topicID={8} height={height} />} />
+          <Route path="/login" component={Login} />
+        </div>
       </Grommet>
     );
   }

@@ -53,7 +53,7 @@ class Editor extends React.Component {
     const { codeSnippet, result } = this.state;
 
     return this.state.result !== '' ? (
-      <Box column gap="small" height="80vh">
+      <Box column gap="small" height="85vh">
         <Box height="70%">
           <AceEditor
             style={style}

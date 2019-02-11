@@ -7,10 +7,11 @@ import { withRouter } from 'react-router-dom';
 import { Config } from '../Config';
 import LabView from './LabView';
 import { sleep, goTo } from '../helpers';
-import Loading from '../Components/Loading';
+import Loading from '../components/Loading';
 
 const propTypes = {
-  topicID: PropTypes.number.isRequired
+  topicID: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired
 };
 const defaultProps = {};
 
@@ -72,6 +73,7 @@ class Lab extends React.Component {
 
   render() {
     const { pageIsLoading, isLoading } = this.state;
+    const { height } = this.props;
     const LoadScreen =
       pageIsLoading || isLoading ? (
         <Loading />
@@ -119,7 +121,7 @@ class Lab extends React.Component {
     return (
       <>
         <Box
-          height="83vh"
+          height={`${height - 120}px`}
           direction="row"
           border={{
             color: 'accent-3',
@@ -134,9 +136,9 @@ class Lab extends React.Component {
         <Box
           tag="footer"
           direction="row"
-          height="70px"
+          height="50px"
           justify="end"
-          pad="small"
+          pad={{ top: 'small' }}
           gap="small"
           flex={false}
         >
