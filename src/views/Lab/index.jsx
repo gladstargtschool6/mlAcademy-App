@@ -4,10 +4,10 @@ import { Box, Button } from 'grommet/es6';
 import * as Icons from 'grommet-icons';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
-import { Config } from '../Config';
+import { Config } from '../../Config';
 import LabView from './LabView';
-import { sleep, goTo } from '../helpers';
-import Loading from '../components/Loading';
+import { sleep, goTo } from '../../helpers';
+import Loading from '../../components/Loading';
 
 const propTypes = {
   topicID: PropTypes.number.isRequired,
@@ -119,7 +119,7 @@ class Lab extends React.Component {
       );
 
     return (
-      <>
+      <Box animation="fadeIn">
         <Box
           height={`${height - 120}px`}
           direction="row"
@@ -145,7 +145,7 @@ class Lab extends React.Component {
           {PrevButton}
           {NextButton}
         </Box>
-      </>
+      </Box>
     );
   }
 }

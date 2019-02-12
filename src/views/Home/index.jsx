@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Heading } from 'grommet';
-import logo from '../img/logo_text_white.svg';
+import logo from '../../img/logo_text_white.svg';
 
 function Home() {
   return (
@@ -10,7 +10,7 @@ function Home() {
       justify="center"
       align="center"
     >
-      <Box margin="30px">
+      <Box margin="30px" animation="zoomIn">
         <img src={logo} alt="LOgo" />
         <Heading level={2} color="white">
           machine learning made easy

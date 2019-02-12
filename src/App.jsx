@@ -1,13 +1,28 @@
 import React from 'react';
 import { Box, Button, Grommet, ResponsiveContext } from 'grommet';
-import { Route, withRouter } from 'react-router-dom';
+import { Link, Route, withRouter } from 'react-router-dom';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 import Header from './components/Header';
 import logoTextWhite from './img/logo_text_white.svg';
-import Home from './Home';
-import Lab from './Lab';
+import Home from './views/Home';
+import Lab from './views/Lab';
+import Login from './views/Login';
+import Topics from './views/Topics';
 import { Config, theme1, theme2 } from './Config';
+
+const propTypes = {
+  history: PropTypes.object.isRequired
+};
+const defaultProps = {};
+
+const LabLoader = ({ height, match: { params } }) => {
+  const { id } = params;
+  return <Lab height={height} topicID={id} />;
+};
+
+LabLoader.propTypes = { height: PropTypes.number.isRequired, match: PropTypes.object.isRequired };
 
 class App extends React.Component {
   constructor(props) {
@@ -58,18 +73,14 @@ class App extends React.Component {
     return (
       <Grommet theme={this.state.theme} full>
         <Header>
-          <img
-            src={logoTextWhite}
-            alt="Logo"
-            height="40pt"
-            onClick={() => {
-              this.goTo('/');
-            }}
-          />
+          <Link to="/">
+            <img src={logoTextWhite} alt="Logo" height="40pt" />
+          </Link>
+
           <Box direction="row" gap="small">
             <Button
               color="accent-4"
-              label="Home"
+              label="home"
               onClick={() => {
                 this.goTo('/');
               }}
@@ -77,16 +88,16 @@ class App extends React.Component {
             />
             <Button
               color="accent-4"
-              label="Labs"
+              label="learn"
               onClick={() => {
-                this.goTo('/labs');
+                this.goTo('/topics');
               }}
               primary
             />
             {!this.state.isAuthenticated && (
               <Button
                 color="accent-4"
-                label="Login"
+                label="login"
                 onClick={() => {
                   this.goTo('/login');
                 }}
@@ -96,7 +107,11 @@ class App extends React.Component {
         </Header>
         <div style={{ height: `${height - 60}px` }}>
           <Route exact path="/" component={Home} />
-          <Route path="/labs" render={() => <Lab topicID={8} height={height} />} />
+          <Route path="/topics" render={() => <Topics />} />
+          <Route
+            path="/labs/:id"
+            render={props => <LabLoader height={this.state.height} {...props} />}
+          />
           <Route path="/login" component={Login} />
         </div>
       </Grommet>
@@ -104,8 +119,7 @@ class App extends React.Component {
   }
 }
 
-const Small = () => <Home />;
-
-const Login = () => <div />;
+App.propTypes = propTypes;
+App.defaultProps = defaultProps;
 
 export default withRouter(App);

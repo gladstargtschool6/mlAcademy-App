@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { Box, Heading } from 'grommet';
 import Markdown from 'markdown-to-jsx';
 import Editor from './Editor';
-import loading from '../img/loading.svg';
+import loading from '../../img/loading.svg';
 
 const propTypes = {
   changeCode: PropTypes.func.isRequired,

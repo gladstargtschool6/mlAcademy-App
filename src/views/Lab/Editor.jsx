@@ -6,7 +6,7 @@ import axios from 'axios';
 import * as Icons from 'grommet-icons';
 import { Box, Button, Heading, Text } from 'grommet';
 import PropTypes from 'prop-types';
-import { Config } from '../Config';
+import { Config } from '../../Config';
 
 const propTypes = {
   codeSnippet: PropTypes.string.isRequired,
