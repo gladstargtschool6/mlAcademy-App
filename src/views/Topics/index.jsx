@@ -6,11 +6,8 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { Config } from '../../Config';
 
-import { sleep } from '../../helpers';
-import Loading from '../../components/Loading';
-
 const propTypes = {
-  /*history: PropTypes.class.isRequired*/
+  history: PropTypes.object.isRequired
 };
 const defaultProps = {};
 
@@ -18,19 +15,16 @@ class Topics extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: true,
-      topics_names: [],
-      topics_ids: []
+      topicsNames: [],
+      topicsIDs: []
     };
   }
 
   componentDidMount() {
-    this.setState({ isLoading: true });
     axios.get(`${Config.apiUrl}topics`).then(res => {
       this.setState({
-        isLoading: false,
-        topics_names: res.data.topics_names,
-        topics_ids: res.data.topics_ids
+        topicsNames: res.data.topics_names,
+        topicsIDs: res.data.topics_ids
       });
     });
   }
@@ -40,7 +34,7 @@ class Topics extends React.Component {
   }
 
   render() {
-    const { isLoading, topics_names, topics_ids } = this.state;
+    const { topicsNames, topicsIDs } = this.state;
     return (
       <Box
         direction="row-responsive"
@@ -53,13 +47,14 @@ class Topics extends React.Component {
         justify="center"
         align="center"
       >
-        {topics_names.map((name, index) => {
-          const id = topics_ids[index];
+        {topicsNames.map((name, index) => {
+          const topicID = topicsIDs[index];
           return (
             <Box
               as="button"
+              background="white"
               onClick={() => {
-                this.goTo(`labs/${id}`);
+                this.goTo(`labs/${topicID}`);
               }}
               round="small"
               animation="fadeIn"

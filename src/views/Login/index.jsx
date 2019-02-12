@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Button, CheckBox, FormField, TextInput } from 'grommet';
+import { Box, Button, FormField, TextInput } from 'grommet';
 import * as Icons from 'grommet-icons';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';

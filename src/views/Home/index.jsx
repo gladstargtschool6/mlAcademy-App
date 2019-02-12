@@ -12,7 +12,7 @@ function Home() {
     >
       <Box margin="30px" animation="zoomIn">
         <img src={logo} alt="LOgo" />
-        <Heading level={2} color="white">
+        <Heading level={2} color="white" textAlign="center">
           machine learning made easy
         </Heading>
       </Box>

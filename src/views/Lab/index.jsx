@@ -25,6 +25,9 @@ class Lab extends React.Component {
       lessons: [],
       lessonID: 0
     };
+    this.handlePrev = this.handlePrev.bind(this);
+    this.handleNext = this.handleNext.bind(this);
+    this.handleFinish = this.handleFinish.bind(this);
   }
 
   componentDidMount() {
@@ -67,7 +70,7 @@ class Lab extends React.Component {
   }
 
   handleFinish() {
-    alert("you're done");
+    alert("you're done (this is just a test message)");
     goTo(this.props, `/`);
   }
 
@@ -82,18 +85,13 @@ class Lab extends React.Component {
           lesson={this.state.lessons[this.state.lessonID]}
           codeSnippet={this.state.codeSnippets[this.state.lessonID]}
           lessonID={this.state.lessonID}
-          changeCode={this.onChangeCode.bind(this)}
+          changeCode={this.onChangeCode}
         />
       );
 
     const PrevButton =
       typeof this.state.lessons[this.state.lessonID - 1] !== 'undefined' ? (
-        <Button
-          icon={<Icons.FormPrevious />}
-          label="Back"
-          onClick={this.handlePrev.bind(this)}
-          primary
-        />
+        <Button icon={<Icons.FormPrevious />} label="Back" onClick={this.handlePrev} primary />
       ) : (
         <Button icon={<Icons.FormPrevious />} label="Back" disabled />
       );
@@ -104,7 +102,7 @@ class Lab extends React.Component {
           label="Next"
           icon={<Icons.FormNext />}
           margin={{ right: '10px' }}
-          onClick={this.handleNext.bind(this)}
+          onClick={this.handleNext}
           primary
           reverse
         />
@@ -112,14 +110,14 @@ class Lab extends React.Component {
         <Button
           icon={<Icons.Checkmark />}
           label="Finish"
-          onClick={this.handleFinish.bind(this)}
+          onClick={this.handleFinish}
           margin={{ right: '10px' }}
           green
         />
       );
 
     return (
-      <Box animation="fadeIn">
+      <Box animation="fadeIn" background="white">
         <Box
           height={`${height - 120}px`}
           direction="row"
