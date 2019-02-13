@@ -63,9 +63,9 @@ class Editor extends React.Component {
             onLoad={this.onLoad}
             onChange={this.onChangeCode}
             fontSize={14}
-            showPrintMargin={true}
-            showGutter={true}
-            highlightActiveLine={true}
+            showPrintMargin
+            showGutter
+            highlightActiveLine
             value={codeSnippet}
             setOptions={{
               enableBasicAutocompletion: false,
@@ -101,9 +101,9 @@ class Editor extends React.Component {
             onLoad={this.onLoad}
             onChange={this.onChangeCode}
             fontSize={14}
-            showPrintMargin={true}
-            showGutter={true}
-            highlightActiveLine={true}
+            showPrintMargin
+            showGutter
+            highlightActiveLine
             value={codeSnippet}
             setOptions={{
               enableBasicAutocompletion: false,

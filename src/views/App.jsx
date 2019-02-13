@@ -1,17 +1,17 @@
 import React from 'react';
-import { Box, Button, Grommet, ResponsiveContext } from 'grommet';
+import { Box, Button, Grommet, Layer } from 'grommet';
 import { Link, Route, Switch, withRouter } from 'react-router-dom';
-import axios from 'axios';
+import Notifications, { notify } from 'react-notify-toast';
 import PropTypes from 'prop-types';
-
-import Header from '../components/Header';
+import { Header, NoMatch, TooSmall } from './components';
 import logoTextWhite from '../img/logo_text_white.svg';
 import Home from './Home';
 import Lab from './Lab';
-import Login from './Login';
+import Login from './auth/Login';
+import Register from './auth/Register';
 import Topics from './Topics';
-import NoMatch from './NoMatch';
-import { Config, theme1, theme2 } from '../Config';
+import { theme } from '../Config';
+import Firebase from './auth/firebase';
 
 const propTypes = {
   history: PropTypes.object.isRequired
@@ -30,8 +30,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       isAuthenticated: false,
-      theme: theme1,
-      height: 0
+      height: 0,
+      width: 0
     };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
@@ -39,6 +39,9 @@ class App extends React.Component {
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
+    Firebase.isInitialized().then(val => {
+      this.setState({ isAuthenticated: val });
+    });
   }
 
   componentWillUnmount() {
@@ -46,21 +49,22 @@ class App extends React.Component {
   }
 
   updateWindowDimensions() {
-    this.setState({ height: window.innerHeight });
+    this.setState({ height: window.innerHeight, width: window.innerWidth });
   }
 
-  changeTheme() {
-    this.setState(prevState => ({ theme: prevState.theme === theme1 ? theme2 : theme1 }));
-  }
-
-  goTo(route) {
-    this.props.history.push(route);
+  handleLogout() {
+    Firebase.logout();
+    this.setState({ isAuthenticated: false });
+    notify.show('You have been logged out successfully!', 'warning');
   }
 
   render() {
-    const { height } = this.state;
+    const { height, width, isAuthenticated } = this.state;
+    const { history } = this.props;
+    const name = Firebase.getCurrentUsername();
     return (
-      <Grommet theme={this.state.theme} full>
+      <Grommet theme={theme} full>
+        <Notifications />
         <Header>
           <Link to="/">
             <img src={logoTextWhite} alt="Logo" height="40pt" />
@@ -71,24 +75,46 @@ class App extends React.Component {
               color="accent-4"
               label="home"
               onClick={() => {
-                this.goTo('/');
+                history.replace('/');
               }}
               primary
             />
-            <Button
-              color="accent-4"
-              label="learn"
-              onClick={() => {
-                this.goTo('/topics');
-              }}
-              primary
-            />
-            {!this.state.isAuthenticated && (
+
+            {isAuthenticated ? (
+              <Button
+                color="accent-4"
+                label="learn"
+                onClick={() => {
+                  history.replace('/topics');
+                }}
+                primary
+              />
+            ) : (
+              <Button
+                color="accent-4"
+                label="learn"
+                onClick={() => {
+                  history.replace('/login');
+                }}
+                primary
+              />
+            )}
+            {isAuthenticated ? (
+              <Button
+                color="accent-3"
+                primary
+                label={`Hi ${name}`}
+                onClick={() => {
+                  this.handleLogout();
+                  this.props.history.replace('/');
+                }}
+              />
+            ) : (
               <Button
                 color="accent-4"
                 label="login"
                 onClick={() => {
-                  this.goTo('/login');
+                  history.replace('/login');
                 }}
               />
             )}
@@ -103,9 +129,11 @@ class App extends React.Component {
               render={props => <LabLoader height={this.state.height} {...props} />}
             />
             <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
             <Route component={NoMatch} />
           </Switch>
         </div>
+        {width < 840 && <TooSmall />}
       </Grommet>
     );
   }

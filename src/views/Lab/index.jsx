@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Button } from 'grommet/es6';
+import { Box, Button } from 'grommet';
 import * as Icons from 'grommet-icons';
 import axios from 'axios';
+import { notify } from 'react-notify-toast';
 import { withRouter } from 'react-router-dom';
 import { Config } from '../../Config';
 import LabView from './LabView';
-import { sleep, goTo } from '../../helpers';
-import Loading from '../../components/Loading';
+import { Loading } from '../components';
 
 const propTypes = {
   topicID: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired
+  height: PropTypes.number.isRequired,
+  history: PropTypes.object.isRequired
 };
 const defaultProps = {};
 
@@ -27,7 +28,7 @@ class Lab extends React.Component {
     };
     this.handlePrev = this.handlePrev.bind(this);
     this.handleNext = this.handleNext.bind(this);
-    this.handleFinish = this.handleFinish.bind(this);
+    this.onChangeCode = this.onChangeCode.bind(this);
   }
 
   componentDidMount() {
@@ -51,32 +52,26 @@ class Lab extends React.Component {
     let newCodeSnippets = [];
     this.setState(prevState => (newCodeSnippets = prevState.codeSnippets));
     newCodeSnippets[lessonID] = newCode;
-    console.log(newCodeSnippets);
     this.setState({ codeSnippets: newCodeSnippets });
   }
 
   handlePrev() {
     this.setState({ isLoading: true });
-    sleep(300).then(() => {
+    setTimeout(() => {
       this.setState(prevState => ({ isLoading: false, lessonID: prevState.lessonID - 1 }));
-    });
+    }, 200);
   }
 
   handleNext() {
     this.setState({ isLoading: true });
-    sleep(300).then(() => {
+    setTimeout(() => {
       this.setState(prevState => ({ isLoading: false, lessonID: prevState.lessonID + 1 }));
-    });
-  }
-
-  handleFinish() {
-    alert("you're done (this is just a test message)");
-    goTo(this.props, `/`);
+    }, 200);
   }
 
   render() {
     const { pageIsLoading, isLoading } = this.state;
-    const { height } = this.props;
+    const { height, history } = this.props;
     const LoadScreen =
       pageIsLoading || isLoading ? (
         <Loading />
@@ -110,7 +105,10 @@ class Lab extends React.Component {
         <Button
           icon={<Icons.Checkmark />}
           label="Finish"
-          onClick={this.handleFinish}
+          onClick={() => {
+            notify.show("you've finished the course! 🎉 (Just a test message)", 'success');
+            history.replace('/');
+          }}
           margin={{ right: '10px' }}
           green
         />

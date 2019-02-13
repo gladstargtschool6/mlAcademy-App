@@ -5,6 +5,7 @@ import * as Icons from 'grommet-icons';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { Config } from '../../Config';
+import { Background } from '../components';
 
 const propTypes = {
   history: PropTypes.object.isRequired
@@ -29,12 +30,10 @@ class Topics extends React.Component {
     });
   }
 
-  goTo(route) {
-    this.props.history.push(route);
-  }
-
   render() {
     const { topicsNames, topicsIDs } = this.state;
+    const { history } = this.props;
+
     return (
       <Box
         direction="row-responsive"
@@ -54,7 +53,7 @@ class Topics extends React.Component {
               as="button"
               background="white"
               onClick={() => {
-                this.goTo(`labs/${topicID}`);
+                history.push(`labs/${topicID}`);
               }}
               round="small"
               animation="fadeIn"

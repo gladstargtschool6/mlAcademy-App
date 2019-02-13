@@ -15,6 +15,11 @@ const propTypes = {
 const defaultProps = {};
 
 class LabView extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onChangeCode = this.onChangeCode.bind(this);
+  }
+
   onChangeCode(newCode) {
     this.props.changeCode(newCode, this.props.lessonID);
   }
@@ -30,7 +35,7 @@ class LabView extends React.Component {
             <Markdown style={{ 'font-family': 'Lato' }}>{lesson.content}</Markdown>
           </Box>
           <Box pad="small" basis="2/4">
-            <Editor codeSnippet={codeSnippet} changeCode={this.onChangeCode.bind(this)} />
+            <Editor codeSnippet={codeSnippet} changeCode={this.onChangeCode} />
           </Box>
         </>
       );
