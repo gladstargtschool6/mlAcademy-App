@@ -1,5 +1,6 @@
 import React from 'react';
 import AceEditor from 'react-ace';
+import { Prompt } from 'react-router-dom';
 import 'brace/theme/textmate';
 import 'brace/mode/python';
 import axios from 'axios';
@@ -19,6 +20,7 @@ class Editor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isBlocking: false,
       codeSnippet: props.codeSnippet,
       result: ''
     };
@@ -27,6 +29,7 @@ class Editor extends React.Component {
 
   onChangeCode(newValue) {
     this.setState({
+      isBlocking: newValue.length > 0,
       codeSnippet: newValue
     });
     this.props.changeCode(this.state.codeSnippet);
@@ -50,10 +53,14 @@ class Editor extends React.Component {
       height: '100%'
     };
 
-    const { codeSnippet, result } = this.state;
+    const { isBlocking, codeSnippet, result } = this.state;
 
     return this.state.result !== '' ? (
       <Box column gap="small" height="85vh">
+        <Prompt
+          when={isBlocking}
+          message={location => `Are you sure you want to go to ${location.pathname}`}
+        />
         <Box height="70%">
           <AceEditor
             style={style}
@@ -92,6 +99,10 @@ class Editor extends React.Component {
       </Box>
     ) : (
       <Box column gap="small" height="80vh">
+        <Prompt
+          when={isBlocking}
+          message={location => `Are you sure you want to go to ${location.pathname}`}
+        />
         <Box height="100%" elevation="xsmall">
           <AceEditor
             style={style}

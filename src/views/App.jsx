@@ -105,8 +105,8 @@ class App extends React.Component {
                 primary
                 label={`Hi ${name}`}
                 onClick={() => {
-                  this.handleLogout();
                   this.props.history.replace('/');
+                  this.handleLogout();
                 }}
               />
             ) : (
