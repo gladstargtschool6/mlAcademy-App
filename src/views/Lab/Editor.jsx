@@ -59,7 +59,7 @@ class Editor extends React.Component {
       <Box column gap="small" height="85vh">
         <Prompt
           when={isBlocking}
-          message={location => `Are you sure you want to go to ${location.pathname}`}
+          message={() => `You're editing, are you sure you want to leave this page?`}
         />
         <Box height="70%">
           <AceEditor
@@ -101,7 +101,7 @@ class Editor extends React.Component {
       <Box column gap="small" height="80vh">
         <Prompt
           when={isBlocking}
-          message={location => `Are you sure you want to go to ${location.pathname}`}
+          message={() => `You're editing, are you sure you want to leave this page?`}
         />
         <Box height="100%" elevation="xsmall">
           <AceEditor
