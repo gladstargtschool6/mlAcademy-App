@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Button, FormField, TextInput } from 'grommet';
-import * as Icons from 'grommet-icons';
-import axios from 'axios';
+import { Box, Button, TextInput } from 'grommet';
 import { notify } from 'react-notify-toast';
 import { withRouter } from 'react-router-dom';
 import Firebase from './firebase';

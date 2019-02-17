@@ -1,37 +1,56 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Button } from 'grommet/es6';
+import { Box, Button, Diagram, Stack } from 'grommet';
 import * as Icons from 'grommet-icons';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { Config } from '../../Config';
-import { Background } from '../components';
+import TopicsDiagram from './TopicsDiagram';
 
 const propTypes = {
   history: PropTypes.object.isRequired
 };
 const defaultProps = {};
 
+function createConnections(topics) {
+  const connections = [];
+  topics.forEach(topic => {
+    if (topic.prerequisites.length !== 0) {
+      const { prerequisites } = topic;
+      prerequisites.forEach(prerequisite => {
+        connections.push({
+          fromTarget: `${prerequisite.id}`,
+          toTarget: `${topic.id}`,
+          thickness: 'xsmall',
+          color: 'accent-3',
+          type: 'rectilinear'
+        });
+      });
+    }
+  });
+  return connections;
+}
+
 class Topics extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      topicsNames: [],
-      topicsIDs: []
+      topics: [],
+      connections: []
     };
   }
 
   componentDidMount() {
     axios.get(`${Config.apiUrl}topics`).then(res => {
       this.setState({
-        topicsNames: res.data.topics_names,
-        topicsIDs: res.data.topics_ids
+        connections: createConnections(res.data.topics),
+        topics: res.data.topics
       });
     });
   }
 
   render() {
-    const { topicsNames, topicsIDs } = this.state;
+    const { connections, topics } = this.state;
     const { history } = this.props;
 
     return (
@@ -46,27 +65,10 @@ class Topics extends React.Component {
         justify="center"
         align="center"
       >
-        {topicsNames.map((name, index) => {
-          const topicID = topicsIDs[index];
-          return (
-            <Box
-              as="button"
-              background="white"
-              onClick={() => {
-                history.push(`labs/${topicID}`);
-              }}
-              round="small"
-              animation="fadeIn"
-              width="200px"
-              height="350px"
-              elevation="small"
-              pad="small"
-            >
-              <h1>{name}</h1>
-              <h2>Description</h2>
-            </Box>
-          );
-        })}
+        <Stack guidingChild={1}>
+          <Diagram connections={connections} />
+          <Box>{topics.length !== 0 && <TopicsDiagram topics={topics} />}</Box>
+        </Stack>
       </Box>
     );
   }

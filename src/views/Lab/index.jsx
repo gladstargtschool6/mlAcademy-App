@@ -39,6 +39,7 @@ class Lab extends React.Component {
       })
       .then(res => {
         const response = res.data.lessons;
+        console.log(response);
         this.setState({
           lessons: res.data.lessons,
           codeSnippets: response.map(response => response.code),
@@ -72,7 +73,7 @@ class Lab extends React.Component {
   render() {
     const { pageIsLoading, isLoading } = this.state;
     const { height, history } = this.props;
-    const LoadScreen =
+    const Main =
       pageIsLoading || isLoading ? (
         <Loading />
       ) : (
@@ -126,7 +127,7 @@ class Lab extends React.Component {
           pad="medium"
           elevation="medium"
         >
-          {LoadScreen}
+          {Main}
         </Box>
 
         <Box
