@@ -6,21 +6,26 @@ import { withRouter } from 'react-router-dom';
 
 const propTypes = {
   history: PropTypes.object.isRequired,
+  theory: PropTypes.bool,
   topic: PropTypes.object.isRequired
 };
-const defaultProps = {};
+const defaultProps = {
+  theory: false
+};
 
 function Topic(props) {
-  const { topic, history } = props;
+  const { topic, theory, history } = props;
+  const style = !theory
+    ? { 'background-image': 'linear-gradient(to bottom right, #3BB273, #26724A)', color: 'white' }
+    : { 'background-image': 'linear-gradient(to bottom right, #48A9A6, #00739D)', color: 'white' };
   return (
     <Box
       as="button"
-      background="white"
+      style={style}
       onClick={() => {
         history.push(`labs/${topic.id}`);
       }}
       round="small"
-      animation="fadeIn"
       width="200px"
       height="350px"
       elevation="small"

@@ -21,9 +21,9 @@ function createConnections(topics) {
         connections.push({
           fromTarget: `${prerequisite.id}`,
           toTarget: `${topic.id}`,
-          thickness: 'xsmall',
-          color: 'accent-3',
-          type: 'rectilinear'
+          thickness: 'small',
+          color: '#333333',
+          type: 'curved'
         });
       });
     }
@@ -55,19 +55,26 @@ class Topics extends React.Component {
 
     return (
       <Box
+        style={{
+          'background-image': 'linear-gradient(to right bottom, #F2F2F2, #F2F2F2)',
+          color: 'white'
+        }}
         direction="row-responsive"
         pad="small"
         gap="small"
         fill
+        animation="fadeIn"
         wrap
-        style={{ 'background-image': 'linear-gradient(#7D4CDB, #613bac, #7D4CDB)' }}
         height="100%"
-        justify="center"
+        justify="start"
         align="center"
+        overflow="scroll"
       >
         <Stack guidingChild={1}>
           <Diagram connections={connections} />
-          <Box>{topics.length !== 0 && <TopicsDiagram topics={topics} />}</Box>
+          <Box direction="row-responsive">
+            {topics.length !== 0 && <TopicsDiagram topics={topics} />}
+          </Box>
         </Stack>
       </Box>
     );

@@ -13,12 +13,30 @@ const TopicsDiagram = props => {
 
   return topics.length > 2 ? (
     <>
-      <Box direction="row-responsive" justify="center" margin="medium">
-        <Topic topic={topics[0]} />
+      <Box justify="start" margin="medium">
+        <Topic topic={topics[3]} theory />
+        <Topic topic={topics[9]} />
       </Box>
-      <Box direction="row-responsive" justify="center" margin="medium">
-        <Topic topic={topics[1]} />
-        <Topic topic={topics[2]} />
+      <Box justify="start" margin="medium">
+        <Topic topic={topics[4]} theory />
+      </Box>
+      <Box justify="start" margin="medium">
+        <Topic topic={topics[5]} theory />
+      </Box>
+      <Box justify="start" margin="medium">
+        <Topic topic={topics[6]} theory />
+        <Topic topic={topics[10]} />
+      </Box>
+      <Box justify="start" margin="medium">
+        <Topic topic={topics[7]} theory />
+      </Box>
+      <Box justify="start" margin="medium">
+        <Topic topic={topics[8]} theory />
+        <Topic topic={topics[11]} />
+      </Box>
+      <Box justify="end" margin="medium">
+        {topics[13] && <Topic topic={topics[13]} theory />}
+        <Topic topic={topics[12]} />
       </Box>
     </>
   ) : (

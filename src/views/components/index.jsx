@@ -52,13 +52,15 @@ export function NoMatch() {
 export const Header = props => (
   <Box
     align="center"
-    background="brand"
+    style={{
+      'background-image': 'linear-gradient(to bottom, #6E5A94, #7D4CDB)',
+      zIndex: '1'
+    }}
     direction="row"
     elevation="medium"
     height="60px"
     justify="between"
     pad={{ left: 'medium', right: 'small', vertical: 'small' }}
-    style={{ zIndex: '1' }}
     tag="header"
     {...props}
   />
