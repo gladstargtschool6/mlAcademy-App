@@ -4,7 +4,7 @@ import { Link, Route, Switch, withRouter } from 'react-router-dom';
 import Notifications, { notify } from 'react-notify-toast';
 import PropTypes from 'prop-types';
 import { Header, NoMatch, TooSmall } from './components';
-import logoTextWhite from '../img/logo_text_white.svg';
+import logoTextWhite from '../img/logos/text_white.svg';
 import Home from './Home';
 import Lab from './Lab';
 import Login from './auth/Login';
@@ -67,7 +67,7 @@ class App extends React.Component {
         <Notifications />
         <Header>
           <Link to="/">
-            <img src={logoTextWhite} alt="Logo" height="40pt" />
+            <img src={logoTextWhite} alt="Logo" height="40pt" style={{ 'margin-top': '5px' }} />
           </Link>
 
           <Box direction="row" gap="small">
@@ -112,6 +112,7 @@ class App extends React.Component {
             ) : (
               <Button
                 color="accent-4"
+                style={{ color: 'white' }}
                 label="login"
                 onClick={() => {
                   history.replace('/login');

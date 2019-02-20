@@ -3,7 +3,7 @@ import { Box, Heading, Layer } from 'grommet';
 import * as Icons from 'grommet-icons';
 
 import loading from '../../img/loading.svg';
-import logo from '../../img/logo_blue.svg';
+import logo from '../../img/logos/brand.svg';
 
 export function TooSmall() {
   return (
@@ -60,7 +60,7 @@ export const Header = props => (
     elevation="medium"
     height="60px"
     justify="between"
-    pad={{ left: 'medium', right: 'small', vertical: 'small' }}
+    pad={{ left: 'medium', right: 'small' }}
     tag="header"
     {...props}
   />

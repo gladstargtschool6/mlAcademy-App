@@ -5,7 +5,7 @@ import { notify } from 'react-notify-toast';
 import { withRouter } from 'react-router-dom';
 import Firebase from './firebase';
 
-import logo from '../../img/logo_brand.svg';
+import logo from '../../img/logos/brand.svg';
 
 const propTypes = {
   history: PropTypes.object.isRequired
