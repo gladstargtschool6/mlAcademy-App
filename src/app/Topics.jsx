@@ -1,15 +1,39 @@
-import React from "react";
-import logo from "../img/logos/text_white.svg";
-import { tagline } from "../Constants";
+import React, { useEffect, useState } from 'react';
+import logo from '../img/logos/text_white.svg';
+import { tagline } from '../Constants';
+import Topic from './topics/Topic';
+import { useGlobalState } from '../state';
+import axios from 'axios';
+import { apiUrl } from '../config';
 
-const Topics = () => (
-  <section class="hero is-primary is-fullheight-with-navbar">
-    <div class="hero-body">
-      <div class="container">
-        <img src={logo} alt="" />
-        <h2 class="subtitle focus">Topics</h2>
+class Topics extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      topics: []
+    };
+  }
+
+  componentDidMount() {
+    axios.get(`${apiUrl}topics`).then(res => {
+      this.setState({
+        topics: res.data.topics
+      });
+    });
+  }
+
+  render() {
+    const { topics } = this.state;
+
+    return (
+      <div className="container">
+        <div style={{ display: 'flex', 'flex-direction': 'row', 'flex-wrap': 'wrap' }}>
+          {topics.map(topic => (
+            <Topic title={topic.name} description={topic.description} />
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    );
+  }
+}
 export default Topics;

@@ -2,12 +2,23 @@
 @import '~bulma/sass/utilities/initial-variables';
 @import '~bulma/sass/utilities/functions';
 // 2. Setup your Custom Colors
-$purple: hsl(261, 66.5%, 57.8%);
+$black: #000;
+$purple: #7d4cdb;
 $purple-invert: findColorInvert($purple);
 $link: #81fced;
 $link-invert: findColorInvert($link);
 // 3. Add new color variables to the color map.
 @import '~bulma/sass/utilities/derived-variables.sass';
+$card-shadow: 0 3px 4px rgba($black, 0.1), 0 0 0 2px rgba($black, 0.1);
+$addStyles: (
+  'card-shadow': $card-shadow
+);
+.card {
+  border-radius: 10px;
+}
+
+$family-secondary: (Poppins);
+
 $addColors: (
   'primary': (
     $purple,

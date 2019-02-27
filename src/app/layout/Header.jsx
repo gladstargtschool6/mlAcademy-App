@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import { notify } from 'react-notify-toast';
 import Firebase from '../../auth/firebase';
 import { useGlobalState } from '../../state';
@@ -8,7 +8,7 @@ import { useGlobalState } from '../../state';
 import { Text } from '../../components/logo';
 import logo from '../../img/logos/text_black.svg';
 
-function Header() {
+function Header(props) {
   const [isActive, setIsActive] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useGlobalState('auth');
   const [name, setName] = useGlobalState('name');
@@ -17,6 +17,7 @@ function Header() {
     Firebase.logout();
     setIsAuthenticated(false);
     notify.show('You have been logged out successfully!', 'warning');
+    props.history.replace('/');
   }
 
   return (
@@ -91,4 +92,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default withRouter(Header);

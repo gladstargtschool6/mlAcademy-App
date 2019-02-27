@@ -1,8 +1,8 @@
-import app from "firebase/app";
-import "firebase/auth";
-import "firebase/firebase-firestore";
+import app from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firebase-firestore';
 
-import { firebaseConfig as config } from "../Config";
+import { firebaseConfig as config } from '../config';
 
 class Firebase {
   constructor() {

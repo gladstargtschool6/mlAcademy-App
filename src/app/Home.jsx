@@ -35,16 +35,18 @@ function Home() {
         <div class="columns">
           <div class="column has-text-centered">
             <i className="fab fa-accessible-icon fa-3x" />
-            <p class="title">Accessibility</p>
-            Accessibility is paramount with our development process. mlAcademy is WCAG 2.0 compliant
-            so that nobody is left out.
+            <p class="title">Accessible</p>
+            <p>
+              Accessibility is paramount with our development process. mlAcademy is WCAG 2.0
+              compliant so that nobody is left out.
+            </p>
           </div>
           <div class="column has-text-centered">
             <i className="fas fa-university fa-3x" />
             <p class="title">Educational</p>
             <p>
-              Designed to enable simple, composable, and reusable refactoring scripts that can
-              provide ongoing utility rather than throwing away after each use.
+              Designed to be interactive while also providing students with in-depth knowledge of
+              the subject.
             </p>
           </div>
           <div class="column has-text-centered">
