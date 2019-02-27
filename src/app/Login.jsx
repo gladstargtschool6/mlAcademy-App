@@ -9,6 +9,7 @@ import { useGlobalState } from '../state';
 const Login = props => {
   const { values, handleChange, handleSubmit } = useForm(signin);
   const [isAuthenticated, setIsAuthenticated] = useGlobalState('auth');
+
   async function signin() {
     const { email, password } = values;
     try {

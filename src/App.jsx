@@ -9,12 +9,11 @@ function App(props) {
     Firebase.isInitialized().then(val => {
       setIsAuthenticated(val);
     });
-    const name = Firebase.getCurrentUsername();
-    setUser(p => ({ ...p, name }));
+    setName(Firebase.getCurrentUsername());
   });
 
   const [isAuthenticated, setIsAuthenticated] = useGlobalState('auth');
-  const [user, setUser] = useGlobalState('user');
+  const [name, setName] = useGlobalState('name');
 
   return (
     <GlobalStateProvider>

@@ -13,6 +13,7 @@ function SignupWindow(props) {
   const { values, handleChange, handleSubmit } = useForm(signup);
 
   async function signup() {
+    console.log(values);
     const { name, email, password } = values;
 
     try {
@@ -39,7 +40,7 @@ function SignupWindow(props) {
             <input
               className="input"
               type="Name"
-              name="text"
+              name="name"
               onChange={handleChange}
               value={values.name}
               placeholder="First Name"

@@ -1,15 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import Helmet from 'react-helmet';
-import { notify } from 'react-notify-toast';
-import { GlobalStateProvider } from '../state';
-
-import Firebase from '../auth/firebase';
 import Router from './layout/Router';
 import Site from './layout/Site';
 import Header from './layout/Header';
 import Content from './layout/Content';
-import { useGlobalState } from '../state';
 
 function Layout(props) {
   return (

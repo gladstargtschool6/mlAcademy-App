@@ -2,7 +2,6 @@ import React from 'react';
 import logo from '../img/logos/text_white.svg';
 import ucl from '../img/ucl_grey.svg';
 import ms from '../img/ms_grey.svg';
-
 import { tagline } from '../Constants';
 import SignupWindow from '../auth/SignupWindow';
 import { wrap } from 'module';
@@ -13,7 +12,7 @@ function Home() {
   const [isAuthenticated, setIsAuthenticated] = useGlobalState('auth');
   return (
     <div>
-      <section class="hero is-primary is-fullheight-with-navbar">
+      <section id="section1" class="hero is-primary is-fullheight-with-navbar">
         <div
           class="hero-body flex"
           style={{ 'justify-content': 'space-around', 'flex-wrap': 'wrap', width: '100%' }}
@@ -32,7 +31,7 @@ function Home() {
         </div>
       </section>
       <br />
-      <section class="section">
+      <section id="section2" class="section">
         <div class="columns">
           <div class="column has-text-centered">
             <i className="fab fa-accessible-icon fa-3x" />

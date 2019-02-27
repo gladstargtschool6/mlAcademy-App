@@ -11,7 +11,7 @@ import logo from '../../img/logos/text_black.svg';
 function Header() {
   const [isActive, setIsActive] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useGlobalState('auth');
-  const [user, setUser] = useGlobalState('user');
+  const [name, setName] = useGlobalState('name');
 
   function handleLogout() {
     Firebase.logout();
@@ -61,7 +61,7 @@ function Header() {
               </div>
 
               <div class="navbar-dropdown">
-                <div class="navbar-item">Hi, {user.name}</div>
+                <div class="navbar-item">Hi, {name}</div>
                 <hr class="navbar-divider" />
                 <a className="navbar-item" onClick={handleLogout}>
                   <span className="icon" style={{ marginRight: 5 }}>
