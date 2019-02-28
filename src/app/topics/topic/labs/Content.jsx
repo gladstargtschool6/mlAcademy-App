@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { useGlobalState } from '../../../../state';
+import Markdown from 'markdown-to-jsx';
 
 Content.defaultProps = {
-  lesson: []
+  lesson: {
+    name: 'Name',
+    content: '# Title'
+  }
 };
 
 function Content(props) {
@@ -13,9 +17,9 @@ function Content(props) {
   const [codeSnippets, setCodeSnippets] = useState([]);
 
   return (
-    <div className="box" style={{ 'overflow-wrap': 'break-word' }}>
+    <div style={{ margin: '0.5rem' }}>
       <p className="is-size-3 is-family-secondary">{lesson.name}</p>
-      <p>{lesson.content}</p>
+      <Markdown>{lesson.content}</Markdown>
     </div>
   );
 }

@@ -1,0 +1,40 @@
+@media (min-width: 750px) {
+  .lab-content,
+  .lab-editor {
+    position: absolute;
+    height: calc(100% - 6.5rem);
+    height: -o-calc(100% - 6.5rem);
+    height: -webkit-calc(100% - 6.5rem);
+    height: -moz-calc(100% - 6.5rem);
+  }
+  .lab-content {
+    left: 0;
+    width: 50%;
+    overflow: scroll;
+  }
+
+  .lab-editor {
+    right: 0;
+    width: 50%;
+  }
+}
+
+@media (max-width: 750px) {
+  .lab-content,
+  .lab-editor {
+    position: absolute;
+    height: calc(50% - 3.25rem);
+    height: -o-calc(50% - 3.25rem);
+    height: -webkit-calc(50% - 3.25rem);
+    height: -moz-calc(50% - 3.25rem);
+    width: 100%;
+  }
+  .lab-content {
+    bottom: 3.25rem;
+    overflow: scroll;
+  }
+
+  .lab-editor {
+    top: 3.25rem;
+  }
+}
