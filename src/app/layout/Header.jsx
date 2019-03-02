@@ -9,6 +9,7 @@ import { Text } from '../../components/logo';
 import logo from '../../img/logos/text_black.svg';
 
 function Header(props) {
+  const { history } = props;
   const [isActive, setIsActive] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useGlobalState('auth');
   const [name, setName] = useGlobalState('name');
@@ -17,7 +18,7 @@ function Header(props) {
     Firebase.logout();
     setIsAuthenticated(false);
     notify.show('You have been logged out successfully!', 'warning');
-    props.history.replace('/');
+    history.replace('/');
   }
 
   return (

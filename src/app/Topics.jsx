@@ -10,14 +10,17 @@ class Topics extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      topics: []
+      topics: [],
+      isLoading: true
     };
   }
 
   componentDidMount() {
+    this.setState({ isLoading: true });
     axios.get(`${apiUrl}topics`).then(res => {
       this.setState({
-        topics: res.data.topics
+        topics: res.data.topics,
+        isLoading: false
       });
     });
   }

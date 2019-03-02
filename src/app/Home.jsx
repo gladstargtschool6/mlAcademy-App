@@ -11,7 +11,7 @@ import { useGlobalState } from '../state';
 function Home() {
   const [isAuthenticated, setIsAuthenticated] = useGlobalState('auth');
   return (
-    <div>
+    <div style={{ '-webkit-overflow-scrolling': 'touch' }}>
       <section id="section1" class="hero is-primary is-fullheight-with-navbar">
         <div
           class="hero-body flex"
