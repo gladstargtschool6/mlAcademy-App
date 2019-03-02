@@ -1,41 +1,8 @@
 # mlAcademy Frontend Source
 
-_Written in React (w/ Grommet, React Router, Axios, Auth0, Ace Editor + more)_
+_Written in React (w/ Bulma, React Router, Hooks, Axios, Ace Editor + more)_
 
-**Available at [https://mlacademy.peace.sh](https://mlacademy.peace.sh)**
-
-Authored by:
-
-- Adam Peace
-- Sotirios Vavaroutas
-- Samuil Stoychev
-
-## Available Scripts
-
-To meet all dependencies, navigate to the project root and run:
-
-### `npm install`
-
-Then, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.
-
-The app is ready to be deployed!)
-](# mlAcademy Frontend Source
-
-_Written in React (w/ Grommet, React Router, Axios, Auth0, Ace Editor + more)_
-
-**Available at [https://mlacademy.peace.sh](https://mlacademy.peace.sh)**
+**Available at [https://mlacademy.cf](https://mlacademy.cf)**
 
 Authored by:
 
@@ -43,24 +10,8 @@ Authored by:
 - Sotirios Vavaroutas
 - Samuil Stoychev
 
-## Available Scripts
+### Run it locally
 
-To meet all dependencies, navigate to the project root and run:
+_Make sure you have npm installed_
 
-### `npm install`
-
-Then, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.
-
-The app is ready to be deployed!)
+<img src="./assets/run.png" alt="git clone https://github.com/mlacademy/frontend.git && cd frontend && npm i && npm star" width="100%"/>

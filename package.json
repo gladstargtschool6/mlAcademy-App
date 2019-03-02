@@ -1,7 +1,7 @@
 {
-  "name": "fe-test",
-  "version": "0.1.0",
-  "private": true,
+  "name": "mlacademy-frontend",
+  "version": "0.6.7",
+  "private": false,
   "dependencies": {
     "axios": "^0.18.0",
     "bulma": "^0.7.4",
@@ -32,6 +32,9 @@
   "browserslist": [
     ">0.2%",
     "not dead",
+    "not chrome <= 19",
+    "not firefox <= 57",
+    "not safari <= 6",
     "not ie <= 11",
     "not op_mini all"
   ],
