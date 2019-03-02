@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import './topic/Topic.css';
 
 Topic.defaultProps = {
   title: 'Title',
@@ -11,7 +12,7 @@ Topic.defaultProps = {
 function Topic(props) {
   const { title, description, color, id } = props;
   return (
-    <div style={{ padding: '2em', 'max-width': '45vw', width: '300px', 'overflow-wrap': 'normal' }}>
+    <div className="topic-wrapper">
       <button
         onClick={e => props.history.replace(`/labs/${id}`)}
         class={`card card-shadow has-background-${color}`}

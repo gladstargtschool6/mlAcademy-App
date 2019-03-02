@@ -11,10 +11,7 @@ import { apiUrl } from '../../../../config';
 
 Editor.defaultProps = {
   lessonNum: 0,
-  codeSnippet: `class Hei:
-  def hello(var):
-    output = "Hi"
-    print(output)`
+  codeSnippet: ``
 };
 
 function Editor(props) {
