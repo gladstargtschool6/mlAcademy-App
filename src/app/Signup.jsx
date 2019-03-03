@@ -1,11 +1,11 @@
 import React from 'react';
 import SignupWindow from '../auth/SignupWindow';
 
-const Signup = props => {
+const Signup = () => {
   return (
     <div className="hero section is-primary is-fullheight-with-navbar flex">
       <div
-        class="hero-body flex"
+        className="hero-body flex"
         style={{ 'justify-content': 'space-around', 'flex-wrap': 'wrap', width: '100%' }}
       >
         <div style={{ width: '400px' }}>

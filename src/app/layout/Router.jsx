@@ -4,7 +4,7 @@ import Home from '../Home';
 import Topics from '../Topics';
 import Signup from '../Signup';
 import Login from '../Login';
-import Labs from '../topics/topic/Labs';
+import Labs from '../Labs';
 
 const NotFound = () => (
   <section class="hero is-primary is-fullheight-with-navbar">
@@ -16,7 +16,7 @@ const NotFound = () => (
   </section>
 );
 
-const LabLoader = ({ height, match: { params } }) => {
+const LabLoader = ({ match: { params } }) => {
   const { id } = params;
   return <Labs id={id} />;
 };

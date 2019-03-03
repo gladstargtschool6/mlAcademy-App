@@ -1,17 +1,15 @@
 import React from 'react';
 import { notify } from 'react-notify-toast';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Firebase from '../auth/firebase';
 import useForm from '../useForm';
-
-import { useGlobalState } from '../state';
 Login.defaultProps = {
   redirectLink: '/topics'
 };
 function Login(props) {
   const { values, handleChange, handleSubmit } = useForm(signin);
-  const [isAuthenticated, setIsAuthenticated] = useGlobalState('auth');
   const { redirectLink } = props;
+
   async function signin() {
     const { email, password } = values;
     try {
@@ -77,11 +75,20 @@ function Login(props) {
             >
               Not Signed Up?
             </button>
+            <br />
+
+            <a
+              onClick={e => {
+                props.history.replace('/signup');
+              }}
+              className="is-size-7"
+            >
+              Trouble Logging In?
+            </a>
           </div>
         </div>
       </div>
     </div>
   );
-} //<Link to="/signup">Not Signed Up?</Link>
-
+}
 export default withRouter(Login);

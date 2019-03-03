@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { notify } from 'react-notify-toast';
-import styled from 'styled-components';
-import Helmet from 'react-helmet';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
-import { useGlobalState } from '../../../state';
-import { apiUrl } from '../../../config';
-import loading from '../../../img/loading.svg';
-import Content from './labs/Content';
+import { apiUrl } from '../config';
+import loading from '../img/loading.svg';
+import LessonContent from './labs/LessonContent';
 import Editor from './labs/Editor';
 import './labs/Labs.css';
-import Maxwidth from './labs/MaxWidth';
 
 Labs.defaultProps = {
   id: 20
@@ -27,7 +23,7 @@ function Labs(props) {
     setLoading(true);
     axios
       .get(`${apiUrl}lessons/`, {
-        params: { topic: props.id }
+        params: { topic: id }
       })
       .then(res => {
         const response = res.data.lessons;
@@ -77,7 +73,7 @@ function Labs(props) {
   ) : (
     <div className="labs-wrapper">
       <div className="lab-content">
-        <Content lesson={lessons[lessonNum]} />
+        <LessonContent lesson={lessons[lessonNum]} />
       </div>
       <div className="lab-editor">
         <Editor codeSnippet={codeSnippets[lessonNum]} lessonNum={lessonNum} />

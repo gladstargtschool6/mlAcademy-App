@@ -4,10 +4,9 @@ import axios from 'axios';
 import 'brace/mode/python';
 import 'brace/snippets/python';
 import 'brace/theme/xcode';
-import { withRouter } from 'react-router-dom';
-import { useGlobalState } from '../../../../state';
+//import { useGlobalState } from '../../../../state';
 import './editor/Editor.css';
-import { apiUrl } from '../../../../config';
+import { apiUrl } from '../../config';
 
 Editor.defaultProps = {
   lessonNum: 0,
