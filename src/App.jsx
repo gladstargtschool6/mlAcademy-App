@@ -1,21 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Layout from './app/Layout';
 import Notifications from 'react-notify-toast';
-import { useGlobalState, GlobalStateProvider } from './state';
-import Firebase from './auth/firebase';
+import { GlobalStateProvider } from './state';
 
-function App(props) {
-  const [isAuthenticated, setIsAuthenticated] = useGlobalState('auth');
-  const [name, setName] = useGlobalState('name');
-  //const [topics, setTopics] = useGlobalState('topics');
-
-  useEffect(() => {
-    Firebase.isInitialized().then(val => {
-      setIsAuthenticated(val);
-    });
-    setName(Firebase.getCurrentUsername());
-  });
-
+function App() {
   return (
     <GlobalStateProvider>
       <Notifications />

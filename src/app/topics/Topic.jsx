@@ -15,11 +15,11 @@ function Topic(props) {
     <div className="topic-wrapper">
       <button
         onClick={e => props.history.replace(`/labs/${id}`)}
-        class={`card card-shadow has-background-${color}`}
+        className={`card card-shadow has-background-${color}`}
       >
-        <div class="card-content">
-          <p class="title">{title}</p>
-          <p class="subtitle">{description}</p>
+        <div className="card-content">
+          <p className="title">{title}</p>
+          <p className="subtitle">{description}</p>
         </div>
       </button>
     </div>

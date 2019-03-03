@@ -1,6 +1,6 @@
 import React from 'react';
 import { notify } from 'react-notify-toast';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Firebase from '../auth/firebase';
 import useForm from '../useForm';
 
@@ -13,9 +13,7 @@ function SignupWindow(props) {
   const { values, handleChange, handleSubmit } = useForm(signup);
 
   async function signup() {
-    console.log(values);
     const { name, email, password } = values;
-
     try {
       await Firebase.register(name, email, password);
       props.history.replace('/');
@@ -24,7 +22,6 @@ function SignupWindow(props) {
         props.history.replace('/login');
         notify.show('Looks like you already have an account 🎉 Please sign in!', 'warning');
       }
-      console.log(error);
       notify.show(error.message, 'error');
     }
   }
@@ -33,7 +30,7 @@ function SignupWindow(props) {
     <div className="box" style={{ 'max-width': '400px' }}>
       <label className="label has-text-centered has-text-weight-semibold is-size-4">{label}</label>
       <br />
-      <form autocomplete="off" onSubmit={handleSubmit}>
+      <form autoComplete="nope" onSubmit={handleSubmit}>
         <div className="field">
           <label className="label has-text-weight-light">Enter First Name</label>
           <div className="control">
