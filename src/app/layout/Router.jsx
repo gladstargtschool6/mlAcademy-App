@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Link, Switch, Route } from 'react-router-dom';
 import Home from '../Home';
 import Topics from '../Topics';
 import Signup from '../../auth/Signup';
@@ -7,10 +7,14 @@ import Login from '../../auth/Login';
 import Labs from '../Labs';
 
 const NotFound = () => (
-  <section class="hero is-primary is-fullheight-with-navbar">
-    <div class="hero-body">
-      <div class="container">
-        <h1 style={{ 'font-size': '80pt', fontFamily: 'Poppins' }}>404.</h1>
+  <section className="hero is-primary is-fullheight-with-navbar">
+    <div className="hero-body">
+      <div className="container">
+        <Link to="/">
+          <h1 className="is-family-secondary" style={{ 'font-size': '80pt' }}>
+            404.
+          </h1>
+        </Link>
       </div>
     </div>
   </section>

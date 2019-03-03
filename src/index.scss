@@ -3,12 +3,13 @@
 @import '~bulma/sass/utilities/functions';
 // 2. Setup your Custom Colors
 $black: #000;
-$purple: #7d4cdb;
-$purple-invert: findColorInvert($purple);
-$link: #81fced;
-$link-invert: findColorInvert($link);
+$new-primary: #7d4cdb;
+$new-primary-invert: findColorInvert($new-primary);
+$new-link: #81fced;
+$new-link-invert: findColorInvert($new-link);
 // 3. Add new color variables to the color map.
 @import '~bulma/sass/utilities/derived-variables.sass';
+
 $card-shadow: 0 3px 4px rgba($black, 0.1), 0 0 0 2px rgba($black, 0.1);
 $addStyles: (
   'card-shadow': $card-shadow
@@ -21,12 +22,12 @@ $family-secondary: (Poppins);
 
 $addColors: (
   'primary': (
-    $purple,
-    $purple-invert
+    $new-primary,
+    $new-primary-invert
   ),
   'link': (
-    $link,
-    $link-invert
+    $new-link,
+    $new-link-invert
   )
 );
 $colors: map-merge($colors, $addColors);
@@ -39,9 +40,4 @@ body {
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.focus {
-  font-family: Poppins;
-  font-size: 20pt;
 }

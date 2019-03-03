@@ -4,16 +4,17 @@ import Router from './layout/Router';
 import Site from './layout/Site';
 import Header from './layout/Header';
 import Content from './layout/Content';
+import { appName, tagline } from '../Constants';
 
 function Layout(props) {
   return (
     <Site>
       <Helmet
-        title="mlAcademy"
+        title={appName}
         meta={[
           {
             name: 'description',
-            content: 'Microsoft mlAcademy - An introduction to machine learning'
+            content: { tagline }
           },
           {
             name: 'keywords',
