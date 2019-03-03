@@ -2,8 +2,8 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from '../Home';
 import Topics from '../Topics';
-import Signup from '../Signup';
-import Login from '../Login';
+import Signup from '../../auth/Signup';
+import Login from '../../auth/Login';
 import Labs from '../Labs';
 
 const NotFound = () => (

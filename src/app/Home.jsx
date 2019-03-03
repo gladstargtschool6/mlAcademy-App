@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../img/logos/text_white.svg';
 import ucl from '../img/ucl_grey.svg';
 import ms from '../img/ms_grey.svg';
-import { tagline } from '../Constants';
+import { tagline, features } from '../Constants';
 import SignupWindow from '../auth/SignupWindow';
 import { useGlobalState } from '../state';
 
@@ -31,30 +31,13 @@ function Home() {
       <br />
       <section id="section2" className="section">
         <div className="columns">
-          <div className="column has-text-centered">
-            <i className="fab fa-accessible-icon fa-3x" />
-            <p className="title">Accessible</p>
-            <p>
-              Accessibility is paramount with our development process. mlAcademy is WCAG 2.0
-              compliant so that nobody is left out.
-            </p>
-          </div>
-          <div className="column has-text-centered">
-            <i className="fas fa-university fa-3x" />
-            <p className="title">Educational</p>
-            <p>
-              Designed to be interactive while also providing students with in-depth knowledge of
-              the subject.
-            </p>
-          </div>
-          <div className="column has-text-centered">
-            <i className="fas fa-edit fa-3x" />
-            <p className="title">Flexible</p>
-            <p>
-              New topics and lessons can be added with ease as markdown files through our content
-              management system.
-            </p>
-          </div>
+          {features.map(feature => (
+            <div className="column has-text-centered">
+              <i className={feature.icon} />
+              <p className="title">{feature.title}</p>
+              <p>{feature.description}</p>
+            </div>
+          ))}
         </div>
       </section>
       <br />

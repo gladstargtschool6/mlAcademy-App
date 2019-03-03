@@ -1,13 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import * as serviceWorker from "./serviceWorker";
-import { BrowserRouter as Router } from "react-router-dom";
-import App from "./App";
-import "./index.scss";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import * as serviceWorker from './serviceWorker';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Layout from './app/Layout';
+import Notifications from 'react-notify-toast';
+import { GlobalStateProvider } from './state';
+import './index.scss';
 ReactDOM.render(
   <Router>
-    <App />
+    <GlobalStateProvider>
+      <Notifications />
+      <Layout />
+    </GlobalStateProvider>
   </Router>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 serviceWorker.unregister();

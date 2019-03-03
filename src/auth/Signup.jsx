@@ -1,5 +1,5 @@
 import React from 'react';
-import SignupWindow from '../auth/SignupWindow';
+import SignupWindow from './SignupWindow';
 
 const Signup = () => {
   return (

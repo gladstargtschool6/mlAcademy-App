@@ -1,7 +1,7 @@
 import React from 'react';
 import { notify } from 'react-notify-toast';
 import { withRouter } from 'react-router-dom';
-import Firebase from '../auth/firebase';
+import Firebase from './firebase';
 import useForm from '../useForm';
 Login.defaultProps = {
   redirectLink: '/topics'
@@ -24,7 +24,7 @@ function Login(props) {
   return (
     <div className="hero section is-primary is-fullheight-with-navbar flex">
       <div
-        class="hero-body flex"
+        className="hero-body flex"
         style={{ 'justify-content': 'space-around', 'flex-wrap': 'wrap', width: '100%' }}
       >
         <div style={{ width: '400px' }}>
