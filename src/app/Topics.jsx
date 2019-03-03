@@ -30,21 +30,6 @@ class Topics extends React.Component {
         {topics.map((topic, index) => (
           <Topic title={topic.name} description={topic.description} key={index} />
         ))}
-        {topics.map((topic, index) => (
-          <Topic title={topic.name} description={topic.description} key={index} />
-        ))}
-        {topics.map((topic, index) => (
-          <Topic title={topic.name} description={topic.description} key={index} />
-        ))}
-        {topics.map((topic, index) => (
-          <Topic title={topic.name} description={topic.description} key={index} />
-        ))}
-        {topics.map((topic, index) => (
-          <Topic title={topic.name} description={topic.description} key={index} />
-        ))}
-        {topics.map((topic, index) => (
-          <Topic title={topic.name} description={topic.description} key={index} />
-        ))}
       </div>
     );
   }
