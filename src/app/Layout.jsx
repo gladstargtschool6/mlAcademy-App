@@ -4,13 +4,14 @@ import Router from './layout/Router';
 import Site from './layout/Site';
 import Header from './layout/Header';
 import Content from './layout/Content';
-import { appName, tagline } from '../Constants';
+import { info } from '../Constants';
 
 function Layout(props) {
+  const { name, tagline } = info;
   return (
     <Site>
       <Helmet
-        title={appName}
+        title={name}
         meta={[
           {
             name: 'description',

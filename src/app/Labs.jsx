@@ -49,10 +49,12 @@ function Labs(props) {
   const BackButton = props =>
     typeof lessons[lessonNum - 1] !== 'undefined' ? (
       <button className="button is-primary" onClick={() => handlePrev()}>
+        <i className="fas fa-arrow-left" style={{ marginRight: '0.4rem' }} />
         Prev
       </button>
     ) : (
       <button className="button is-primary" onClick={() => handlePrev()} disabled>
+        <i className="fas fa-arrow-left" style={{ marginRight: '0.4rem' }} />
         Prev
       </button>
     );
@@ -61,10 +63,13 @@ function Labs(props) {
     typeof lessons[lessonNum + 1] !== 'undefined' ? (
       <button className="button is-primary" onClick={() => handleNext()}>
         Next
+        <br />
+        <i className="fas fa-arrow-right" style={{ marginLeft: '0.4rem' }} />
       </button>
     ) : (
       <button className="button is-success" onClick={() => handleFinish()}>
         Finish
+        <i className="fas fa-check" style={{ marginLeft: '0.4rem' }} />
       </button>
     );
 

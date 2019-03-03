@@ -89,6 +89,7 @@ function Editor(props) {
           style={{ width: '10rem' }}
         >
           Submit
+          <i className="fas fa-edit" style={{ marginLeft: '0.4rem' }} />
         </button>
       </div>
     </>
@@ -123,6 +124,7 @@ function Editor(props) {
           style={{ width: '10rem' }}
         >
           Submit
+          <i className="fas fa-edit" style={{ marginLeft: '0.4rem' }} />
         </button>
       </div>
     </>

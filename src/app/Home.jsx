@@ -5,7 +5,7 @@ import partner_2 from '../img/partner_2.svg';
 import { info } from '../Constants';
 import SignupWindow from '../auth/SignupWindow';
 import { useGlobalState } from '../state';
-
+import './home/Home.css';
 function Home() {
   const [isAuthenticated] = useGlobalState('auth');
   const { features, links, tagline } = info;
@@ -19,7 +19,7 @@ function Home() {
         >
           <div className="level-item has-text-centered">
             <div style={{ maxWidth: '95vw' }}>
-              <img src={logo} alt="" />
+              <img src={logo} alt="" className="animated-svg" />
               <h2 className="subtitle is-family-secondary is-size-3">{tagline}</h2>
             </div>
           </div>
@@ -35,7 +35,7 @@ function Home() {
         <div className="columns">
           {features.map(feature => (
             <div className="column has-text-centered">
-              <i className={feature.icon} />
+              <i className={`animated-svg ${feature.icon}`} />
               <p className="title">{feature.title}</p>
               <p>{feature.description}</p>
             </div>
@@ -48,7 +48,12 @@ function Home() {
           <div className="columns">
             <div className="column has-text-centered">
               <a href={links.partner1}>
-                <img src={partner_2} alt={links.partner1} style={{ height: '40px' }} />
+                <img
+                  src={partner_2}
+                  alt={links.partner1}
+                  style={{ height: '40px' }}
+                  className="animated-svg"
+                />
               </a>
             </div>
             <div className="column has-text-centered" />
@@ -58,9 +63,14 @@ function Home() {
               </a>
             </div>
             <div className="column has-text-centered" />
-            <div className="column has-text-centered">
+            <div className="column has-text-centered ">
               <a href={links.partner2}>
-                <img src={partner_1} alt={links.partner2} style={{ height: '40px' }} />
+                <img
+                  src={partner_1}
+                  alt={links.partner2}
+                  style={{ height: '40px' }}
+                  className="animated-svg"
+                />
               </a>
             </div>
           </div>

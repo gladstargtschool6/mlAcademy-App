@@ -9,15 +9,6 @@ $new-link: #81fced;
 $new-link-invert: findColorInvert($new-link);
 // 3. Add new color variables to the color map.
 @import '~bulma/sass/utilities/derived-variables.sass';
-
-$card-shadow: 0 3px 4px rgba($black, 0.1), 0 0 0 2px rgba($black, 0.1);
-$addStyles: (
-  'card-shadow': $card-shadow
-);
-.card {
-  border-radius: 10px;
-}
-
 $family-secondary: (Poppins);
 
 $addColors: (
