@@ -14,7 +14,7 @@ function Forgot(props) {
   async function handleForgot() {
     const { email } = values;
     try {
-      await Firebase.resetPassword(email);
+      await Firebase.sendResetEmail(email);
       notify.show('Please check your email to reset your password ✌️', 'success');
       props.history.replace(redirectLink);
     } catch (error) {

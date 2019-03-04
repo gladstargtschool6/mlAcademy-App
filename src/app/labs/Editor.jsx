@@ -4,8 +4,7 @@ import axios from 'axios';
 import 'brace/mode/python';
 import 'brace/snippets/python';
 import 'brace/theme/xcode';
-//import { useGlobalState } from '../../../../state';
-import './editor/Editor.css';
+import './editor/Editor.scss';
 import { apiUrl } from '../../config';
 
 Editor.defaultProps = {
@@ -81,7 +80,7 @@ function Editor(props) {
       </div>
       <div className="submit-button-wrapper has-background-light">
         <button
-          className="button is-link submit-button"
+          className="button is-info submit-button"
           onClick={computeOutput}
           style={{ width: '10rem' }}
         >
@@ -115,7 +114,7 @@ function Editor(props) {
       </div>
       <div className="submit-button-wrapper">
         <button
-          className="button is-link submit-button"
+          className="button is-info submit-button"
           onClick={computeOutput}
           style={{ width: '10rem' }}
         >

@@ -36,7 +36,7 @@ class Firebase {
     return this.auth.currentUser && this.auth.currentUser.displayName;
   }
 
-  resetPassword(email) {
+  sendResetEmail(email) {
     return this.auth.sendPasswordResetEmail(email);
   }
 }

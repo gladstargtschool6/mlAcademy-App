@@ -70,7 +70,7 @@ function Header(props) {
                 <div className="navbar-item">Hi, {name}</div>
                 <hr className="navbar-divider" />
                 {/* eslint-disable-next-line */}
-                <a href="#" className="navbar-item" onClick={handleLogout}>
+                <a className="navbar-item" onClick={handleLogout}>
                   <span className="icon" style={{ marginRight: 5 }}>
                     <i className="fas fa-lg fa-sign-in-alt" />
                   </span>

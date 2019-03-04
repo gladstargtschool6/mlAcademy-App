@@ -22,14 +22,11 @@ function Login(props) {
     }
   }
 
-  function handleForgot() {}
-
   return (
     <div className="full-height-bg card-container has-background-primary">
       <div className="box form-card">
         <label className="label has-text-centered has-text-weight-semibold is-size-4">Log In</label>
         <br />
-
         <form onSubmit={handleSubmit}>
           <div className="field">
             <label className="label">Email Address</label>
@@ -72,12 +69,11 @@ function Login(props) {
           Not Signed Up?
         </button>
         <br />
-
         <button
           onClick={() => {
             props.history.push('/forgot');
           }}
-          className="is-link is-size-7"
+          className="act-like-link is-size-7"
         >
           Trouble Logging In?
         </button>
