@@ -20,7 +20,9 @@ function Home() {
           <div className="level-item has-text-centered">
             <div style={{ maxWidth: '95vw' }}>
               <img src={logo} alt="" className="animated-svg" />
-              <h2 className="subtitle is-family-secondary is-size-3">{tagline}</h2>
+              <div className="tagline">
+                <h2 className="subtitle is-family-secondary is-size-3">{tagline}</h2>
+              </div>
             </div>
           </div>
           {!isAuthenticated && (

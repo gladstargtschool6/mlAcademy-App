@@ -26,10 +26,12 @@ class Topics extends React.Component {
   render() {
     const { topics } = this.state;
     return (
-      <div className="topics-wrapper">
-        {topics.map((topic, index) => (
-          <Topic title={topic.name} description={topic.description} key={index} />
-        ))}
+      <div className="topics-viewer has-background-primary">
+        <div className="topics-wrapper">
+          {topics.map((topic, index) => (
+            <Topic title={topic.name} description={topic.description} key={index} />
+          ))}
+        </div>
       </div>
     );
   }

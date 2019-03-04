@@ -1,6 +1,7 @@
 export const info = {
   name: 'mlAcademy',
-  tagline: 'An introduction to machine learning',
+  tagline:
+    'A scalable, interactive educational platform for high-school students, specialising in machine learning',
   features: [
     {
       title: `Accessible`,
@@ -16,6 +17,11 @@ export const info = {
       title: `Flexible`,
       icon: `fas fa-edit fa-3x`,
       description: `New topics and lessons can be added with ease as markdown files through our content management system.`
+    },
+    {
+      title: `Python`,
+      icon: `fab fa-python fa-3x`,
+      description: `Learn the fundamentals of using Tensorflow with Keras in Python 3`
     }
   ],
   links: {
