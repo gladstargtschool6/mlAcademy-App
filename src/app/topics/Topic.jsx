@@ -16,9 +16,13 @@ function Topic(props) {
       onClick={() => history.push(`/labs/${id}`)}
       className={`topic-wrapper has-background-${color}`}
     >
-      <div className="card-content">
+      <div className="topic-image">
+        <img src="https://assets.leetcode.com/explore/cards/recursion-i/img" alt="demo image" />
+      </div>
+
+      <div className="topic-content">
         <p className="title is-family-secondary">{title}</p>
-        <p className="subtitle">{description}</p>
+        <p className="subtitle is-family-primary">{description}</p>
       </div>
     </button>
   );
