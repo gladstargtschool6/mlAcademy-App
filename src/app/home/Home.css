@@ -16,3 +16,7 @@
 .animated-svg:hover::after {
   opacity: 1;
 }
+
+.tagline {
+  max-width: 50rem;
+}
