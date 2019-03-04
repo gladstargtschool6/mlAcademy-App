@@ -6,7 +6,7 @@ import { apiUrl } from '../config';
 import loading from '../img/loading.svg';
 import LessonContent from './labs/LessonContent';
 import Editor from './labs/Editor';
-import './labs/Labs.css';
+import './labs/Labs.scss';
 
 Labs.defaultProps = {
   id: 20

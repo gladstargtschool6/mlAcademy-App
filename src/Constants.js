@@ -27,6 +27,6 @@ export const info = {
   links: {
     partner1: 'https://microsoft.com',
     partner2: 'https://ucl.ac.uk',
-    docs: 'https://docs.mlacademy.cf'
+    docs: 'https://docs.mlacademy.ml'
   }
 };
