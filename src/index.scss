@@ -32,3 +32,19 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.is-link {
+  background: none !important;
+  color: inherit;
+  border: none;
+  padding: 0 !important;
+  font: inherit;
+  cursor: pointer;
+}
+
+.full-height-bg {
+  position: absolute;
+  top: 3.25rem;
+  min-height: calc(100vh - 3.25rem);
+  width: 100vw;
+}

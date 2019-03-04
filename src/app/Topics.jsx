@@ -1,5 +1,5 @@
 import React from 'react';
-import './topics/Topics.css';
+import './topics/Topics.scss';
 import Topic from './topics/Topic';
 import axios from 'axios';
 import { apiUrl } from '../config';
@@ -26,7 +26,7 @@ class Topics extends React.Component {
   render() {
     const { topics } = this.state;
     return (
-      <div className="topics-viewer has-background-primary">
+      <div className="full-height-bg has-background-primary">
         <div className="topics-wrapper">
           {topics.map((topic, index) => (
             <Topic title={topic.name} description={topic.description} key={index} />

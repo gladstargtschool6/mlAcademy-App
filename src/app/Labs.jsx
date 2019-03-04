@@ -43,7 +43,7 @@ function Labs(props) {
 
   function handleFinish() {
     notify.show('You have finished the class 🎉', 'success');
-    history.replace('/topics');
+    history.push('/topics');
   }
 
   const BackButton = props =>
