@@ -37,8 +37,6 @@ function Editor(props) {
         params: { model_input: currentCode }
       })
       .then(res => {
-        console.log(res);
-
         setResult(res.data.complex_result !== '' ? res.data.complex_result : 'No result');
       });
   }
@@ -61,7 +59,6 @@ function Editor(props) {
           mode="python"
           theme="xcode"
           name="blah2"
-          /*onLoad={this.onLoad}*/
           onChange={onChange}
           fontSize={16}
           showPrintMargin={true}
@@ -101,7 +98,6 @@ function Editor(props) {
           mode="python"
           theme="xcode"
           name="blah2"
-          /*onLoad={this.onLoad}*/
           onChange={onChange}
           fontSize={16}
           showPrintMargin={true}

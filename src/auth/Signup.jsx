@@ -1,17 +1,11 @@
 import React from 'react';
-import SignupWindow from './SignupWindow';
+import SignupWindow from './signup/SignupWindow';
+import './auth.scss';
 
 const Signup = () => {
   return (
-    <div className="hero section is-primary is-fullheight-with-navbar flex">
-      <div
-        className="hero-body flex"
-        style={{ 'justify-content': 'space-around', 'flex-wrap': 'wrap', width: '100%' }}
-      >
-        <div style={{ width: '400px' }}>
-          <SignupWindow />
-        </div>
-      </div>
+    <div className="full-height-bg card-container has-background-primary">
+      <SignupWindow />
     </div>
   );
 };

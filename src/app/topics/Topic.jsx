@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import './topic/Topic.css';
+import './topic/Topic.scss';
 
 Topic.defaultProps = {
   title: 'Title',

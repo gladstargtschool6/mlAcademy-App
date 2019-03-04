@@ -4,6 +4,7 @@ import Home from '../Home';
 import Topics from '../Topics';
 import Signup from '../../auth/Signup';
 import Login from '../../auth/Login';
+import Forgot from '../../auth/Forgot';
 import Labs from '../Labs';
 
 const NotFound = () => (
@@ -32,6 +33,7 @@ const Router = () => (
     <Route path="/labs/:id" render={props => <LabLoader {...props} />} />
     <Route path="/signup" component={Signup} />
     <Route path="/login" component={Login} />
+    <Route path="/forgot" component={Forgot} />
     <Route component={NotFound} />
   </Switch>
 );

@@ -1,8 +1,9 @@
 import React from 'react';
 import { notify } from 'react-notify-toast';
 import { withRouter } from 'react-router-dom';
-import Firebase from '../auth/firebase';
-import useForm from '../useForm';
+import Firebase from '../firebase';
+import useForm from '../../useForm';
+import '../auth.scss';
 
 SignupWindow.defaultProps = {
   label: 'Sign Up'
@@ -19,7 +20,7 @@ function SignupWindow(props) {
       props.history.replace('/');
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
-        props.history.replace('/login');
+        props.history.push('/login');
         notify.show('Looks like you already have an account 🎉 Please sign in!', 'warning');
       }
       notify.show(error.message, 'error');
@@ -27,7 +28,7 @@ function SignupWindow(props) {
   }
 
   return (
-    <div className="box" style={{ 'max-width': '400px' }}>
+    <div className="box form-card">
       <label className="label has-text-centered has-text-weight-semibold is-size-4">{label}</label>
       <br />
       <form autoComplete="nope" onSubmit={handleSubmit}>

@@ -35,6 +35,10 @@ class Firebase {
   getCurrentUsername() {
     return this.auth.currentUser && this.auth.currentUser.displayName;
   }
+
+  resetPassword(email) {
+    return this.auth.sendPasswordResetEmail(email);
+  }
 }
 
 export default new Firebase();
