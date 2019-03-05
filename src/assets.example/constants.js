@@ -1,21 +1,21 @@
 export const info = {
-  name: 'Academy',
-  tagline: 'A scalable, interactive educational platform for high-school students',
+  name: 'myAcademy',
+  tagline: 'A highly flexible, interactive educational engine for high-school students',
   features: [
     {
       title: `Accessible`,
-      icon: `fab fa-abcd fa-3x`,
+      icon: `fa fa-ice-cream fa-3x`,
       description: `Accessibility is paramount with our development process. mlAcademy is WCAG 2.0 compliant so that nobody is left out.`
     },
     {
       title: `Educational`,
-      icon: `fas fa-abcd fa-3x`,
+      icon: `fa fa-chess-rook fa-3x`,
       description: `Designed to be interactive while also providing students with in-depth knowledge of the subject.`
     },
     {
       title: `Flexible`,
-      icon: `fas fa-abcd fa-3x`,
-      description: `New topics and lessons can be added with ease as markdown files through our content management system.`
+      icon: `fa fa-futbol fa-3x`,
+      description: `Provide your lessons from a content management system through HTTP requests.`
     }
   ],
   links: {
