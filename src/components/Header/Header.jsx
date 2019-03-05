@@ -4,6 +4,7 @@ import { notify } from 'react-notify-toast';
 import Firebase from 'firebase';
 import { useGlobalState } from 'state';
 import logo from '../../assets/img/logos/text_black.png';
+import './Header.scss';
 
 function Header(props) {
   const { history } = props;
@@ -39,12 +40,13 @@ function Header(props) {
         </NavLink>
         <button
           aria-label="Show Menu"
-          className="button navbar-burger"
+          className={`burger hamburger hamburger--vortex
+            ${isActive && ` is-active`}`}
           onClick={() => setIsActive(!isActive)}
         >
-          <span />
-          <span />
-          <span />
+          <span class="hamburger-box">
+            <span className="hamburger-inner" />
+          </span>
         </button>
       </div>
       <div className={isActive ? 'navbar-menu is-active' : 'navbar-menu'}>

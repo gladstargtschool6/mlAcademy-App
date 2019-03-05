@@ -25,5 +25,5 @@ yarn-error.log*
 
 \.idea/
 
-src/Config\.js
+/src/assets
 !/*/node_modules
