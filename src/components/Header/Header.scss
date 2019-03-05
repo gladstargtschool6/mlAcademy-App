@@ -9,3 +9,9 @@
   margin-right: 1rem;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
+@media screen and (min-width: 1088px) {
+  .burger {
+    display: none;
+  }
+}
