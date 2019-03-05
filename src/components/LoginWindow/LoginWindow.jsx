@@ -34,6 +34,7 @@ function LoginWindow(props) {
           <label className="label">Email Address</label>
           <div className="control">
             <input
+              aria-label="email"
               className="input"
               type="email"
               name="email"
@@ -47,6 +48,7 @@ function LoginWindow(props) {
           <label className="label">Password</label>
           <div className="control">
             <input
+              aria-label="password"
               className="input"
               type="password"
               name="password"

@@ -34,6 +34,7 @@ function ForgotWindow(props) {
           <label className="label">Email Address</label>
           <div className="control">
             <input
+              aria-label="email"
               className="input"
               type="email"
               name="email"

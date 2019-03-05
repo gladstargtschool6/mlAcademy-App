@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import App from './components/App/App';
 import Notifications from 'react-notify-toast';
 import { GlobalStateProvider } from 'state';
-import './assets/styles/index.scss';
+import './index.scss';
 ReactDOM.render(
   <Router>
     <GlobalStateProvider>

@@ -36,6 +36,7 @@ function SignupWindow(props) {
           <label className="label has-text-weight-light">Enter First Name</label>
           <div className="control">
             <input
+              aria-label="first name"
               className="input"
               type="Name"
               name="name"
@@ -50,6 +51,7 @@ function SignupWindow(props) {
           <label className="label has-text-weight-light">Email Address</label>
           <div className="control">
             <input
+              aria-label="email"
               className="input"
               type="email"
               name="email"
@@ -64,6 +66,7 @@ function SignupWindow(props) {
           <label className="label has-text-weight-light">Password</label>
           <div className="control">
             <input
+              aria-label="password"
               className="input"
               type="password"
               name="password"

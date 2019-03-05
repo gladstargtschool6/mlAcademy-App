@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../../assets/img/logos/text_white.svg';
+import logo from '../../../assets/img/logos/text_white.png';
 import partner_1 from '../../../assets/img/partner_1.svg';
 import partner_2 from '../../../assets/img/partner_2.svg';
 import { info } from 'getConstants';
@@ -20,7 +20,7 @@ function Home() {
         >
           <div className="level-item has-text-centered">
             <div style={{ maxWidth: '95vw' }}>
-              <img src={logo} alt="" className="animated-svg" />
+              <img src={logo} alt="" className="animated-svg" style={{ width: '500px' }} />
               <div className="tagline">
                 <h2 className="subtitle is-family-secondary is-size-3">{tagline}</h2>
               </div>
