@@ -1,12 +1,12 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import Router from './layout/Router';
-import Site from './layout/Site';
-import Header from './layout/Header';
-import Content from './layout/Content';
-import { info } from '../Constants';
+import Router from '../routes/Router';
+import Site from './Site';
+import Header from '../Header/Header';
+import Content from './Content';
+import { info } from 'getConstants';
 
-function Layout(props) {
+function App(props) {
   const { name, tagline } = info;
   return (
     <Site>
@@ -43,6 +43,6 @@ function Layout(props) {
   );
 }
 
-Layout.propTypes = {};
+App.propTypes = {};
 
-export default Layout;
+export default App;

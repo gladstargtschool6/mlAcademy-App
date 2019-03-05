@@ -1,11 +1,12 @@
 import React from 'react';
-import logo from '../img/logos/text_white.svg';
-import partner_1 from '../img/partner_1.svg';
-import partner_2 from '../img/partner_2.svg';
-import { info } from '../Constants';
-import SignupWindow from '../auth/signup/SignupWindow';
-import { useGlobalState } from '../state';
-import './home/Home.scss';
+import logo from '../../../assets/img/logos/text_white.svg';
+import partner_1 from '../../../assets/img/partner_1.svg';
+import partner_2 from '../../../assets/img/partner_2.svg';
+import { info } from 'getConstants';
+import SignupWindow from '../../SignupWindow/SignupWindow';
+import { useGlobalState } from 'state';
+import './Home.scss';
+
 function Home() {
   const [isAuthenticated] = useGlobalState('auth');
   const { features, links, tagline } = info;

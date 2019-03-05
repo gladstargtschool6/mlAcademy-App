@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link, Switch, Route } from 'react-router-dom';
-import Home from '../Home';
-import Topics from '../Topics';
-import Signup from '../../auth/Signup';
-import Login from '../../auth/Login';
-import Forgot from '../../auth/Forgot';
-import Labs from '../Labs';
+import Home from './Home/Home';
+import Topics from './Topics/Topics';
+import Signup from './Auth/Signup/Signup';
+import Login from './Auth/Login/Login';
+import Forgot from './Auth/Forgot/Forgot';
+import Labs from './Labs/Labs';
 
 const NotFound = () => (
   <section className="hero is-primary is-fullheight-with-navbar">

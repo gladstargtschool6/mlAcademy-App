@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { notify } from 'react-notify-toast';
-import Firebase from '../../auth/firebase';
-import { useGlobalState } from '../../state';
-import logo from '../../img/logos/text_black.svg';
+import Firebase from 'firebase';
+import { useGlobalState } from 'state';
+import logo from '../../assets/img/logos/text_black.svg';
 
 function Header(props) {
   const { history } = props;

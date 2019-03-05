@@ -1,6 +1,6 @@
 import React from 'react';
-import SignupWindow from './signup/SignupWindow';
-import './auth.scss';
+import SignupWindow from '../../../SignupWindow/SignupWindow';
+import './Signup.scss';
 
 const Signup = () => {
   return (

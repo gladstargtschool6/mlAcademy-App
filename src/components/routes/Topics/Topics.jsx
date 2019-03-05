@@ -1,8 +1,8 @@
 import React from 'react';
-import './topics/Topics.scss';
-import Topic from './topics/Topic';
+import './Topics.scss';
+import Topic from '../../Topic/Topic';
 import axios from 'axios';
-import { apiUrl } from '../config';
+import { apiUrl } from 'getConfig';
 
 class Topics extends React.Component {
   constructor(props) {

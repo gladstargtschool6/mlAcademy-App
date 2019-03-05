@@ -1,9 +1,9 @@
 import React from 'react';
 import { notify } from 'react-notify-toast';
 import { withRouter } from 'react-router-dom';
-import Firebase from '../firebase';
-import useForm from '../../useForm';
-import '../auth.scss';
+import Firebase from 'firebase';
+import useForm from 'useForm';
+import './SignupWindow.scss';
 
 SignupWindow.defaultProps = {
   label: 'Sign Up'

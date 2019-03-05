@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { notify } from 'react-notify-toast';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
-import { apiUrl } from '../config';
-import loading from '../img/loading.svg';
-import LessonContent from './labs/LessonContent';
-import Editor from './labs/Editor';
-import './labs/Labs.scss';
+import { apiUrl } from 'getConfig';
+import loading from '../../../assets/img/loading.svg';
+import LessonContent from '../../LessonContent/LessonContent';
+import Editor from '../../Editor/Editor';
+import './Labs.scss';
 
 Labs.defaultProps = {
   id: 20

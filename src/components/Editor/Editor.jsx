@@ -4,8 +4,8 @@ import axios from 'axios';
 import 'brace/mode/python';
 import 'brace/snippets/python';
 import 'brace/theme/xcode';
-import './editor/Editor.scss';
-import { apiUrl } from '../../config';
+import './Editor.scss';
+import { apiUrl } from 'getConfig';
 
 Editor.defaultProps = {
   lessonNum: 0,

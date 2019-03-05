@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import './topic/Topic.scss';
+import './Topic.scss';
 
 Topic.defaultProps = {
   title: 'Title',
@@ -17,7 +17,7 @@ function Topic(props) {
       className={`topic-wrapper has-background-${color}`}
     >
       <div className="topic-image">
-        <img src="https://assets.leetcode.com/explore/cards/recursion-i/img" alt="demo image" />
+        <img src="https://assets.leetcode.com/explore/cards/recursion-i/img" alt="topic-banner" />
       </div>
 
       <div className="topic-content">
