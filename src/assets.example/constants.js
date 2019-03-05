@@ -1,21 +1,42 @@
+import flexible from './img/flexible.png';
+import accessible from './img/accessible.png';
+import educational from './img/educational.png';
+import extensible from './img/extensible.png';
+import python from './img/python.png';
+
 export const info = {
   name: 'myAcademy',
   tagline: 'A highly flexible, interactive educational engine for high-school students',
   features: [
     {
-      title: `Accessible`,
-      icon: `fa fa-ice-cream fa-3x`,
-      description: `Accessibility is paramount with our development process. mlAcademy is WCAG 2.0 compliant so that nobody is left out.`
+      title: `Flexible`,
+      icon: `fas fa-edit fa-3x`,
+      image: flexible,
+      description: `New topics and lessons can be added with ease as markdown files through our bespoke content management system.`
     },
     {
       title: `Educational`,
-      icon: `fa fa-chess-rook fa-3x`,
-      description: `Designed to be interactive while also providing students with in-depth knowledge of the subject.`
+      icon: `fas fa-brain fa-3x`,
+      image: educational,
+      description: `Designed to be interactive to provide a fundamental understanding of Machine Learning while remaining approachable and fun.`
     },
     {
-      title: `Flexible`,
-      icon: `fa fa-futbol fa-3x`,
-      description: `Provide your lessons from a content management system through HTTP requests.`
+      title: `Python`,
+      icon: `fab fa-python fa-3x`,
+      image: python,
+      description: `Use our online Python interpreter to experiment with Keras, NumPy and TensorFlow with the guidance of our lessons.`
+    },
+    {
+      title: `Extensible`,
+      icon: `fab fa-python fa-3x`,
+      image: extensible,
+      description: `Our engine makes it easy to build out from Machine Learning to explore other fields like Data Science or Data Visualisation.`
+    },
+    {
+      title: `Accessible`,
+      icon: `fab fa-accessible-icon fa-3x`,
+      image: accessible,
+      description: `Accessibility is paramount with our development process. mlAcademy is WCAG 2.0 compliant so that nobody is left out.`
     }
   ],
   links: {
