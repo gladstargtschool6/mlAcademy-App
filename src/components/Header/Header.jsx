@@ -37,7 +37,11 @@ function Header(props) {
         <NavLink className="navbar-item" to="/" activeClassName="is-active">
           <img src={logo} alt="home" />
         </NavLink>
-        <button className="button navbar-burger" onClick={() => setIsActive(!isActive)}>
+        <button
+          aria-label="Show Menu"
+          className="button navbar-burger"
+          onClick={() => setIsActive(!isActive)}
+        >
           <span />
           <span />
           <span />
