@@ -1,12 +1,12 @@
 import React from 'react';
 import logo from '../../../assets/img/logos/text_white.png';
-import partner_1 from '../../../assets/img/partner_1.svg';
-import partner_2 from '../../../assets/img/partner_2.svg';
+
 import { info } from 'getConstants';
 import SignupWindow from '../../SignupWindow/SignupWindow';
+import { Link } from 'react-router-dom';
 import { useGlobalState } from 'state';
+import Footer from './Footer/Footer';
 import './Home.scss';
-
 function Home() {
   const [isAuthenticated] = useGlobalState('auth');
   const { features, links, tagline } = info;
@@ -34,6 +34,28 @@ function Home() {
         </div>
       </section>
       <br />
+      <div className="description-container">
+        {features.map((feature, index) => (
+          <div
+            className={`${index % 2 === 1 ? `group has-background-light` : `group-alternative`}`}
+          >
+            <section className="home-content">
+              <p className="title">{feature.title}</p>
+              <p>{feature.description}</p>
+            </section>
+            <aside className="home-aside">
+              <img className="image-wrapper" src={feature.image} alt="" />
+            </aside>
+          </div>
+        ))}
+        <div className="final-group has-background-primary has-text-centered">
+          <Link to="/signup" className="title has-text-white">
+            Get Started Now!
+          </Link>
+        </div>
+      </div>
+
+      {/*
       <section id="section2" className="section">
         <div className="columns">
           {features.map(feature => (
@@ -44,41 +66,8 @@ function Home() {
             </div>
           ))}
         </div>
-      </section>
-      <br />
-      <section className="section has-background-light">
-        <div className="container">
-          <div className="columns">
-            <div className="column has-text-centered">
-              <a href={links.partner1}>
-                <img
-                  src={partner_2}
-                  alt={links.partner1}
-                  style={{ height: '40px' }}
-                  className="animated-svg"
-                />
-              </a>
-            </div>
-            <div className="column has-text-centered" />
-            <div className="column has-text-centered">
-              <a href={links.docs} className="button is-primary is-outlined">
-                How did we make it?
-              </a>
-            </div>
-            <div className="column has-text-centered" />
-            <div className="column has-text-centered ">
-              <a href={links.partner2}>
-                <img
-                  src={partner_1}
-                  alt={links.partner2}
-                  style={{ height: '40px' }}
-                  className="animated-svg"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      </section>*/}
+      <Footer links={links} />
     </div>
   );
 }
