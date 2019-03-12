@@ -1,7 +1,4 @@
-# Node.js with React
-# Build a Node.js project that uses React.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+# mlAcademy Frontend Build
 
 trigger:
 - master
@@ -17,5 +14,6 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: 'build'
-    artifactName: app
+    pathtoPublish: 'build' 
+    artifactName: 'drop' 
+    publishLocation: 'Container'
