@@ -56,7 +56,7 @@ function Home() {
                   <p>{feature.description}</p>
                 </section>
                 <aside className="home-aside">
-                  <img className="image-wrapper animated-svg" src={feature.image} alt="" />
+                  <img className="image-wrapper" src={feature.image} alt="" />
                 </aside>
               </div>
             ))}
