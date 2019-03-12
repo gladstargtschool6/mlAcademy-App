@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router } from 'react-router-dom';
-import App from './components/App/App';
 import Notifications from 'react-notify-toast';
-import { GlobalStateProvider } from 'state';
+
+import App from './components/App/App';
+import Firebase, { FirebaseContext } from './Auth/Firebase';
+import * as serviceWorker from './serviceWorker';
+
 import './index.scss';
+
 ReactDOM.render(
   <Router>
-    <GlobalStateProvider>
+    <FirebaseContext.Provider value={new Firebase()}>
       <Notifications />
       <App />
-    </GlobalStateProvider>
+    </FirebaseContext.Provider>
   </Router>,
   document.getElementById('root')
 );

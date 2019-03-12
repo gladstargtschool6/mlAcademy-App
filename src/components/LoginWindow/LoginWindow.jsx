@@ -1,8 +1,17 @@
 import React from 'react';
+<<<<<<< HEAD
 import { notify } from 'react-notify-toast';
 import { withRouter } from 'react-router-dom';
 import Firebase from 'firebase';
 import useForm from 'useForm';
+=======
+import { withRouter } from 'react-router-dom';
+import { notify } from 'react-notify-toast';
+
+import useForm from '../../helpers/useForm';
+import { withFirebase } from '../../Auth/Firebase';
+
+>>>>>>> mlacademy-frontend/frontend
 import './LoginWindow.scss';
 
 LoginWindow.defaultProps = {
@@ -12,6 +21,7 @@ LoginWindow.defaultProps = {
 
 function LoginWindow(props) {
   const { values, handleChange, handleSubmit } = useForm(signin);
+<<<<<<< HEAD
   const { label, redirectLink } = props;
 
   async function signin() {
@@ -23,6 +33,19 @@ function LoginWindow(props) {
     } catch (error) {
       notify.show(error.message, 'error');
     }
+=======
+  const { firebase, label, redirectLink } = props;
+
+  async function signin() {
+    const { email, password } = values;
+    firebase
+      .doSignIn(email, password)
+      .then(authUser => {
+        notify.show('You have been logged in successfully!', 'success');
+        props.history.replace(redirectLink);
+      })
+      .catch(error => notify.show(error.message, 'error'));
+>>>>>>> mlacademy-frontend/frontend
   }
 
   return (
@@ -85,4 +108,8 @@ function LoginWindow(props) {
   );
 }
 
+<<<<<<< HEAD
 export default withRouter(LoginWindow);
+=======
+export default withFirebase(withRouter(LoginWindow));
+>>>>>>> mlacademy-frontend/frontend

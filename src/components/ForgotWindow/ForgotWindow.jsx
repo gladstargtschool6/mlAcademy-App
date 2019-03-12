@@ -1,8 +1,14 @@
 import React from 'react';
 import { notify } from 'react-notify-toast';
 import { withRouter } from 'react-router-dom';
+<<<<<<< HEAD
 import Firebase from 'firebase';
 import useForm from 'useForm';
+=======
+
+import { withFirebase } from '../../Auth/Firebase';
+import useForm from '../../helpers/useForm';
+>>>>>>> mlacademy-frontend/frontend
 import './ForgotWindow.scss';
 
 ForgotWindow.defaultProps = {
@@ -12,6 +18,7 @@ ForgotWindow.defaultProps = {
 
 function ForgotWindow(props) {
   const { values, handleChange, handleSubmit } = useForm(handleForgot);
+<<<<<<< HEAD
   const { label, redirectLink } = props;
 
   async function handleForgot() {
@@ -23,6 +30,22 @@ function ForgotWindow(props) {
     } catch (error) {
       notify.show(error.message, 'error');
     }
+=======
+  const { firebase, history, label, redirectLink } = props;
+
+  async function handleForgot() {
+    const { email } = values;
+
+    firebase
+      .doPasswordReset(email)
+      .then(() => {
+        notify.show('Please check your email to reset your password ✌️', 'success');
+        history.replaceState(redirectLink);
+      })
+      .catch(error => {
+        notify.show(error.message, 'error');
+      });
+>>>>>>> mlacademy-frontend/frontend
   }
 
   return (
@@ -54,4 +77,8 @@ function ForgotWindow(props) {
   );
 }
 
+<<<<<<< HEAD
 export default withRouter(ForgotWindow);
+=======
+export default withFirebase(withRouter(ForgotWindow));
+>>>>>>> mlacademy-frontend/frontend

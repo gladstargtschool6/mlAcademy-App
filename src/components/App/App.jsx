@@ -1,10 +1,13 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import Router from '../routes/Router';
+
+import { withAuthentication } from '../Session/Session';
+
+import Routes from '../Routes/Routes';
 import Site from './Site';
 import Header from '../Header/Header';
 import Content from './Content';
-import { info } from 'getConstants';
+import { info } from '../../assets/constants';
 
 function App(props) {
   const { name, tagline } = info;
@@ -26,7 +29,7 @@ function App(props) {
       />
       <Header />
       <Content>
-        <Router />
+        <Routes />
       </Content>
     </Site>
   );
@@ -34,4 +37,4 @@ function App(props) {
 
 App.propTypes = {};
 
-export default App;
+export default withAuthentication(App);
