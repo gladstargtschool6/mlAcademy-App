@@ -1,39 +1,52 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { notify } from 'react-notify-toast';
 import { withRouter } from 'react-router-dom';
-import Firebase from 'firebase';
-import useForm from 'useForm';
+
+import useForm from '../../helpers/useForm';
+import { withFirebase } from '../../Auth/Firebase';
+
 import './SignupWindow.scss';
 
-SignupWindow.defaultProps = {
-  label: 'Sign Up'
+const propTypes = {
+  buttonStyle: PropTypes.string,
+  label: PropTypes.string,
+  firebase: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+};
+const defaultProps = {
+  label: 'Sign Up',
+  buttonStyle: 'info',
 };
 
 function SignupWindow(props) {
-  const { label } = props;
+  const { buttonStyle, label, firebase, history } = props;
   const { values, handleChange, handleSubmit } = useForm(signup);
 
   async function signup() {
     const { name, email, password } = values;
-    try {
-      await Firebase.register(name, email, password);
-      props.history.replace('/');
-    } catch (error) {
-      if (error.code === 'auth/email-already-in-use') {
-        props.history.push('/login');
-        notify.show('Looks like you already have an account 🎉 Please sign in!', 'warning');
-      }
-      notify.show(error.message, 'error');
-    }
+    firebase
+      .doCreateUser(name, email, password)
+      .then(() => {
+        notify.show(`You've been logged in! 👋`, 'warning');
+        history.replace('/');
+      })
+      .catch(error => {
+        if (error.code === 'auth/email-already-in-use') {
+          history.push('/login');
+          notify.show('Looks like you already have an account 🎉 Please sign in!', 'warning');
+        }
+        notify.show(error.message, 'error');
+      });
   }
 
   return (
     <div className="box form-card">
-      <label className="label has-text-centered has-text-weight-semibold is-size-4">{label}</label>
+      <p className="label has-text-centered has-text-weight-semibold is-size-4">{label}</p>
       <br />
-      <form autoComplete="nope" onSubmit={handleSubmit}>
+      <form autoComplete="off" onSubmit={handleSubmit}>
         <div className="field">
-          <label className="label has-text-weight-light">Enter First Name</label>
+          <p className="label has-text-weight-light">Enter First Name</p>
           <div className="control">
             <input
               aria-label="first name"
@@ -48,7 +61,7 @@ function SignupWindow(props) {
           </div>
         </div>
         <div className="field">
-          <label className="label has-text-weight-light">Email Address</label>
+          <p className="label has-text-weight-light">Email Address</p>
           <div className="control">
             <input
               aria-label="email"
@@ -63,7 +76,7 @@ function SignupWindow(props) {
           </div>
         </div>
         <div className="field">
-          <label className="label has-text-weight-light">Password</label>
+          <p className="label has-text-weight-light">Password</p>
           <div className="control">
             <input
               aria-label="password"
@@ -77,8 +90,11 @@ function SignupWindow(props) {
             />
           </div>
         </div>
-
-        <button type="submit" value="Submit" className="button is-block is-info is-fullwidth">
+        <button
+          type="submit"
+          value="Submit"
+          className={`button is-block is-${buttonStyle} is-fullwidth`}
+        >
           Sign Up
         </button>
       </form>
@@ -86,4 +102,7 @@ function SignupWindow(props) {
   );
 }
 
-export default withRouter(SignupWindow);
+SignupWindow.propTypes = propTypes;
+SignupWindow.defaultProps = defaultProps;
+
+export default withFirebase(withRouter(SignupWindow));

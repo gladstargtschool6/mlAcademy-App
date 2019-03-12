@@ -24,6 +24,4 @@ yarn-debug.log*
 yarn-error.log*
 
 \.idea/
-/now.json
-/src/assets
 !/*/node_modules

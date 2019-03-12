@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { notify } from 'react-notify-toast';
 import { withRouter } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 import { withFirebase } from '../../Auth/Firebase';
 import useForm from '../../helpers/useForm';
-import './ForgotWindow.scss';
+
+import './ChangePasswordWindow.scss';
 
 const propTypes = {
   firebase: PropTypes.object.isRequired,
@@ -15,21 +15,21 @@ const propTypes = {
 };
 
 const defaultProps = {
-  label: 'Forgot Password?',
-  redirectLink: '/login',
+  label: 'Update Password',
+  redirectLink: '/',
 };
 
-function ForgotWindow(props) {
-  const { values, handleChange, handleSubmit } = useForm(handleForgot);
+function ChangePasswordWindow(props) {
+  const { values, handleChange, handleSubmit } = useForm(handleReset);
   const { firebase, history, label, redirectLink } = props;
 
-  async function handleForgot() {
-    const { email } = values;
-
+  async function handleReset() {
+    const { password1, password2 } = values;
+    if (password1 !== password2) notify.show("The passwords don't match 😵", 'error');
     firebase
-      .doPasswordReset(email)
+      .doPasswordUpdate(password1)
       .then(() => {
-        notify.show('Please check your email to reset your password ✌️', 'success');
+        notify.show('Your password has been reset 🤗', 'success');
         history.replaceState(redirectLink);
       })
       .catch(error => {
@@ -43,22 +43,32 @@ function ForgotWindow(props) {
       <br />
       <form onSubmit={handleSubmit}>
         <div className="field">
-          <p className="label">Email Address</p>
+          <p className="label">Password</p>
           <div className="control">
             <input
-              aria-label="email"
+              aria-label="password1"
               className="input"
-              type="email"
-              name="email"
+              type="password"
+              name="password"
               onChange={handleChange}
-              value={values.email || ''}
+              value={values.password1 || ''}
+              required
+            />
+            <p className="label">Re-enter Password</p>
+            <input
+              aria-label="password2"
+              className="input"
+              type="password"
+              name="password"
+              onChange={handleChange}
+              value={values.password2}
               required
             />
           </div>
         </div>
         <br />
         <button type="submit" className="button is-block is-success is-fullwidth">
-          Send password reset email
+          Update Password
         </button>
         <br />
       </form>
@@ -66,7 +76,7 @@ function ForgotWindow(props) {
   );
 }
 
-ForgotWindow.propTypes = propTypes;
-ForgotWindow.defaultProps = defaultProps;
+ChangePasswordWindow.propTypes = propTypes;
+ChangePasswordWindow.defaultProps = defaultProps;
 
-export default withFirebase(withRouter(ForgotWindow));
+export default withFirebase(withRouter(ChangePasswordWindow));
