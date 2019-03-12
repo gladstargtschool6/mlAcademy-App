@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # mlAcademy Frontend Source
+=======
+# Actual mlAcademy Frontend Source
+>>>>>>> mlacademy-frontend/frontend
 
 _Written in React (w/ React Router, styled-components, Hooks, Bulma, Axios, Ace Editor + more)_
 

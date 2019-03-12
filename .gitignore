@@ -24,6 +24,9 @@ yarn-debug.log*
 yarn-error.log*
 
 \.idea/
+<<<<<<< HEAD
 /now.json
 /src/assets
+=======
+>>>>>>> mlacademy-frontend/frontend
 !/*/node_modules

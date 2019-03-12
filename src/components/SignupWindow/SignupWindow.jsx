@@ -1,6 +1,7 @@
 import React from 'react';
 import { notify } from 'react-notify-toast';
 import { withRouter } from 'react-router-dom';
+<<<<<<< HEAD
 import Firebase from 'firebase';
 import useForm from 'useForm';
 import './SignupWindow.scss';
@@ -11,10 +12,26 @@ SignupWindow.defaultProps = {
 
 function SignupWindow(props) {
   const { label } = props;
+=======
+
+import useForm from '../../helpers/useForm';
+import { withFirebase } from '../../Auth/Firebase';
+
+import './SignupWindow.scss';
+
+SignupWindow.defaultProps = {
+  label: 'Sign Up',
+  buttonStyle: 'info'
+};
+
+function SignupWindow(props) {
+  const { buttonStyle, label, firebase, history } = props;
+>>>>>>> mlacademy-frontend/frontend
   const { values, handleChange, handleSubmit } = useForm(signup);
 
   async function signup() {
     const { name, email, password } = values;
+<<<<<<< HEAD
     try {
       await Firebase.register(name, email, password);
       props.history.replace('/');
@@ -25,13 +42,32 @@ function SignupWindow(props) {
       }
       notify.show(error.message, 'error');
     }
+=======
+    firebase
+      .doCreateUser(name, email, password)
+      .then(() => {
+        notify.show(`You've been logged in! 👋`, 'warning');
+        history.replace('/');
+      })
+      .catch(error => {
+        if (error.code === 'auth/email-already-in-use') {
+          history.push('/login');
+          notify.show('Looks like you already have an account 🎉 Please sign in!', 'warning');
+        }
+        notify.show(error.message, 'error');
+      });
+>>>>>>> mlacademy-frontend/frontend
   }
 
   return (
     <div className="box form-card">
       <label className="label has-text-centered has-text-weight-semibold is-size-4">{label}</label>
       <br />
+<<<<<<< HEAD
       <form autoComplete="nope" onSubmit={handleSubmit}>
+=======
+      <form autocomplete="off" onSubmit={handleSubmit}>
+>>>>>>> mlacademy-frontend/frontend
         <div className="field">
           <label className="label has-text-weight-light">Enter First Name</label>
           <div className="control">
@@ -78,7 +114,15 @@ function SignupWindow(props) {
           </div>
         </div>
 
+<<<<<<< HEAD
         <button type="submit" value="Submit" className="button is-block is-info is-fullwidth">
+=======
+        <button
+          type="submit"
+          value="Submit"
+          className={`button is-block is-${buttonStyle} is-fullwidth`}
+        >
+>>>>>>> mlacademy-frontend/frontend
           Sign Up
         </button>
       </form>
@@ -86,4 +130,8 @@ function SignupWindow(props) {
   );
 }
 
+<<<<<<< HEAD
 export default withRouter(SignupWindow);
+=======
+export default withFirebase(withRouter(SignupWindow));
+>>>>>>> mlacademy-frontend/frontend
