@@ -13,11 +13,7 @@ const propTypes = {
   lessonNum: PropTypes.number.isRequired,
   codeSnippet: PropTypes.string.isRequired,
 };
-
-const defaultProps = {
-  lessonNum: 0,
-  codeSnippet: ``,
-};
+const defaultProps = {};
 
 function Editor(props) {
   const { lessonNum, codeSnippet } = props;
@@ -33,11 +29,12 @@ function Editor(props) {
     }
   });
 
-  function onChange() {
-    setCode(currentCode);
+  function onChange(newCode) {
+    setCode(newCode);
   }
 
   function computeOutput() {
+    console.log(currentCode);
     getOutput(currentCode).then(res => setResult(res));
   }
 
