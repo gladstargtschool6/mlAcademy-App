@@ -1,6 +1,15 @@
-# Actual mlAcademy Frontend Source
+<p align="center"><img width=60% src="https://mlacademy.blob.core.windows.net/assets/text_black_large.png"></p>
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![React](https://img.shields.io/badge/React-16.8.4-61DAFB.svg)
+![Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)
+[![GitHub Issues](https://img.shields.io/github/issues/mlacademy/frontend.svg)](https://github.com/mlacademy/frontend/issues)
 [![Build Status](https://dev.azure.com/mlacademy/mlacademy/_apis/build/status/mlAcademy.frontend?branchName=production)](https://dev.azure.com/mlacademy/mlacademy/_build/latest?definitionId=1&branchName=production)
+![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)
+[![License](https://img.shields.io/badge/license-CC%20BY%20NC%20SA%204.0-blue.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+# mlAcademy - An Interactive educational platform for high-school students, specializing in machine learning
+
 
 _Written in React (w/ React Router, styled-components, Hooks, Bulma, Axios, Ace Editor + more)_
 
@@ -12,10 +21,26 @@ Authored by:
 - Sotirios Vavaroutas
 - Samuil Stoychev
 
-### Run it locally
+### Set Up
 
-_Make sure you have npm installed_
+[_Make sure you have yarn installed_](https://yarnpkg.com/lang/en/docs/install/)
 
-<img src="./assets/run.png" alt="git clone https://github.com/mlacademy/frontend.git && cd frontend && npm i && npm star" width="100%"/>
+```bash
 
-_To adapt the base application for another use, you'll need to duplicate and rename /src/assets.example and modify everything in src/assets to suit your needs_
+$ git clone https://github.com/mlacademy/myacademy-oss.git
+
+$ cd myacademy-oss
+
+$ yarn install
+
+```
+
+### Run Locally
+
+```bash
+
+# In myacademy-oss/src 
+
+$ yarn start
+
+```
