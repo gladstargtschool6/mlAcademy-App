@@ -1,5 +1,7 @@
 # Actual mlAcademy Frontend Source
 
+[![Build Status](https://dev.azure.com/mlacademy/mlacademy/_apis/build/status/mlAcademy.frontend?branchName=production)](https://dev.azure.com/mlacademy/mlacademy/_build/latest?definitionId=1&branchName=production)
+
 _Written in React (w/ React Router, styled-components, Hooks, Bulma, Axios, Ace Editor + more)_
 
 **Available at [https://mlacademy.ml](https://mlacademy.ml)**
