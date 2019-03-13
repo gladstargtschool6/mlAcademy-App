@@ -13,7 +13,7 @@ import Editor from './Editor/Editor';
 import './Labs.scss';
 
 const propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   history: PropTypes.object.isRequired,
 };
 const defaultProps = {};

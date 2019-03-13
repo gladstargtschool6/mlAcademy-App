@@ -13,7 +13,7 @@ const propTypes = {
   id: PropTypes.number,
   imageUrl: PropTypes.string,
   history: PropTypes.object.isRequired,
-  prerequisites: PropTypes.object.isRequired,
+  prerequisites: PropTypes.array.isRequired,
 };
 const defaultProps = {
   disabled: false,
@@ -40,6 +40,7 @@ function Topic(props) {
 
   return (
     <button
+      type="button"
       onClick={handleClick}
       className={`topic-wrapper has-background-white ${disabled && `disabled`}`}
     >

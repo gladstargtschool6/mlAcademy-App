@@ -47,6 +47,7 @@ function Home() {
           <div className="description-container">
             {features.map((feature, index) => (
               <div
+                key={feature.title}
                 className={`${
                   index % 2 === 1 ? `group has-background-light` : `group-alternative`
                 }`}

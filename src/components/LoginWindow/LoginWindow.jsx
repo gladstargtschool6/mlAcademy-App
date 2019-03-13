@@ -60,7 +60,7 @@ function LoginWindow(props) {
               type="email"
               name="email"
               onChange={handleChange}
-              value={values.email}
+              value={values.email || ''}
               required
             />
             {errors.email && <p className="help is-danger">{errors.email}</p>}
@@ -75,7 +75,7 @@ function LoginWindow(props) {
               type="password"
               name="password"
               onChange={handleChange}
-              value={values.password}
+              value={values.password || ''}
               required
             />
             {errors.password && <p className="help is-danger">{errors.password}</p>}
