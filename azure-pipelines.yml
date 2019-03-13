@@ -1,7 +1,7 @@
 # mlAcademy Frontend Build
 
 trigger:
-- master
+- production
 
 pool:
   vmImage: 'Ubuntu-16.04'
