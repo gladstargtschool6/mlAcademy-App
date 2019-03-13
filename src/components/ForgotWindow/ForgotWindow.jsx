@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { withFirebase } from '../../Auth/Firebase';
 import useForm from '../../helpers/useForm';
 import './ForgotWindow.scss';
+import validate from './ForgotFormValidationRules';
 
 const propTypes = {
   firebase: PropTypes.object.isRequired,
@@ -20,7 +21,8 @@ const defaultProps = {
 };
 
 function ForgotWindow(props) {
-  const { values, handleChange, handleSubmit } = useForm(handleForgot);
+  // eslint-disable-next-line
+  const { errors, values, handleChange, handleSubmit } = useForm(handleForgot, validate);
   const { firebase, history, label, redirectLink } = props;
 
   async function handleForgot() {
@@ -41,19 +43,20 @@ function ForgotWindow(props) {
     <div className="box form-card">
       <p className="label has-text-centered has-text-weight-semibold is-size-4">{label}</p>
       <br />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} noValidate>
         <div className="field">
           <p className="label">Email Address</p>
           <div className="control">
             <input
               aria-label="email"
-              className="input"
+              className={`input ${errors.email && 'is-danger'}`}
               type="email"
               name="email"
               onChange={handleChange}
               value={values.email || ''}
               required
             />
+            {errors.email && <p className="help is-danger">{errors.email}</p>}
           </div>
         </div>
         <br />
