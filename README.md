@@ -3,6 +3,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![React](https://img.shields.io/badge/React-16.8.4-61DAFB.svg)
 ![Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/efe03ce7bc2d4c95a32e498e08218991)](https://app.codacy.com/app/mlAcademy/frontend?utm_source=github.com&utm_medium=referral&utm_content=mlAcademy/frontend&utm_campaign=Badge_Grade_Dashboard)
 [![GitHub Issues](https://img.shields.io/github/issues/mlacademy/frontend.svg)](https://github.com/mlacademy/frontend/issues)
 [![Build Status](https://dev.azure.com/mlacademy/mlacademy/_apis/build/status/mlAcademy.frontend?branchName=production)](https://dev.azure.com/mlacademy/mlacademy/_build/latest?definitionId=1&branchName=production)
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)
