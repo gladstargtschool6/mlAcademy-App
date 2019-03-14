@@ -34,7 +34,6 @@ function Editor(props) {
   }
 
   function computeOutput() {
-    console.log(currentCode);
     getOutput(currentCode).then(res => setResult(res));
   }
 
@@ -78,6 +77,7 @@ function Editor(props) {
       </div>
       <div className="submit-button-wrapper has-background-light">
         <button
+          type="button"
           className="button is-info submit-button"
           onClick={computeOutput}
           style={{ width: '10rem' }}
@@ -112,6 +112,7 @@ function Editor(props) {
       </div>
       <div className="submit-button-wrapper">
         <button
+          type="button"
           className="button is-info submit-button"
           onClick={computeOutput}
           style={{ width: '10rem' }}

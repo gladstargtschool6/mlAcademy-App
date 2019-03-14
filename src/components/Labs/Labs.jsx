@@ -28,9 +28,9 @@ function Labs(props) {
   useEffect(() => {
     setLoading(true);
     getLessonsForTopic(id).then(res => {
-      const response = res.data.lessons;
+      const newLessons = res.data.lessons;
       setLessons(res.data.lessons);
-      setCodeSnippets(response.map(response => response.code));
+      setCodeSnippets(newLessons.map(lesson => lesson.code));
       setLoading(false);
     });
   }, []);
@@ -49,14 +49,14 @@ function Labs(props) {
     history.push('/');
   }
 
-  const BackButton = props =>
+  const BackButton = () =>
     typeof lessons[lessonNum - 1] !== 'undefined' ? (
-      <button className="button is-primary" onClick={() => handlePrev()}>
+      <button className="button is-primary" onClick={() => handlePrev()} type="button">
         <i className="fas fa-arrow-left" style={{ marginRight: '0.4rem' }} />
         Prev
       </button>
     ) : (
-      <button className="button is-primary" onClick={() => handlePrev()} disabled>
+      <button className="button is-primary" onClick={() => handlePrev()} disabled type="button">
         <i className="fas fa-arrow-left" style={{ marginRight: '0.4rem' }} />
         Prev
       </button>
@@ -64,13 +64,17 @@ function Labs(props) {
 
   const NextButton = props =>
     typeof lessons[lessonNum + 1] !== 'undefined' ? (
-      <button className="button is-primary" onClick={() => handleNext()}>
+      <button className="button is-primary" onClick={() => handleNext()} type="button">
         Next
         <br />
         <i className="fas fa-arrow-right" style={{ marginLeft: '0.4rem' }} />
       </button>
     ) : (
-      <button className="button is-success" onClick={() => handleFinish(props.authUser.uid)}>
+      <button
+        className="button is-success"
+        onClick={() => handleFinish(props.authUser.uid)}
+        type="button"
+      >
         Finish
         <i className="fas fa-check" style={{ marginLeft: '0.4rem' }} />
       </button>
