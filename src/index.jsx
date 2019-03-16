@@ -1,21 +1,26 @@
-import React from 'react';
+import React, { setGlobal } from 'reactn';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Notifications from 'react-notify-toast';
 
 import App from './components/App/App';
-import Firebase, { FirebaseContext } from './Auth/Firebase';
+import AuthService, { AuthContext } from './Auth';
 import * as serviceWorker from './serviceWorker';
 
 import './index.scss';
 
+setGlobal({
+  user: JSON.parse(localStorage.getItem('user')),
+});
+
 ReactDOM.render(
   <Router>
-    <FirebaseContext.Provider value={new Firebase()}>
+    <AuthContext.Provider value={new AuthService()}>
       <Notifications />
       <App />
-    </FirebaseContext.Provider>
+    </AuthContext.Provider>
   </Router>,
+  // eslint-disable-next-line
   document.getElementById('root')
 );
 serviceWorker.unregister();

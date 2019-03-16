@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useGlobal } from 'reactn';
 import PropTypes from 'prop-types';
 
-import { withAuthorization, AuthUserContext } from '../Session/Session';
 import { getTopics, getCompletedTopics } from '../../helpers/apiLink';
 
 import loading from '../../assets/img/loading.svg';
@@ -9,16 +8,14 @@ import Topic from './Topic/Topic';
 import './Topics.scss';
 
 function Topics() {
-  return (
-    <AuthUserContext.Consumer>
-      {authUser => authUser && <TopicsViewer authUser={authUser} />}
-    </AuthUserContext.Consumer>
-  );
+  const [user] = useGlobal('user');
+  return user && <TopicsViewer authUser={user} />;
 }
 
 const propTypes = {
   authUser: PropTypes.object,
 };
+
 const defaultProps = {
   authUser: null,
 };
@@ -40,7 +37,7 @@ class TopicsViewer extends React.Component {
       })
     );
 
-    getCompletedTopics(this.props.authUser.uid).then(res =>
+    getCompletedTopics(this.props.authUser.userIdentifier).then(res =>
       this.setState({
         completedTopics: res,
         isLoading: false,
@@ -94,6 +91,4 @@ class TopicsViewer extends React.Component {
 TopicsViewer.propTypes = propTypes;
 TopicsViewer.defaultProps = defaultProps;
 
-const condition = authUser => !!authUser;
-
-export default withAuthorization(condition)(Topics);
+export default Topics;

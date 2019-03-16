@@ -15,6 +15,7 @@ const propTypes = {
   history: PropTypes.object.isRequired,
   prerequisites: PropTypes.array.isRequired,
 };
+
 const defaultProps = {
   disabled: false,
   title: 'Title',

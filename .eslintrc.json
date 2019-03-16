@@ -6,5 +6,6 @@
     "react/destructuring-assignment": false,
     "react/forbid-prop-types": false,
     "no-else-return": 0
-  }
+  },
+  "globals": { "localStorage": true, "fetch": true, "it": true, "document": true }
 }

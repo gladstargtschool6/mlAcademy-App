@@ -1,12 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Markdown from 'markdown-to-jsx';
 
-LessonContent.defaultProps = {
-  lesson: {
-    name: 'Name',
-    content: '# Title'
-  }
+const propTypes = {
+  lesson: PropTypes.object.isRequired,
 };
+
+const defaultProps = {};
 
 function LessonContent(props) {
   const { lesson } = props;
@@ -18,4 +18,8 @@ function LessonContent(props) {
     </div>
   );
 }
+
+LessonContent.propTypes = propTypes;
+LessonContent.defaultProps = defaultProps;
+
 export default LessonContent;
