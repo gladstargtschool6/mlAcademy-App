@@ -1,11 +1,34 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useGlobal, useState } from 'reactn';
+import PropTypes from 'prop-types';
+import { NavLink, withRouter } from 'react-router-dom';
+import { notify } from 'react-notify-toast';
+
+import { withAuthService } from '../../Auth';
 
 import './Header.scss';
 import logo from '../../assets/img/logos/text_black.png';
 
-function HeaderNoAuth() {
+const propTypes = {
+  authService: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+};
+const defaultProps = {};
+
+function HeaderNoAuth(props) {
+  const { authService, history } = props;
   const [isActive, setIsActive] = useState(false);
+  const [, setUser] = useGlobal('user');
+
+  function handleLogin() {
+    authService.login().then(newUser => {
+      if (newUser) {
+        localStorage.setItem('user', JSON.stringify(newUser));
+        setUser(newUser);
+        notify.show('You have been logged in successfully!', 'success');
+        history.replace('/');
+      }
+    });
+  }
 
   return (
     <nav
@@ -20,6 +43,7 @@ function HeaderNoAuth() {
           <img src={logo} alt="home" />
         </NavLink>
         <button
+          type="button"
           aria-label="Show Menu"
           className={`burger hamburger hamburger--vortex
             ${isActive && ` is-active`}`}
@@ -32,7 +56,7 @@ function HeaderNoAuth() {
       </div>
       <div className={isActive ? 'navbar-menu is-active' : 'navbar-menu'}>
         <div className="navbar-start">
-          <NavLink className="navbar-item" to="/topics" activeClassName="is-active">
+          <NavLink className="navbar-item" to="/login" activeClassName="is-active">
             <span className="icon" style={{ marginRight: 5 }}>
               <i className="fas fa-lg fa-graduation-cap" />
             </span>
@@ -42,12 +66,14 @@ function HeaderNoAuth() {
         <div className="navbar-end">
           <div className="navbar-item">
             <div className="buttons">
-              <NavLink to="/signup" className="button is-primary">
-                <strong>Sign Up</strong>
-              </NavLink>
-              <NavLink to="/login" className="button is-light">
-                Log in
-              </NavLink>
+              <button
+                onClick={handleLogin}
+                type="button"
+                to="/signup"
+                className="button is-primary"
+              >
+                <strong>Log In</strong>
+              </button>
             </div>
           </div>
         </div>
@@ -56,4 +82,7 @@ function HeaderNoAuth() {
   );
 }
 
-export default HeaderNoAuth;
+HeaderNoAuth.propTypes = propTypes;
+HeaderNoAuth.defaultProps = defaultProps;
+
+export default withRouter(withAuthService(HeaderNoAuth));

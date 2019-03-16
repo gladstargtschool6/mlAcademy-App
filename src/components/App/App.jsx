@@ -1,8 +1,5 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-
-import { withAuthentication } from '../Session/Session';
-
 import Routes from '../Routes/Routes';
 import Site from './Site';
 import Header from '../Header/Header';
@@ -37,4 +34,4 @@ function App() {
 
 App.propTypes = {};
 
-export default withAuthentication(App);
+export default App;

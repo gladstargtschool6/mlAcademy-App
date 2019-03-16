@@ -80,6 +80,7 @@ $pill-height: 1.6rem;
 }
 
 .topic-wrapper > .available {
+  cursor: pointer !important;
   color: black;
   font-weight: 700;
   background-color: $link;

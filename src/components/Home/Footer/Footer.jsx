@@ -14,7 +14,7 @@ function Footer() {
                 src={partner1.image}
                 alt={partner1.url}
                 style={{
-                  height: '40px'
+                  height: '40px',
                 }}
                 className="animated-svg"
               />
@@ -33,7 +33,7 @@ function Footer() {
                 src={partner2.image}
                 alt={partner2.url}
                 style={{
-                  height: '40px'
+                  height: '40px',
                 }}
                 className="animated-svg"
               />

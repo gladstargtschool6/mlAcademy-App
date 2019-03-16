@@ -17,6 +17,7 @@ const defaultProps = {};
 
 function Editor(props) {
   const { lessonNum, codeSnippet } = props;
+  const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState(``);
   const [lastLessonNum, setLessonNum] = useState(0);
   const [currentCode, setCode] = useState(codeSnippet);
@@ -34,7 +35,11 @@ function Editor(props) {
   }
 
   function computeOutput() {
-    getOutput(currentCode).then(res => setResult(res));
+    setIsLoading(true);
+    getOutput(currentCode).then(res => {
+      setResult(res);
+      setIsLoading(false);
+    });
   }
 
   function hasResult() {
@@ -113,7 +118,7 @@ function Editor(props) {
       <div className="submit-button-wrapper">
         <button
           type="button"
-          className="button is-info submit-button"
+          className={`button is-info submit-button ${isLoading && 'is-loading'}`}
           onClick={computeOutput}
           style={{ width: '10rem' }}
         >

@@ -1,31 +1,40 @@
-import React from 'react';
+import React, { useGlobal } from 'reactn';
 import PropTypes from 'prop-types';
-import { Switch, Route } from 'react-router-dom';
-
+import { Switch, Redirect, Route } from 'react-router-dom';
 import Home from '../Home/Home';
 import Topics from '../Topics/Topics';
 import Labs from '../Labs/Labs';
-import SplashContainer from './SplashContainer';
 import NotFound from './NotFound';
+import Login from './Login';
 
 const LabLoader = ({ match: { params } }) => {
-  const { id } = params;
-  return <Labs id={id} />;
+  const { lessonId } = params;
+  return <Labs lessonId={lessonId} />;
 };
 LabLoader.propTypes = {
   match: PropTypes.object.isRequired,
 };
 
-const Routes = () => (
-  <Switch>
-    <Route exact path="/" component={Home} />
-    <Route path="/topics" component={Topics} />
-    <Route path="/labs/:id" render={props => <LabLoader {...props} />} />
-    <Route path="/signup" component={() => <SplashContainer type="signup" />} />
-    <Route path="/login" component={() => <SplashContainer type="login" />} />
-    <Route path="/forgot" component={() => <SplashContainer type="forgot" />} />
-    <Route path="/reset" component={() => <SplashContainer type="reset" />} />
-    <Route component={NotFound} />
-  </Switch>
-);
+function Routes() {
+  const [user, setUser] = useGlobal('user');
+  function Logout() {
+    localStorage.clear();
+    setUser(null);
+    return <Redirect to="/" />;
+  }
+
+  return (
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route path="/topics" render={() => (user ? <Topics /> : <Redirect to="/" />)} />
+      <Route
+        path="/labs/:lessonId"
+        render={props => (user ? <LabLoader {...props} /> : <Redirect to="/" />)}
+      />
+      <Route path="/login" component={Login} />
+      <Route path="/logout" component={Logout} />
+      <Route render={NotFound} />
+    </Switch>
+  );
+}
 export default Routes;
