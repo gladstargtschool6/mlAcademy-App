@@ -23,9 +23,7 @@ export default class AuthService {
           return null;
         }
       },
-      () => {
-        return null;
-      }
+      () => null
     );
   }
 
