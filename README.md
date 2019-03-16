@@ -10,7 +10,6 @@
 
 # mlAcademy - An Interactive educational platform for high-school students, specializing in machine learning
 
-
 _Written in React (w/ React Router, styled-components, Hooks, Bulma, Axios, Ace Editor + more)_
 
 **Available at [https://mlacademy.ml](https://mlacademy.ml)**
@@ -31,15 +30,19 @@ $ git clone https://github.com/mlacademy/myacademy-oss.git
 
 $ cd myacademy-oss
 
+$ cp .env.example .env
+
 $ yarn install
 
 ```
+
+_Change variables in .env_
 
 ### Run Locally
 
 ```bash
 
-# In myacademy-oss/src 
+# In myacademy-oss/src
 
 $ yarn start
 
