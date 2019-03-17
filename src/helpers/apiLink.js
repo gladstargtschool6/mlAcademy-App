@@ -31,9 +31,11 @@ export function initializeUserWithUid(uid) {
 }
 
 export function getCompletedTopics(uid) {
+  initializeUserWithUid(uid);
   return axios.get(`${apiUrl}/students/`, { params: { uid } }).then(res => res.data.topics);
 }
 
 export function addCompletedTopic(uid, id) {
+  initializeUserWithUid(uid);
   return axios.post(`${apiUrl}/students/?uid=${uid}&action=add-topic&topic-id=${id}`);
 }
