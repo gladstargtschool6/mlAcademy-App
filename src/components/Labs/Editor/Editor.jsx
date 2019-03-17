@@ -83,7 +83,7 @@ function Editor(props) {
       <div className="submit-button-wrapper has-background-light">
         <button
           type="button"
-          className="button is-info submit-button"
+          className={`button is-info submit-button ${isLoading && 'is-loading'}`}
           onClick={computeOutput}
           style={{ width: '10rem' }}
         >
