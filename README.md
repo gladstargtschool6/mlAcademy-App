@@ -22,7 +22,7 @@ Authored by:
 
 ## Demonstration
 
-[![DEMO](https://mlacademy.blob.core.windows.net/assets/DEMO_FINAL.gif)](https://mlacademy.ml)
+[![DEMO](https://mlacademy.blob.core.windows.net/assets/demo.gif)](https://mlacademy.ml)
 
 ## Usage
 
