@@ -17,6 +17,7 @@ LabLoader.propTypes = {
 
 function Routes() {
   const [user, setUser] = useGlobal('user');
+
   function Logout() {
     localStorage.clear();
     setUser(null);
