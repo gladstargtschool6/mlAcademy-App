@@ -10,7 +10,7 @@
 
 # mlAcademy - An Interactive educational platform for high-school students, specializing in machine learning
 
-_Written in React (w/ React Router, styled-components, Hooks, Bulma, Axios, Ace Editor + more)_
+_Written in React (w/ React Router, styled-components, Hooks, Bulma, Axios, Ace Editor, Azure AD + more)_
 
 **Available at [https://mlacademy.ml](https://mlacademy.ml)**
 
