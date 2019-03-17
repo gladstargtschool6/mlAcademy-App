@@ -34,7 +34,7 @@ Authored by:
 
 git clone https://github.com/mlacademy/frontend.git
 
-cd myacademy-oss
+cd frontend
 
 cp .env.example .env
 
