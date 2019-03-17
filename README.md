@@ -1,4 +1,4 @@
-<p align="center"><img width=60% alt="Logo" src="https://mlacademy.blob.core.windows.net/assets/text_black_large.png"></p>
+<p align="center"><a href="https://mlacademy.ml"><img width=60% alt="Logo" src="https://mlacademy.blob.core.windows.net/assets/text_black_large.png"></a></p>
 
 ![React](https://img.shields.io/badge/React-16.8.4-61DAFB.svg)
 ![Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)
@@ -22,7 +22,7 @@ Authored by:
 
 ## Demonstration
 
-<p align="center"><img width=100% alt="Demo" src="https://mlacademy.blob.core.windows.net/assets/DEMO_FINAL.gif"></p>
+[![DEMO](https://mlacademy.blob.core.windows.net/assets/DEMO_FINAL.gif)](https://mlacademy.ml)
 
 ## Usage
 
@@ -32,7 +32,7 @@ Authored by:
 
 ```bash
 
-git clone https://github.com/mlacademy/myacademy-oss.git
+git clone https://github.com/mlacademy/frontend.git
 
 cd myacademy-oss
 
