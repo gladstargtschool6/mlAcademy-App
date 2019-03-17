@@ -1,4 +1,4 @@
-<p align="center"><img width=60% src="https://mlacademy.blob.core.windows.net/assets/text_black_large.png"></p>
+<p align="center"><img width=60% alt="Logo" src="https://mlacademy.blob.core.windows.net/assets/text_black_large.png"></p>
 
 ![React](https://img.shields.io/badge/React-16.8.4-61DAFB.svg)
 ![Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)
@@ -20,19 +20,25 @@ Authored by:
 - Sotirios Vavaroutas
 - Samuil Stoychev
 
+## Demonstration
+
+<p align="center"><img width=100% alt="Demo" src="https://mlacademy.blob.core.windows.net/assets/DEMO_FINAL.gif"></p>
+
+## Usage
+
 ### Set Up
 
 [_Make sure you have yarn installed_](https://yarnpkg.com/lang/en/docs/install/)
 
 ```bash
 
-$ git clone https://github.com/mlacademy/myacademy-oss.git
+git clone https://github.com/mlacademy/myacademy-oss.git
 
-$ cd myacademy-oss
+cd myacademy-oss
 
-$ cp .env.example .env
+cp .env.example .env
 
-$ yarn install
+yarn install
 
 ```
 
@@ -42,8 +48,8 @@ _Change variables in .env_
 
 ```bash
 
-# In myacademy-oss/src
+# In frontend/src
 
-$ yarn start
+yarn start
 
 ```
