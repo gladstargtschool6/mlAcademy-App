@@ -1,6 +1,5 @@
 <p align="center"><img width=60% src="https://mlacademy.blob.core.windows.net/assets/text_black_large.png"></p>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![React](https://img.shields.io/badge/React-16.8.4-61DAFB.svg)
 ![Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/efe03ce7bc2d4c95a32e498e08218991)](https://app.codacy.com/app/mlAcademy/frontend?utm_source=github.com&utm_medium=referral&utm_content=mlAcademy/frontend&utm_campaign=Badge_Grade_Dashboard)
