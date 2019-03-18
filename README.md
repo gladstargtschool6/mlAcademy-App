@@ -16,9 +16,9 @@ _Written in React (w/ React Router, styled-components, Hooks, Bulma, Axios, Ace 
 
 Authored by:
 
-- Adam Peace
-- Sotirios Vavaroutas
-- Samuil Stoychev
+- Samuil Stoychev [@samuil1998](https://github.com/samuil1998)
+- Adam Peace [@adamnpeace](https://github.com/adamnpeace)
+- Sotirios Vavaroutas [@svavaroutas](https://github.com/svavaroutas)
 
 ## Demonstration
 
