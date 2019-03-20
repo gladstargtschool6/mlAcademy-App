@@ -54,7 +54,7 @@ function Editor(props) {
 
   return hasResult() ? (
     <>
-      <div className="ace-editor-has-result">
+      <div className="ace-editor">
         <AceEditor
           style={style}
           mode="python"
@@ -77,6 +77,9 @@ function Editor(props) {
       </div>
 
       <div className="result-window has-background-light">
+        <button type="button" className="button is-info" onClick={() => setResult('')}>
+          <i className="fas fa-times" style={{ color: 'white' }} />
+        </button>
         <p className="is-size-4">Result:</p>
         <p className="is-family-code">{result}</p>
       </div>
