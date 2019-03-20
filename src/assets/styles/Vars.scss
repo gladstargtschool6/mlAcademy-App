@@ -1,9 +1,11 @@
 $primary: #7d4cdb;
+$dark-primary: #570786b0;
+$light-primary: #c07efd;
 $link: #81fced;
 $info: #1f7cba;
-$grad1: linear-gradient(#c07efd, $primary);
+$grad1: linear-gradient($light-primary, $primary);
 $grad2: linear-gradient(to right, rgba(155, 3, 155, 0.432), #c07efd9c);
-$grad3: linear-gradient(to left, #570786b0, #c07efd9c);
+$grad3: linear-gradient(to left, $dark-primary, #c07efd9c);
 $grad4: linear-gradient(to right, rgba(136, 89, 211, 0.692), #c07efd9c);
 
 $phone-breakpoint: 450px;
