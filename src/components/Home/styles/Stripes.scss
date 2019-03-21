@@ -27,7 +27,7 @@ header .stripes {
 }
 
 header .stripes :nth-child(1) {
-  grid-column: span 3;
+  grid-column: span 5;
   background-image: $grad2;
 }
 
@@ -43,5 +43,5 @@ header .stripes :nth-child(3) {
 }
 header .stripes :nth-child(4) {
   grid-area: 7 / span 3 / auto / -1;
-  background-image: $grad4;
+  background-image: $grad3;
 }
