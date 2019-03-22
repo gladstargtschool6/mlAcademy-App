@@ -1,12 +1,26 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import Routes from '../Routes/Routes';
+import { useRoutes } from 'hookrouter';
 import Site from './Site';
 import Header from '../Header/Header';
 import Content from './Content';
 import { info } from '../../assets/constants';
+import NotFound from '../Routes/NotFound';
+
+import Home from '../Home/Home';
+import Labs from '../Labs/Labs';
+import Login from '../Login/Login';
+import Topics from '../Topics/Topics';
+
+const routes = {
+  '/': () => <Home />,
+  '/topics': () => <Topics />,
+  '/labs/:id': ({ id }) => <Labs lessonId={id} />,
+  '/login': () => <Login />,
+};
 
 function App() {
+  const routeResult = useRoutes(routes);
   const { name, tagline } = info;
   return (
     <Site>
@@ -25,9 +39,7 @@ function App() {
         ]}
       />
       <Header />
-      <Content>
-        <Routes />
-      </Content>
+      <Content>{routeResult || <NotFound />}</Content>
     </Site>
   );
 }

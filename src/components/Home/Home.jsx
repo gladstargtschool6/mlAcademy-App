@@ -1,5 +1,5 @@
 import React, { useGlobal } from 'reactn';
-import { Link } from 'react-router-dom';
+import { A } from 'hookrouter';
 import styled from 'styled-components';
 
 import { info } from '../../assets/constants';
@@ -62,7 +62,7 @@ function Home() {
               </div>
             </div>
             {!user && (
-              <MSButton type="button" as={Link} to="/login">
+              <MSButton type="button" as={A} href="/login">
                 <p>Sign In With Microsoft</p>
                 <i className="fab fa-microsoft fa-lg" />
               </MSButton>
@@ -87,9 +87,9 @@ function Home() {
           </div>
         ))}
         <div className="final-group primary-grad has-text-centered">
-          <Link to="/login" className="title has-text-white">
+          <A href="/login" className="title has-text-white">
             Get Started Now!
-          </Link>
+          </A>
         </div>
       </div>
       <Footer />

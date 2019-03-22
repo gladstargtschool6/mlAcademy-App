@@ -1,6 +1,6 @@
 import React, { useGlobal } from 'reactn';
 import PropTypes from 'prop-types';
-import { Redirect, withRouter } from 'react-router-dom';
+import { useRedirect } from 'hookrouter';
 import { notify } from 'react-notify-toast';
 
 import { withAuthService } from '../../Auth';
@@ -23,10 +23,10 @@ function Login(props) {
       history.replace('/topics');
     }
   });
-  return <Redirect to="/" />;
+  useRedirect('/');
 }
 
 Login.propTypes = propTypes;
 Login.defaultProps = defaultProps;
 
-export default withRouter(withAuthService(Login));
+export default withAuthService(Login);

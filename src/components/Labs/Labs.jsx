@@ -1,7 +1,7 @@
 import React, { useGlobal, useState, useEffect } from 'reactn';
 import PropTypes from 'prop-types';
 import { notify } from 'react-notify-toast';
-import { withRouter } from 'react-router-dom';
+import A from 'hookrouter';
 
 import { getLessonsForTopic, addCompletedTopic } from '../../helpers/apiLink';
 
@@ -105,4 +105,4 @@ function Labs(props) {
 Labs.propTypes = propTypes;
 Labs.defaultProps = defaultProps;
 
-export default withRouter(Labs);
+export default Labs;

@@ -1,6 +1,6 @@
 import React, { useGlobal, useState } from 'reactn';
 import PropTypes from 'prop-types';
-import { NavLink, withRouter } from 'react-router-dom';
+import { A } from 'hookrouter';
 import { notify } from 'react-notify-toast';
 
 import { withAuthService } from '../../Auth';
@@ -39,9 +39,9 @@ function HeaderNoAuth(props) {
       }}
     >
       <div className="navbar-brand">
-        <NavLink className="navbar-item" to="/" activeClassName="is-active">
+        <A className="navbar-item" href="/" activeClassName="is-active">
           <img src={logo} alt="home" />
-        </NavLink>
+        </A>
         <button
           type="button"
           aria-label="Show Menu"
@@ -56,12 +56,12 @@ function HeaderNoAuth(props) {
       </div>
       <div className={isActive ? 'navbar-menu is-active' : 'navbar-menu'}>
         <div className="navbar-start">
-          <NavLink className="navbar-item" to="/login" activeClassName="is-active">
+          <A className="navbar-item" href="/login" activeClassName="is-active">
             <span className="icon" style={{ marginRight: 5 }}>
               <i className="fas fa-lg fa-graduation-cap" />
             </span>
             Learn
-          </NavLink>
+          </A>
         </div>
         <div className="navbar-end">
           <div className="navbar-item">
@@ -85,4 +85,4 @@ function HeaderNoAuth(props) {
 HeaderNoAuth.propTypes = propTypes;
 HeaderNoAuth.defaultProps = defaultProps;
 
-export default withRouter(withAuthService(HeaderNoAuth));
+export default withAuthService(HeaderNoAuth);

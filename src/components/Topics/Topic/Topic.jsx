@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { navigate } from 'hookrouter';
 import { notify } from 'react-notify-toast';
 
 import './Topic.scss';
@@ -12,7 +12,6 @@ const propTypes = {
   description: PropTypes.string,
   id: PropTypes.number,
   imageUrl: PropTypes.string,
-  history: PropTypes.object.isRequired,
   prerequisites: PropTypes.array.isRequired,
 };
 
@@ -25,7 +24,7 @@ const defaultProps = {
 };
 
 function Topic(props) {
-  const { title, complete, disabled, description, id, imageUrl, history, prerequisites } = props;
+  const { title, complete, disabled, description, id, imageUrl, prerequisites } = props;
   function handleClick() {
     if (disabled) {
       notify.show(
@@ -35,7 +34,7 @@ function Topic(props) {
         'error'
       );
     } else {
-      history.push(`/labs/${id}`);
+      navigate(`/labs/${id}`);
     }
   }
 
@@ -72,4 +71,4 @@ function Topic(props) {
 Topic.propTypes = propTypes;
 Topic.defaultProps = defaultProps;
 
-export default withRouter(Topic);
+export default Topic;

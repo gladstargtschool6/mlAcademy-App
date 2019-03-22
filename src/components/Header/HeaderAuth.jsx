@@ -1,7 +1,6 @@
 import React, { useGlobal, useState } from 'reactn';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
-
+import { A } from 'hookrouter';
 import { withAuthService } from '../../Auth';
 
 import logo from '../../assets/img/logos/text_black.png';
@@ -31,9 +30,9 @@ function HeaderAuth(props) {
       }}
     >
       <div className="navbar-brand">
-        <NavLink className="navbar-item" to="/" activeClassName="is-active">
+        <A className="navbar-item" href="/" activeClassName="is-active">
           <img src={logo} alt="home" />
-        </NavLink>
+        </A>
         <button
           type="button"
           aria-label="Show Menu"
@@ -48,12 +47,12 @@ function HeaderAuth(props) {
       </div>
       <div className={isActive ? 'navbar-menu is-active' : 'navbar-menu'}>
         <div className="navbar-start">
-          <NavLink className="navbar-item" to="/topics" activeClassName="is-active">
+          <A className="navbar-item" href="/topics" activeClassName="is-active">
             <span className="icon" style={{ marginRight: 5 }}>
               <i className="fas fa-lg fa-graduation-cap" />
             </span>
             Learn
-          </NavLink>
+          </A>
         </div>
         <div className="navbar-end">
           <div className="navbar-item has-dropdown is-hoverable">

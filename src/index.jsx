@@ -1,6 +1,5 @@
 import React, { setGlobal } from 'reactn';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
 import Notifications from 'react-notify-toast';
 
 import App from './components/App/App';
@@ -14,12 +13,10 @@ setGlobal({
 });
 
 ReactDOM.render(
-  <Router>
-    <AuthContext.Provider value={new AuthService()}>
-      <Notifications />
-      <App />
-    </AuthContext.Provider>
-  </Router>,
+  <AuthContext.Provider value={new AuthService()}>
+    <Notifications />
+    <App />
+  </AuthContext.Provider>,
   // eslint-disable-next-line
   document.getElementById('root')
 );
