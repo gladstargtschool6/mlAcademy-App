@@ -87,7 +87,7 @@ function Home() {
           </div>
         ))}
         <div className="final-group primary-grad has-text-centered">
-          <Link to="/login" className="title has-text-white">
+          <Link to={`${user ? `/topics` : `/login`}`} className="title has-text-white">
             Get Started Now!
           </Link>
         </div>
