@@ -8,14 +8,13 @@ import partner2 from './img/partner_2.svg';
 
 export const info = {
   name: 'mlAcademy',
-  tagline:
-    'An interactive educational platform for high-school students, specializing in machine learning',
+  tagline: 'Learn to code in Python through interactive Machine Learning labs.',
   features: [
     {
-      title: `Flexible`,
-      icon: `fas fa-edit fa-3x`,
-      image: flexible,
-      description: `New topics and lessons can be added with ease as markdown files through our bespoke content management system.`,
+      title: `Integrated with Tensorflow`,
+      icon: `fab fa-python fa-3x`,
+      image: python,
+      description: `Tensorflow is at the leading edge of Machine Learning computational libraries. Use our online Python interpreter to experiment with Keras, NumPy and TensorFlow with the guidance of our easy to follow lessons.`,
     },
     {
       title: `Educational`,
@@ -24,10 +23,10 @@ export const info = {
       description: `Designed to be interactive to provide a fundamental understanding of Machine Learning while remaining approachable and fun.`,
     },
     {
-      title: `Python`,
-      icon: `fab fa-python fa-3x`,
-      image: python,
-      description: `Use our online Python interpreter to experiment with Keras, NumPy and TensorFlow with the guidance of our easy to follow lessons.`,
+      title: `Flexible`,
+      icon: `fas fa-edit fa-3x`,
+      image: flexible,
+      description: `New topics and lessons can be added with ease as markdown files through our bespoke content management system.`,
     },
     {
       title: `Extensible`,
