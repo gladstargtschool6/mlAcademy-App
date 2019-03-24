@@ -61,12 +61,11 @@ function Home() {
                 </div>
               </div>
             </div>
-            {!user && (
-              <MSButton type="button" as={Link} to="/login">
-                <p>Sign In With Microsoft</p>
-                <i className="fab fa-microsoft fa-lg" />
-              </MSButton>
-            )}
+            <div className="tablet">
+              <div className="tablet-landscape">
+                <img src="https://mlacademy.blob.core.windows.net/assets/mlAcademy.png" alt="" />
+              </div>
+            </div>
           </section>
         </header>
       </div>

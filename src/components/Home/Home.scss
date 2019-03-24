@@ -1,6 +1,7 @@
 @import '../../assets/styles/Vars.scss';
 @import './styles/Header.scss';
 @import './styles/Main.scss';
+@import './styles/Devices.scss';
 
 .animated-svg {
   -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -23,6 +24,10 @@
 
 @media (max-height: $phone-breakpoint-vert) and (max-width: $phone-breakpoint) {
   #signup-window {
+    display: none;
+  }
+  .tablet,
+  .tablet div {
     display: none;
   }
 }
