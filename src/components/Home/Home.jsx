@@ -62,10 +62,9 @@ function Home() {
               </div>
             </div>
             {!user && (
-              <MSButton type="button" as={Link} to="/login">
-                <p>Sign In With Microsoft</p>
-                <i className="fab fa-microsoft fa-lg" />
-              </MSButton>
+              <button type="button" className="cta button" as={Link} to="/login">
+                Learn Now!
+              </button>
             )}
           </section>
         </header>
