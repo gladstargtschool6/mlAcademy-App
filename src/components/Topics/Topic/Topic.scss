@@ -71,7 +71,7 @@ button:focus {
 $pill-height: 1.6rem;
 .topic-wrapper > .status-pill {
   position: absolute;
-  z-index: 100;
+  z-index: 500;
   top: 5%;
   right: 5%;
   height: $pill-height;
@@ -81,6 +81,7 @@ $pill-height: 1.6rem;
   border-radius: 1rem;
   font-weight: 700;
 }
+
 .topic-wrapper > .complete {
   color: white;
   font-weight: 700;
@@ -88,10 +89,16 @@ $pill-height: 1.6rem;
 }
 
 .topic-wrapper > .available {
-  cursor: pointer !important;
   color: black;
   font-weight: 700;
   background-color: $link;
+}
+
+.topic-wrapper > .comingSoon {
+  cursor: not-allowed;
+  color: black;
+  font-weight: 700;
+  background-color: $danger;
 }
 
 .disabled {

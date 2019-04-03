@@ -9,6 +9,7 @@ const propTypes = {
   title: PropTypes.string,
   complete: PropTypes.bool.isRequired,
   disabled: PropTypes.bool,
+  comingSoon: PropTypes.bool,
   description: PropTypes.string,
   id: PropTypes.number,
   imageUrl: PropTypes.string,
@@ -19,15 +20,29 @@ const propTypes = {
 const defaultProps = {
   disabled: false,
   title: 'Title',
+  comingSoon: false,
   description: 'This is the description',
   id: 20,
   imageUrl: '',
 };
 
 function Topic(props) {
-  const { title, complete, disabled, description, id, imageUrl, history, prerequisites } = props;
+  const {
+    title,
+    comingSoon,
+    complete,
+    disabled,
+    description,
+    id,
+    imageUrl,
+    history,
+    prerequisites,
+  } = props;
+
   function handleClick() {
-    if (disabled) {
+    if (comingSoon) {
+      notify.show(`This topic is coming soon 👀`, 'warning');
+    } else if (disabled) {
       notify.show(
         `You need to complete ${prerequisites.map(
           prerequisite => prerequisite.name
@@ -51,6 +66,7 @@ function Topic(props) {
       {!disabled && !complete && (
         <div className="status-pill available is-family-primary">Available</div>
       )}
+      {comingSoon && <div className="status-pill comingSoon is-family-primary">Coming Soon</div>}
       <div className="overlay" />
       <div className="topic-image">
         <img
