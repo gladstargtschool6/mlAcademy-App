@@ -73,7 +73,6 @@ class TopicsViewer extends React.Component {
     const filteredTopics = topics.filter(
       topic => topic.name.toLowerCase().indexOf(searchString.toLowerCase()) !== -1
     );
-    console.log(filteredTopics);
     return isLoading ? (
       <img src={loading} alt="..." style={{ position: 'absolute', top: '30vh', left: '48vw' }} />
     ) : (
