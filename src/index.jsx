@@ -16,11 +16,11 @@ setGlobal({
 ReactDOM.render(
   <Router>
     <AuthContext.Provider value={new AuthService()}>
-      <Notifications />
+      <Notifications options={{ timeout: 1500, wrapperId: 'toast' }} />
       <App />
     </AuthContext.Provider>
   </Router>,
   // eslint-disable-next-line
   document.getElementById('root')
 );
-serviceWorker.unregister();
+serviceWorker.register();

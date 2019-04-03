@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useGlobal } from 'reactn';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import Routes from '../Routes/Routes';
 import Site from './Site';
 import Header from '../Header/Header';
 import Content from './Content';
 import { info } from '../../assets/constants';
+import { withAuthService } from '../../Auth';
 
-function App() {
+const propTypes = {
+  authService: PropTypes.object.isRequired,
+};
+const defaultProps = {};
+
+function App(props) {
   const { name, tagline } = info;
+  const { authService } = props;
+  const [user, setUser] = useGlobal('user');
+  const newUser = authService.getCurrentUser();
+  if (user !== newUser) {
+    localStorage.setItem('user', JSON.stringify(newUser));
+    setUser(newUser);
+  }
+
   return (
     <Site>
       <Helmet
@@ -32,6 +47,7 @@ function App() {
   );
 }
 
-App.propTypes = {};
+App.propTypes = propTypes;
+App.defaultProps = defaultProps;
 
-export default App;
+export default withAuthService(App);
