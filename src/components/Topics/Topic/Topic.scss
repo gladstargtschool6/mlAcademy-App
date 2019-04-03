@@ -8,6 +8,7 @@
   position: relative;
   display: inline-block;
   width: 30rem;
+  min-width: 375px;
   overflow-wrap: normal;
   border-radius: $border-radius;
   box-shadow: 0px 1px 2px #ccc;
@@ -58,6 +59,13 @@ button:focus {
 .topic-content {
   padding: 2rem;
   height: 7rem;
+}
+
+@media (max-width: 700px) {
+  .topic-content {
+    padding: 0.5rem;
+    height: auto;
+  }
 }
 
 $pill-height: 1.6rem;

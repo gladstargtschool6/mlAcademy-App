@@ -27,6 +27,10 @@ export default class AuthService {
     );
   }
 
+  getCurrentUser() {
+    return this.app.getUser();
+  }
+
   logout() {
     this.app.logout();
   }

@@ -1,2 +1,6 @@
 @import './assets/styles/BulmaOverwrites.scss';
 @import './assets/styles/Global.scss';
+
+#toast > div {
+  min-width: 300px;
+}
