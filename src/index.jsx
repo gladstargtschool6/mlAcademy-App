@@ -23,4 +23,4 @@ ReactDOM.render(
   // eslint-disable-next-line
   document.getElementById('root')
 );
-serviceWorker.unregister();
+serviceWorker.register();
