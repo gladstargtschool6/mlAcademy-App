@@ -1,6 +1,6 @@
 /* Stripes */
 header .stripes {
-  z-index: -1;
+  z-index: -100;
   display: grid;
   overflow: hidden;
   grid: repeat(7, 200px) / repeat(10, 1fr);
