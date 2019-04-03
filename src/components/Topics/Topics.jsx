@@ -86,6 +86,7 @@ class TopicsViewer extends React.Component {
               placeholder="Search Topics"
               value={searchString}
               onChange={this.onSearchChange.bind(this)}
+              aria-label="Search Topics"
             />
             <span className="icon is-small is-left">
               <i className="fas fa-search" />
