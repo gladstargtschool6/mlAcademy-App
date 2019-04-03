@@ -43,7 +43,7 @@ function Home() {
   const [user] = useGlobal('user');
 
   return (
-    <div style={{ '-webkit-overflow-scrolling': 'touch' }}>
+    <div style={{ '-webkit-overflow-scrolling': 'touch', bcakgroundColor: 'white' }}>
       <div className="splash-bg">
         <header>
           <div className="stripes">
@@ -88,7 +88,8 @@ function Home() {
         ))}
         <div className="final-group primary-grad has-text-centered">
           <Link to={`${user ? `/topics` : `/login`}`} className="title has-text-white">
-            Get Started Now!
+            {'Start Learning '}
+            <i>Now!</i>
           </Link>
         </div>
       </div>

@@ -25,6 +25,7 @@ class TopicsViewer extends React.Component {
     super(props);
     this.state = {
       topics: [],
+      searchString: '',
       completedTopics: [],
       isLoading: true,
     };
@@ -45,6 +46,10 @@ class TopicsViewer extends React.Component {
     );
   }
 
+  onSearchChange(event) {
+    this.setState({ searchString: event.target.value.substr(0, 20) });
+  }
+
   isTopicDisabled(topic) {
     if (topic.prerequisites.length === 0) {
       return false;
@@ -63,14 +68,32 @@ class TopicsViewer extends React.Component {
   }
 
   render() {
-    const { topics, isLoading } = this.state;
+    const { topics, searchString, isLoading } = this.state;
+
+    const filteredTopics = topics.filter(
+      topic => topic.name.toLowerCase().indexOf(searchString.toLowerCase()) !== -1
+    );
 
     return isLoading ? (
       <img src={loading} alt="..." style={{ position: 'absolute', top: '30vh', left: '48vw' }} />
     ) : (
       <div className="full-height-bg primary-grad">
+        <div className="search">
+          <p className="control has-icons-left">
+            <input
+              className="input is-rounded"
+              type="text"
+              placeholder="Search Topics"
+              value={searchString}
+              onChange={this.onSearchChange.bind(this)}
+            />
+            <span className="icon is-small is-left">
+              <i className="fas fa-search" />
+            </span>
+          </p>
+        </div>
         <div className="topics-wrapper">
-          {topics.map(topic => (
+          {filteredTopics.map(topic => (
             <Topic
               title={topic.name}
               description={topic.description}

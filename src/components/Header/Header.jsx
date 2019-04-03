@@ -18,8 +18,8 @@ function HeaderAuth(props) {
   const { authService, history } = props;
   const [isActive, setIsActive] = useState(false);
   const [user, setUser] = useGlobal('user');
-
   const location = history.location.pathname;
+
   function handleLogin() {
     authService.login().then(newUser => {
       if (newUser) {
