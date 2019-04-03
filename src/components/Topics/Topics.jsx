@@ -93,19 +93,23 @@ class TopicsViewer extends React.Component {
           </p>
         </div>
         <div className="topics-wrapper">
-          {filteredTopics.map(topic => (
-            <Topic
-              title={topic.name}
-              description={topic.description}
-              imageUrl={topic.image_url}
-              key={topic.id}
-              id={topic.id}
-              prerequisites={topic.prerequisites}
-              disabled={this.isTopicDisabled(topic)}
-              comingSoon={topic.colour === '2'}
-              complete={this.isTopicComplete(topic)}
-            />
-          ))}
+          {filteredTopics.length > 0 ? (
+            filteredTopics.map(topic => (
+              <Topic
+                title={topic.name}
+                description={topic.description}
+                imageUrl={topic.image_url}
+                key={topic.id}
+                id={topic.id}
+                prerequisites={topic.prerequisites}
+                disabled={this.isTopicDisabled(topic)}
+                comingSoon={topic.colour === '2'}
+                complete={this.isTopicComplete(topic)}
+              />
+            ))
+          ) : (
+            <p className="is-size-2">No Topics Found</p>
+          )}
         </div>
       </div>
     );
