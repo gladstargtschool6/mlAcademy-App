@@ -1,13 +1,18 @@
-$primary: #7d4cdb;
-$dark-primary: #570786b0;
-$light-primary: #c07efd;
+$primary-h: 260;
+$primary-s: 66;
+$primary-l: 58;
+$primary: hsl($primary-h, $primary-s, $primary-l);
+$dark-primary: hsl($primary-h + 10, $primary-s - 15, $primary-l - 20);
+$light-primary: hsl($primary-h + 10, $primary-s + 30, $primary-l + 15);
+
 $danger: hsl(348, 100%, 61%);
-$link: #81fced;
-$info: #1f7cba;
+$link: hsl(173, 95%, 75%);
+$info: hsl(204, 71%, 43%);
+
 $grad1: linear-gradient($light-primary, $primary);
-$grad2: linear-gradient(to right, rgba(155, 3, 155, 0.432), #c07efd9c);
-$grad3: linear-gradient(to left, $dark-primary, #c07efd9c);
-$grad4: linear-gradient(to right, rgba(136, 89, 211, 0.692), #c07efd9c);
+$grad2: linear-gradient(to right, hsl($primary-h + 20, $primary-s, $primary-l), $light-primary);
+$grad3: linear-gradient(to left, $dark-primary, $light-primary);
+$grad4: linear-gradient(to right, $primary, $light-primary);
 
 $phone-breakpoint: 450px;
 $phone-breakpoint-vert: 900px;
