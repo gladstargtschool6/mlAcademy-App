@@ -35,6 +35,14 @@ function HeaderAuth(props) {
     authService.logout();
   }
 
+  function toggleMenu() {
+    setIsActive(!isActive);
+  }
+
+  function closeMenu() {
+    setIsActive(false);
+  }
+
   return (
     <nav
       className="navbar"
@@ -44,7 +52,7 @@ function HeaderAuth(props) {
       }}
     >
       <div className="navbar-brand">
-        <NavLink className="navbar-item" to="/">
+        <NavLink className="navbar-item" to="/" onClick={closeMenu}>
           <img src={logo} alt="home" />
         </NavLink>
         <button
@@ -52,7 +60,7 @@ function HeaderAuth(props) {
           aria-label="Show Menu"
           className={`burger hamburger hamburger--vortex
             ${isActive && ` is-active`}`}
-          onClick={() => setIsActive(!isActive)}
+          onClick={toggleMenu}
         >
           <span className="hamburger-box">
             <span className="hamburger-inner" />
@@ -64,6 +72,7 @@ function HeaderAuth(props) {
           <NavLink
             className={`navbar-item ${location === '/topics' && `is-active`}`}
             to={user ? '/topics' : '/login'}
+            onClick={closeMenu}
           >
             <span className="icon" style={{ marginRight: 5 }}>
               <i className="fas fa-lg fa-graduation-cap" />
