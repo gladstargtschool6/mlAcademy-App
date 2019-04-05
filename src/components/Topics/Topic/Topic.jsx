@@ -60,9 +60,7 @@ function Topic(props) {
       onClick={handleClick}
       className={`topic-wrapper has-background-white ${disabled && `disabled`}`}
     >
-      {complete && (
-        <div className="status-pill complete is-family-primary has-text-white">Completed</div>
-      )}
+      {complete && <div className="status-pill complete is-family-primary">Completed</div>}
       {!disabled && !complete && (
         <div className="status-pill available is-family-primary">Available</div>
       )}
