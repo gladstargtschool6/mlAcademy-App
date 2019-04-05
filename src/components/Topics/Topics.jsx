@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { getTopics, getCompletedTopics } from '../../helpers/apiLink';
 
+import empty from '../../assets/img/empty.png';
 import loading from '../../assets/img/loading.svg';
 import Topic from './Topic/Topic';
 import './Topics.scss';
@@ -108,7 +109,11 @@ class TopicsViewer extends React.Component {
               />
             ))
           ) : (
-            <p className="is-size-2">No Topics Found</p>
+            <>
+              <img src={empty} alt="no topics found" style={{ height: '10rem' }} />
+              <br />
+              <p className="is-size-2">No Topics Found</p>
+            </>
           )}
         </div>
       </div>
