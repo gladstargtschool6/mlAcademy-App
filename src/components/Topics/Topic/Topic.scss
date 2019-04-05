@@ -83,22 +83,19 @@ $pill-height: 1.6rem;
 }
 
 .topic-wrapper > .complete {
-  color: white;
-  font-weight: 700;
-  background-color: $primary;
+  color: hsl(45, 65%, 20%);
+  background-color: hsl(45, 65%, 87%);
 }
 
 .topic-wrapper > .available {
-  color: black;
-  font-weight: 700;
-  background-color: $link;
+  color: hsl(104, 52%, 20%);
+  background-color: hsl(104, 52%, 80%);
 }
 
 .topic-wrapper > .comingSoon {
   cursor: not-allowed;
-  color: black;
-  font-weight: 700;
-  background-color: $danger;
+  color: hsl(0, 79%, 20%);
+  background-color: hsl(0, 79%, 87%);
 }
 
 .disabled {
