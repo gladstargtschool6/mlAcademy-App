@@ -23,10 +23,8 @@
 
   .result-window > button {
     cursor: pointer;
-    position: absolute;
+    position: sticky;
     z-index: 20;
-    top: 0.5rem;
-    right: 1rem;
     height: 2rem;
     width: 2rem;
     border-radius: 1rem;

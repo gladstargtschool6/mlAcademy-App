@@ -106,12 +106,7 @@ function HeaderAuth(props) {
           ) : (
             <div className="navbar-item">
               <div className="buttons">
-                <button
-                  onClick={handleLogin}
-                  type="button"
-                  to="/signup"
-                  className="button is-primary"
-                >
+                <button onClick={handleLogin} type="button" to="/signup" className="btn is-primary">
                   <strong>Log In</strong>
                 </button>
               </div>
