@@ -6,7 +6,7 @@
 [![GitHub Issues](https://img.shields.io/github/issues/mlacademy/mlAcademy-App.svg)](https://github.com/mlacademy/frontend/issues)
 [![Build Status](https://dev.azure.com/mlacademy/mlacademy/_apis/build/status/mlAcademy.frontend?branchName=production)](https://dev.azure.com/mlacademy/mlacademy/_build/latest?definitionId=1&branchName=production)
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)
-[![License](https://img.shields.io/badge/license-GPL-green.svg)](https://www.gnu.org/licenses/gpl.html)
+[![License](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 # mlAcademy - An Interactive educational platform for high-school students, specializing in machine learning
 
