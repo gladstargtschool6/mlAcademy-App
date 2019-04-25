@@ -42,7 +42,9 @@ yarn install
 
 ```
 
-_Change variables in .env_
+### Changing variables in /.env
+
+To use Microsoft Active Directory Login, use [this guide](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app) to register an AD app and then replace the `clientID` field in the .env file. Ensure you add the endpoint `http://localhost:3000` on the App Registrations site to ensure the app functions correctly.
 
 ### Run Locally
 
